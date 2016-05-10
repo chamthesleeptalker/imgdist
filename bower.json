@@ -1,0 +1,29 @@
+{
+  "name": "diwata-image-gallery",
+  "authors": [
+    "Benjie Jiao <hi@benjie.me>",
+    "Ian Panganiban <ian.panganiban@gmail.com>"
+  ],
+  "description": "An Image Browser for Diwata-1 Images",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.6",
+    "bootstrap-material-design": "~0.5.7",
+    "leaflet-areaselect": "*",
+    "leaflet": "~0.7.7",
+    "datatables": "~1.10.10",
+    "roboto-fontface": "~0.4.3",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37"
+  }
+}

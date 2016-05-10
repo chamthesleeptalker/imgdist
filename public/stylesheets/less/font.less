@@ -1,0 +1,42 @@
+//Font MIXINS
+.EBGaramond{
+	font-family: 'EB Garamond', serif;
+}
+
+.Raleway{
+	font-family: 'Raleway', sans-serif;
+}
+
+.JosefinSans{
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.Quicksand{
+	font-family: 'Quicksand', sans-serif;
+}
+
+.Lora{
+	font-family: 'Lora', serif;	
+}
+
+
+
+body{
+	.Raleway;
+}
+
+h1, h2{
+	.Raleway;
+	color:@second-color;
+}
+
+h3, h4, h5{
+	.JosefinSans;
+	font-weight: 300;
+}
+
+nav{
+	.Raleway;
+	font-weight: 300;
+	letter-spacing: 3px;
+}

@@ -1,0 +1,89 @@
+.EBGaramond {
+  font-family: 'EB Garamond', serif;
+}
+.Raleway {
+  font-family: 'Raleway', sans-serif;
+}
+.JosefinSans {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.Quicksand {
+  font-family: 'Quicksand', sans-serif;
+}
+.Lora {
+  font-family: 'Lora', serif;
+}
+body {
+  font-family: 'Raleway', sans-serif;
+}
+h1,
+h2 {
+  font-family: 'Raleway', sans-serif;
+  color: #022a47;
+}
+h3,
+h4,
+h5 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
+nav {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+body {
+  background-color: white;
+  width: 100%;
+}
+.container {
+  width: 100%;
+  padding: 0%;
+  background-color: white;
+}
+.container .main_section {
+  padding: 0%;
+}
+.container .form-group {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.container .form-group .form-control {
+  background-color: white;
+  border-radius: 5px;
+  color: #240047;
+  padding: 1%;
+  padding-left: 2%;
+}
+.container .form-group .control-label {
+  margin-bottom: 5px;
+}
+.container .navbar-brand {
+  height: auto;
+}
+.container .navbar {
+  top: 20%;
+  border-radius: 10px;
+  margin: 1%;
+  box-shadow: 1px 1px 1px gray;
+}
+.container .navbar h1 {
+  color: white;
+}
+.container #diwata_head {
+  position: relative;
+  display: inline-block;
+  height: inherit;
+}
+#map {
+  height: 100%;
+  width: 100%;
+}
+.leaflet-areaselect-shade {
+  background-color: rgba(83, 61, 80, 0.35);
+}
+.card {
+  margin: 2%;
+  width: 90%;
+}
+/*# sourceMappingURL=style.css.map */

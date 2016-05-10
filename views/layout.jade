@@ -1,0 +1,80 @@
+doctype html
+
+html
+  head
+    title Diwata Image Gallery
+    // Fontface
+    
+    // Material Design fonts
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type='text/css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    
+    // Bootstrap and Bootstrap Material Design
+    link(rel='stylesheet', type='text/css', href='bower-components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='bower-components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', type='text/css', href='bower-components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css')
+    link(rel='stylesheet', type='text/css', href='bower-components/bootstrap-material-design/dist/css/ripples.min.css')
+    
+    // Leaflet
+    link(rel='stylesheet', type='text/css', href='bower-components/leaflet/dist/leaflet.css')
+    link(rel='stylesheet', type='text/css', href='bower-components/leaflet-areaselect/src/leaflet-areaselect.css')
+    
+    // Datatables
+    link(rel='stylesheet', type='text/css', href='bower-components/datatables/media/css/jquery.dataTables.min.css')
+    
+    // Global CSS
+    link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+    
+    // livereload
+    //- script(src='//localhost:35729/livereload.js')
+    // endlivereload
+  body
+    .container
+      #gallery_section.col-lg-8.main_section
+        .col-lg-12.main_section
+          .navbar.navbar-default
+            .container-fluid
+              .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                #diwata_head
+                  h1 Diwata
+              .navbar-collapse.collapse.navbar-responsive-collapse
+                .col-lg-2.form-group
+                  label.control-label Satellite:
+                  select#satelliteFilter.form-control
+                    option(value='diwata-1', selected='') Diwata 1
+                    option(value='others') Others
+                .col-lg-2.form-group
+                  label.control-label Sensor:
+                  select#sensorFilter.form-control
+                    option(value='hpt') HPT
+                    option(value='smi') SMI-LCTF
+                    option(value='mfc') MFC
+                    option(value='wfc') WFC
+                    option(value='other') Others
+                #dwdate.col-lg-3.form-group
+                  .input-group.date
+                    label.control-label
+                      | Start Date
+                      span.glyphicon.glyphicon-calendar
+                    input#datefilterstart.form-control(type='text')
+        #imageCards.row
+      #map_section.col-lg-4.main_section
+        #map
+
+  // bower:JS
+  script(type='text/javascript', src='bower-components/jquery/dist/jquery.min.js')
+  script(type='text/javascript', src='bower-components/bootstrap/dist/js/bootstrap.min.js')
+  script(type='text/javascript', src='bower-components/moment/min/moment.min.js')
+  script(type='text/javascript', src='bower-components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
+  script(type='text/javascript', src='bower-components/bootstrap-material-design/dist/js/material.min.js')
+  script(type='text/javascript', src='bower-components/bootstrap-material-design/dist/js/ripples.min.js')
+  script(type='text/javascript', src='bower-components/leaflet/dist/leaflet.js')
+  script(type='text/javascript', src='bower-components/leaflet-areaselect/src/leaflet-areaselect.js')
+  script(type='text/javascript', src='bower-components/datatables/media/js/jquery.dataTables.min.js')
+  
+  // MainApp
+  script(type='text/javascript', src='javascripts/main.min.js')
