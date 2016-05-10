@@ -1,5 +1,50 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    div#gallery_section.col-lg-8.main_section
+            div.col-lg-12.main_section
+                div.navbar.navbar-default
+
+                    .container-fluid
+                        .navbar-header
+                            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
+                                span.icon-bar
+                                span.icon-bar
+                                span.icon-bar
+                            #diwata_head
+                                h1 Diwata
+
+                        .navbar-collapse.collapse.navbar-responsive-collapse
+                            .col-lg-2.form-group
+                                label.control-label Satellite:
+                                select#satelliteFilter.form-control
+                                    option(value='diwata-1', selected='') Diwata 1
+                                    option(value='others') Others
+
+                            .col-lg-2.form-group
+                                label.control-label Sensor:
+                                select#sensorFilter.form-control
+                                    option(value='hpt') HPT
+                                    option(value='smi') SMI-LCTF
+                                    option(value='mfc') MFC
+                                    option(value='wfc') WFC
+                                    option(value='other') Others
+
+                            #dwdate.col-lg-2.form-group
+                                .input-group.date
+                                    label.control-label
+                                        | Start Date
+                                        span.glyphicon.glyphicon-calendar
+                                    input#datefilterstart.form-control(type='text')
+
+                            #dwdate.col-lg-2.form-group
+                                .input-group.date
+                                    label.control-label
+                                        | End Date
+                                        span.glyphicon.glyphicon-calendar
+                                    input#datefilterend.form-control(type='text')
+
+                div#imageCards.row
+
+    div#map_section.col-lg-4.main_section
+        #map
