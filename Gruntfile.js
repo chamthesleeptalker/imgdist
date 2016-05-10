@@ -45,22 +45,28 @@ module.exports = function(grunt) {
     },
 
     watch: {
-        css: {
-            files: ['static/css/*.less'],
-            tasks: ['less'],
-        },
-        configFiles: {
-          files: [ 'Gruntfile.js' ],
-        },
-        scripts: {
-          files: ["static/js/*.js"],
-          tasks: ['uglify']
-        },
+      css: {
+          files: ['static/css/*.less'],
+          tasks: ['less'],
+      },
+      configFiles: {
+        files: [ 'Gruntfile.js' ],
+      },
+      scripts: {
+        files: ["static/js/*.js"],
+        tasks: ['uglify']
+      },
 
-        // files: ['*.html', '*.jade', 'public/stylesheets/javascripts/*.js','public/stylesheets/*.map'],
-        options:{
-          livereload: true,
+      htmlFiles: {
+        files: ['views/*.html', 'views/*.jade'],
+        options: {
+          reload: true
         }
+      },
+
+      options:{
+        livereload: true,
+      }
     }
   });
 
