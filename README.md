@@ -31,3 +31,34 @@ grunt serve
 ```
 grunt rebuild
 ```
+
+## Deployment
+
+- Install nginx
+- Create new config file in `/etc/nginx/sites-available` containing the following:
+
+```
+server {
+    listen 80;
+    server_name gallery.phl-microsat.xyz;
+
+    location / {
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:4001;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+    }
+}
+```
+
+- Add link to file in sites-enabled
+
+```
+sudo ln -s /etc/nginx/sites-available/gallery.phl-microsat.zyz /etc/nginx/sites-enabled/gallery.phl-microsat.zyz
+```
+
+- Run app with forever on port 4001 (depends on nginx config):
+
+```
+PORT=4001 forever start bin/www 
+```
