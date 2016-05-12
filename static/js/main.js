@@ -60,25 +60,48 @@ function init_map(){
         color: "#000",
         weight: 1,
         opacity: 1,
-        fillOpacity: 0.8
+        fillOpacity: 0.4
+    };
+
+    //Footprint options
+    var footprintOptions = {
+        color:"#1C0021",
+        weight:3,
+        opacity: 1,
+        fillColor:"#1C0021",
+        fillOpacity:0.3
+    };
+
+    //Layer popup options
+    var popupOptions ={
+        closeOnClick: true,
+        className: "popup",
+        closeButton: false
     };
 
     //Image point markers in the map
     image_markers = L.geoJson(false,{
+        style: function(feature){
+                if (feature.geometry.type == "Point") {
+                    return geojsonMarkerOptions;
+                } else{                
+                    return footprintOptions;
+                }
+        },
         pointToLayer: function(feature,latlng){
-            return L.circleMarker(latlng, geojsonMarkerOptions);
+                return L.circleMarker(latlng, geojsonMarkerOptions);
         },
         onEachFeature: function(feature, layer){
-            //Footprint onclick popups
-            var popup = new L.popup();
+            
+            var popup = new L.popup(popupOptions);
 
-            var content ="";
-            content +="<p>Acquisition Date: "+feature.properties.acquisition_date+"</p>"; //acquisition date
-            content +="<p>Cloud Cover: "+feature.properties.cloud_cover+"</p>"; //cloud cover
-            content +="<p>Receiving Station: "+feature.properties.receiving_station+"</p>"; //receiving station
-            content +="<p>Satellite: "+feature.properties.satellite+"</p>"; //satellite
-            content +="<p>Scene Name: "+feature.properties.scene_name+"</p>"; //scene name
-            content +="<p>Sensor: "+feature.properties.sensor+"</p>"; //sensor
+            var content ="<h4>SCENE INFO</h4>";
+            content +="<p><b>Acquisition Date:</b> "+feature.properties.acquisition_date+"</p>"; //acquisition date
+            content +="<p><b>Cloud Cover:</b> "+feature.properties.cloud_cover+"</p>"; //cloud cover
+            content +="<p><b>Receiving Station:</b> "+feature.properties.receiving_station+"</p>"; //receiving station
+            content +="<p><b>Satellite:</b> "+feature.properties.satellite+"</p>"; //satellite
+            content +="<p><b>Scene Name:</b> "+feature.properties.scene_name+"</p>"; //scene name
+            content +="<p><b>Sensor:</b> "+feature.properties.sensor+"</p>"; //sensor
 
             popup.setContent(content);
 
