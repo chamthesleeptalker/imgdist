@@ -35,7 +35,10 @@ function updateCards(data){
             image_url: img_url + data_array[i].properties.thumbnail_url,
             sensor: data_array[i].properties.sensor,
             satellite: data_array[i].properties.satellite,
-            date: data_array[i].properties.acquisition_date
+            date: data_array[i].properties.acquisition_date,
+            receiving_station: data_array[i].properties.receiving_station,
+            scene_name: data_array[i].properties.scene_name,
+            cloud_cover: data_array[i].properties.cloud_cover,
         }
         cards.push(card_params)
     }
