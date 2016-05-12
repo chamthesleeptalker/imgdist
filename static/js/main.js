@@ -67,8 +67,25 @@ function init_map(){
     image_markers = L.geoJson(false,{
         pointToLayer: function(feature,latlng){
             return L.circleMarker(latlng, geojsonMarkerOptions);
-        }
+        },
+        onEachFeature: function(feature, layer){
+            //Footprint onclick popups
+            var popup = new L.popup();
+
+            var content ="";
+            content +="<p>Acquisition Date: "+feature.properties.acquisition_date+"</p>"; //acquisition date
+            content +="<p>Cloud Cover: "+feature.properties.cloud_cover+"</p>"; //cloud cover
+            content +="<p>Receiving Station: "+feature.properties.receiving_station+"</p>"; //receiving station
+            content +="<p>Satellite: "+feature.properties.satellite+"</p>"; //satellite
+            content +="<p>Scene Name: "+feature.properties.scene_name+"</p>"; //scene name
+            content +="<p>Sensor: "+feature.properties.sensor+"</p>"; //sensor
+
+            popup.setContent(content);
+
+            layer.bindPopup(popup);
+        } 
     });
+
     image_markers.addTo(map);
 }
 
