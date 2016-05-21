@@ -60,9 +60,13 @@ body {
   position: absolute;
   top: 0px;
   bottom: 0px;
-  right: 0px;
+  left: 0px;
   overflow: -moz-hidden-unscrollable;
   overflow-y: hidden;
+  float: left;
+}
+.container #gallery_section {
+  float: right;
 }
 .container .form-group {
   margin-top: 1%;

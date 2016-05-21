@@ -21,8 +21,6 @@ function init(){
         defaultDate: new Date()
     });
 
-
-
     noUiSlider.create(cloudSlider, {
         start: [0, 100],
         connect: true,

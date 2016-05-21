@@ -1,6 +1,11 @@
 extends layout
 
 block content
+
+    div#map_section.col-lg-4.main_section
+
+        #map
+
     div#gallery_section.col-lg-8.main_section
             div.navbar.navbar-default
 
@@ -43,7 +48,8 @@ block content
                                     option(value='other') Others
 
                             .col-lg-2.form-group
-                                label.control-label Cloud Cover:
+                                label.control-label Cloud Cover: 
+                                    span#cloudRange 0 - 100% 
                                 div#cloudFilter
 
 
@@ -53,5 +59,3 @@ block content
 
                 div#imageCards.row
 
-    div#map_section.col-lg-4.main_section
-        #map

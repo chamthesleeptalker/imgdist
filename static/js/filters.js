@@ -2,9 +2,10 @@ function executeFilters(){
     var bounds = areaSelect.getBounds();
     var sw = bounds._southWest;
     var ne = bounds._northEast;
-
-    //var cloudSlider = $('#cloudFilter')[0];
     var cloudRange = cloudSlider.noUiSlider.get();
+
+    //Updates cloud range in view
+    $("#cloudRange").html(cloudRange[0]+" - "+cloudRange[1]+"%");
 
     var data = {
         satellite: $("#satelliteFilter").val(),
