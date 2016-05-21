@@ -26,5 +26,8 @@
     "roboto-fontface": "~0.4.3",
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "mustache.js": "mustache#^2.2.1"
+  },
+  "devDependencies": {
+    "nouislider": "^8.5.1"
   }
 }

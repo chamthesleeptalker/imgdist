@@ -3,12 +3,15 @@ function executeFilters(){
     var sw = bounds._southWest;
     var ne = bounds._northEast;
 
+    //var cloudSlider = $('#cloudFilter')[0];
+    var cloudRange = cloudSlider.noUiSlider.get();
+
     var data = {
         satellite: $("#satelliteFilter").val(),
         sensor: $("#sensorFilter").val(),
         start: $("#datefilterstart").val(),
         end: $("#datefilterend").val(),
-        cloudRange: "[0,100]",
+        cloudRange: "["+cloudRange[0]+","+cloudRange[1]+"]",
         bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat])
     };
 

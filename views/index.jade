@@ -14,6 +14,19 @@ block content
                                 h1 Diwata
 
                         .navbar-collapse.collapse.navbar-responsive-collapse
+                            #dwdate.col-lg-2.form-group
+                                .input-group.date
+                                    label.control-label
+                                        | Start Date
+                                        span.glyphicon.glyphicon-calendar
+                                    input#datefilterstart.form-control(type='text')
+
+                            #dwdate.col-lg-2.form-group
+                                .input-group.date
+                                    label.control-label
+                                        | End Date
+                                        span.glyphicon.glyphicon-calendar
+                                    input#datefilterend.form-control(type='text')
                             .col-lg-2.form-group
                                 label.control-label Satellite:
                                 select#satelliteFilter.form-control
@@ -29,19 +42,12 @@ block content
                                     option(value='wfc') WFC
                                     option(value='other') Others
 
-                            #dwdate.col-lg-2.form-group
-                                .input-group.date
-                                    label.control-label
-                                        | Start Date
-                                        span.glyphicon.glyphicon-calendar
-                                    input#datefilterstart.form-control(type='text')
+                            .col-lg-2.form-group
+                                label.control-label Cloud Cover:
+                                div#cloudFilter
 
-                            #dwdate.col-lg-2.form-group
-                                .input-group.date
-                                    label.control-label
-                                        | End Date
-                                        span.glyphicon.glyphicon-calendar
-                                    input#datefilterend.form-control(type='text')        
+
+        
             div#imageDiv.col-lg-12.main_section
                
 

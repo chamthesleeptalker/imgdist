@@ -3,6 +3,10 @@ var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 
   
 // General initialization scripts. Form elements, etc.
+
+// global cloudFilter object
+var cloudSlider = $('#cloudFilter')[0];
+
 function init(){
 
     $.material.init()
@@ -16,6 +20,20 @@ function init(){
         format: "YYYY-MM-DD",
         defaultDate: new Date()
     });
+
+
+
+    noUiSlider.create(cloudSlider, {
+        start: [0, 100],
+        connect: true,
+        margin: 5,
+        step: 5,
+        range: {
+            'min': 0,
+            'max': 100
+        }
+    });
+
 }
 
 // Scripts for initializing the map
@@ -125,6 +143,10 @@ $(function(){
     });
 
     $('#datefilterstart, #datefilterend').on('dp.change', function(){
+        executeFilters();
+    });
+
+    cloudSlider.noUiSlider.on('update',function(){
         executeFilters();
     });
 
