@@ -18,9 +18,9 @@ function executeFilters(){
     };
 
     $.get(main_url, data, function(result){
-        //console.log(result);
         updateMapMarkers(result);
         updateCards(result);
+        console.log(result);
     });
 }
 
@@ -40,6 +40,24 @@ function zoomToScene(coordinates){
         map.setView(centerPoint,8);
     }
     
+}
+
+//add to image cart
+var imageCartEntries=[];
+function addImageToCart(scene_name, image_url){
+
+  var imageObj ={name:scene_name, image_url:image_url};
+  imageCartEntries.push(imageObj);
+
+  var count = imageCartEntries.length;
+  $('#imageCartCount').text(count);
+
+  var imagecart_template = $('#imagecart-template').html();
+  Mustache.parse(imagecart_template);
+
+  rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
+  $('#imageCartList').html(rendered_imageCartEntries);
+
 }
 
 function updateCards(data){
@@ -66,3 +84,5 @@ function updateCards(data){
     rendered_cards = Mustache.to_html(card_template, {cards: cards})
     $('#imageCards').html(rendered_cards);
 };
+
+

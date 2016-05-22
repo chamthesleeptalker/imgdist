@@ -45,7 +45,7 @@ html
                     <div class="card-body">
                       <h2>{{scene_name}} | {{date}}</h2>
                         <span onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></span>
-                        <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
+                        <span onclick="addImageToCart('{{scene_name}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></span>
                         <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
                         <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
                         <p><b>Receiving Station: </b>{{receiving_station}}</p>
@@ -58,6 +58,22 @@ html
         </div>
     </div>
     {{/cards}}
+
+  // Mustache template for the Image Cart
+  script(id="imagecart-template" type="x-tmpl-mustache").
+    {{#imageCartEntries}}
+    <div class="list-group-item">
+      <div class="row-picture">
+        <img class="circle" style="width:50px;height:auto;" src="{{image_url}}" alt="icon">
+      </div>
+      <div class="row-content">
+        <h4 class="list-group-item-heading">{{scene_name}}</h4>
+
+        <a class="list-group-item-text" href="{{image_url}}">Download</a>
+      </div>
+    </div>
+    {{/imageCartEntries}}
+
 
   // bower:JS
   script(type='text/javascript', src='bower-components/jquery/dist/jquery.min.js')

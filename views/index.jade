@@ -52,10 +52,24 @@ block content
                                     span#cloudRange 0 - 100% 
                                 div#cloudFilter
 
+                            .col-lg-2( data-toggle="modal", data-target="#imageModal")
+                                label#imageCart Cart 
+                                    span.badge#imageCartCount  0
+                                   
 
         
             div#imageDiv.col-lg-12.main_section
                
-
                 div#imageCards.row
+
+
+    div.modal.fade#imageModal(role="dialog")
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    button.close(type='button', data-dismiss="modal", aria-hidden="true") x
+                    h4.modal-title Diwata Image Cart
+                div.modal-body#imageCartList
+                div.modal-footer
+                    button.btn.btn-primary(type='button') Download All
 
