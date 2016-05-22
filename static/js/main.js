@@ -6,6 +6,7 @@ var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 
 // global cloudFilter object
 var cloudSlider = $('#cloudFilter')[0];
+var map = L.map('map');
 
 function init(){
 
@@ -38,7 +39,7 @@ function init(){
 function init_map(){
     
 
-    map = L.map('map');
+    //map = L.map('map');
     
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
@@ -98,14 +99,14 @@ function init_map(){
     //Image point markers in the map
     image_markers = L.geoJson(false,{
         style: function(feature){
-                if (feature.geometry.type == "Point") {
-                    return geojsonMarkerOptions;
-                } else{                
-                    return footprintOptions;
-                }
+            if (feature.geometry.type == "Point") {
+                return geojsonMarkerOptions;
+            } else{                
+                return footprintOptions;
+            }
         },
         pointToLayer: function(feature,latlng){
-                return L.circleMarker(latlng, geojsonMarkerOptions);
+            return L.circleMarker(latlng, geojsonMarkerOptions);
         },
         onEachFeature: function(feature, layer){
             

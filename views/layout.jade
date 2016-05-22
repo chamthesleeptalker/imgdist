@@ -44,6 +44,9 @@ html
                 <div class="card-content">
                     <div class="card-body">
                       <h2>{{scene_name}} | {{date}}</h2>
+                        <span onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></span>
+                        <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
+                        <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
                         <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
                         <p><b>Receiving Station: </b>{{receiving_station}}</p>
                     </div>

@@ -121,6 +121,10 @@ body {
 .leaflet-areaselect-shade {
   background-color: rgba(83, 61, 80, 0.35);
 }
+.noUi-handle.noUi-handle-upper {
+  background-color: #fff;
+  border: 2px solid #c8c8c8;
+}
 .card {
   margin: 2%;
   width: 95%;
@@ -128,6 +132,17 @@ body {
 .card p {
   margin-top: 2px;
   margin-bottom: 2px;
+}
+.card .card-body {
+  height: 50%;
+}
+.card .card-image {
+  height: 50%;
+}
+.card .card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .popup {
   color: white;

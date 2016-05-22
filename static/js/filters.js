@@ -13,10 +13,12 @@ function executeFilters(){
         start: $("#datefilterstart").val(),
         end: $("#datefilterend").val(),
         cloudRange: "["+cloudRange[0]+","+cloudRange[1]+"]",
-        bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat])
+        bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat]),
+        zoomtoscene:""
     };
 
     $.get(main_url, data, function(result){
+        //console.log(result);
         updateMapMarkers(result);
         updateCards(result);
     });
@@ -25,6 +27,19 @@ function executeFilters(){
 function updateMapMarkers(data){
     if(image_markers) image_markers.clearLayers();
     image_markers.addData(data);
+}
+
+function zoomToScene(coordinates){
+    if(coordinates.length < 2){
+        var footprint = L.polygon(coordinates[0]);
+        var centerFootprint = [footprint.getBounds().getCenter().lng,footprint.getBounds().getCenter().lat];
+        map.setView(centerFootprint,8);
+    }else{
+        var point = L.circleMarker([coordinates[1],coordinates[0]])
+        var centerPoint = [point.getLatLng().lat,point.getLatLng().lng]
+        map.setView(centerPoint,8);
+    }
+    
 }
 
 function updateCards(data){
@@ -43,6 +58,7 @@ function updateCards(data){
             receiving_station: data_array[i].properties.receiving_station,
             scene_name: data_array[i].properties.scene_name,
             cloud_cover: data_array[i].properties.cloud_cover,
+            zoomtoscene: JSON.stringify(data_array[i].geometry.coordinates)
         }
         cards.push(card_params)
     }
