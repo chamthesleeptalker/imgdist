@@ -63,6 +63,7 @@ function init_map(){
     areaSelect=L.areaSelect({
         width: width-100,
         height: height-100,
+        keepAspectRatio:false
     });
     areaSelect.addTo(map);
     areaSelect.on("change",function(){

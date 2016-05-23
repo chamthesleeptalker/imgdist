@@ -16,14 +16,10 @@ html
     // Leaflet
     link(rel='stylesheet', type='text/css', href='bower-components/leaflet/dist/leaflet.css')
     link(rel='stylesheet', type='text/css', href='bower-components/leaflet-areaselect/src/leaflet-areaselect.css')
-    
-    // Datatables
-    //link(rel='stylesheet', type='text/css', href='bower-components/datatables/media/css/jquery.dataTables.min.css')
 
     //NoUiSlider
     link(rel='stylesheet', type='text/css', href='bower-components/nouislider/distribute/nouislider.min.css')    
 
-    
     // Global CSS
     link(rel='stylesheet', type='text/css', href='css/style.css')
     
@@ -44,8 +40,8 @@ html
                 <div class="card-content">
                     <div class="card-body">
                       <h2>{{scene_name}} | {{date}}</h2>
-                        <span onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></span>
-                        <span onclick="addImageToCart('{{scene_name}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></span>
+                        <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
+                        <a id="imagetocart_{{scene_name}}" onclick="addImageToCart('{{scene_name}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
                         <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
                         <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
                         <p><b>Receiving Station: </b>{{receiving_station}}</p>
@@ -69,7 +65,7 @@ html
       <div class="row-content">
         <h4 class="list-group-item-heading">{{scene_name}}</h4>
 
-        <a class="list-group-item-text" href="{{image_url}}">Download</a>
+        <a class="list-group-item-text" href="{{image_url}}" download>Download</a>
       </div>
     </div>
     {{/imageCartEntries}}
@@ -79,15 +75,16 @@ html
   script(type='text/javascript', src='bower-components/jquery/dist/jquery.min.js')
   script(type='text/javascript', src='bower-components/bootstrap/dist/js/bootstrap.min.js')
   script(type='text/javascript', src='bower-components/moment/min/moment.min.js')
-
   script(type='text/javascript', src='bower-components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
   script(type='text/javascript', src='bower-components/bootstrap-material-design/dist/js/material.min.js')
   script(type='text/javascript', src='bower-components/bootstrap-material-design/dist/js/ripples.min.js')
   script(type='text/javascript', src='bower-components/leaflet/dist/leaflet.js')
   script(type='text/javascript', src='bower-components/leaflet-areaselect/src/leaflet-areaselect.js')
-  //script(type='text/javascript', src='bower-components/datatables/media/js/jquery.dataTables.min.js')
   script(type='text/javascript', src='bower-components/nouislider/distribute/nouislider.min.js')
   script(type='text/javascript', src='bower-components/mustache.js/mustache.min.js')
+
+  // notInBower:JS
+  script(type='text/javascript', src='https://cdn.jsdelivr.net/lodash/4.12.0/lodash.min.js')  
   
   // MainApp
   script(type='text/javascript', src='js/diwata.min.js')

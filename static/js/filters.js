@@ -20,7 +20,7 @@ function executeFilters(){
     $.get(main_url, data, function(result){
         updateMapMarkers(result);
         updateCards(result);
-        console.log(result);
+        updateOnImageCartCards(imageCartEntries);
     });
 }
 
@@ -39,18 +39,46 @@ function zoomToScene(coordinates){
         var centerPoint = [point.getLatLng().lat,point.getLatLng().lng]
         map.setView(centerPoint,8);
     }
-    
 }
 
 //add to image cart
 var imageCartEntries=[];
+var removedCartEntries=[];
 function addImageToCart(scene_name, image_url){
 
-  var imageObj ={name:scene_name, image_url:image_url};
-  imageCartEntries.push(imageObj);
+  var addImageObj ={scene_name:scene_name, image_url:image_url};
+  imageCartEntries.push(addImageObj);
 
   var count = imageCartEntries.length;
   $('#imageCartCount').text(count);
+
+  $("#imagetocart_"+scene_name).text('Remove from Cart');
+  $("#imagetocart_"+scene_name).removeClass('btn-info');
+  $("#imagetocart_"+scene_name).addClass('btn-warning');
+  $("#imagetocart_"+scene_name).attr('onclick','removeImageFromCart("'+scene_name+'","'+image_url+'")');
+
+  var imagecart_template = $('#imagecart-template').html();
+  Mustache.parse(imagecart_template);
+
+  rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
+  $('#imageCartList').html(rendered_imageCartEntries);
+
+}
+
+function removeImageFromCart(scene_name, image_url){
+  var removeImageObj ={scene_name:scene_name, image_url:image_url};
+  removedCartEntries.push(removeImageObj);
+
+  var removeEntry = _.findIndex(imageCartEntries, removeImageObj);
+  var newimageCartEntries = _.pullAt(imageCartEntries,removeEntry);
+
+  var count = imageCartEntries.length;
+  $('#imageCartCount').text(count);
+
+  $("#imagetocart_"+scene_name).text('Add to Cart');
+  $("#imagetocart_"+scene_name).removeClass('btn-warning');
+  $("#imagetocart_"+scene_name).addClass('btn-info');
+  $("#imagetocart_"+scene_name).attr('onclick','addImageToCart("'+scene_name+'","'+image_url+'")');
 
   var imagecart_template = $('#imagecart-template').html();
   Mustache.parse(imagecart_template);
@@ -64,7 +92,7 @@ function updateCards(data){
     var card_template = $('#card-template').html();
     Mustache.parse(card_template);
 
-    data_array = data.features
+    data_array = data.features;
 
     var cards = []
     for(var i in data_array){
@@ -84,5 +112,20 @@ function updateCards(data){
     rendered_cards = Mustache.to_html(card_template, {cards: cards})
     $('#imageCards').html(rendered_cards);
 };
+
+//Loops through the card entries in the image cart and applies the "Remove" state
+function updateOnImageCartCards(imageCartEntries){
+    for(var i in imageCartEntries){
+      onClickRemoveFromCart(imageCartEntries[i]);
+    }
+}
+
+//Changes button state for cards already in cart on card update
+function onClickRemoveFromCart(imageCartEntry){
+    $("#imagetocart_"+imageCartEntry.scene_name).text('Remove from Cart');
+      $("#imagetocart_"+imageCartEntry.scene_name).removeClass('btn-info');
+      $("#imagetocart_"+imageCartEntry.scene_name).addClass('btn-warning');
+      $("#imagetocart_"+imageCartEntry.scene_name).attr('onclick','removeImageFromCart("'+imageCartEntry.scene_name+'","'+imageCartEntry.image_url+'")');
+}
 
 
