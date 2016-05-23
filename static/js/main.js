@@ -3,6 +3,11 @@ var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 
   
 // General initialization scripts. Form elements, etc.
+
+// global cloudFilter object
+var cloudSlider = $('#cloudFilter')[0];
+var map = L.map('map');
+
 function init(){
 
     $.material.init()
@@ -16,13 +21,25 @@ function init(){
         format: "YYYY-MM-DD",
         defaultDate: new Date()
     });
+
+    noUiSlider.create(cloudSlider, {
+        start: [0, 100],
+        connect: true,
+        margin: 5,
+        step: 5,
+        range: {
+            'min': 0,
+            'max': 100
+        }
+    });
+
 }
 
 // Scripts for initializing the map
 function init_map(){
     
 
-    map = L.map('map');
+    //map = L.map('map');
     
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
@@ -46,6 +63,7 @@ function init_map(){
     areaSelect=L.areaSelect({
         width: width-100,
         height: height-100,
+        keepAspectRatio:false
     });
     areaSelect.addTo(map);
     areaSelect.on("change",function(){
@@ -82,14 +100,14 @@ function init_map(){
     //Image point markers in the map
     image_markers = L.geoJson(false,{
         style: function(feature){
-                if (feature.geometry.type == "Point") {
-                    return geojsonMarkerOptions;
-                } else{                
-                    return footprintOptions;
-                }
+            if (feature.geometry.type == "Point") {
+                return geojsonMarkerOptions;
+            } else{                
+                return footprintOptions;
+            }
         },
         pointToLayer: function(feature,latlng){
-                return L.circleMarker(latlng, geojsonMarkerOptions);
+            return L.circleMarker(latlng, geojsonMarkerOptions);
         },
         onEachFeature: function(feature, layer){
             
@@ -125,6 +143,10 @@ $(function(){
     });
 
     $('#datefilterstart, #datefilterend').on('dp.change', function(){
+        executeFilters();
+    });
+
+    cloudSlider.noUiSlider.on('update',function(){
         executeFilters();
     });
 
