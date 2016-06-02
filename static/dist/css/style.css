@@ -65,58 +65,39 @@ body {
   overflow-y: hidden;
   float: left;
 }
+.container #map_section h1 {
+  margin: 0px;
+  color: white;
+}
 .container #gallery_section {
   float: right;
+  padding: 0px;
 }
-.container .form-group {
-  margin-top: 1%;
-  margin-bottom: 1%;
-}
-.container .form-group .form-control {
-  background-color: white;
-  border-radius: 5px;
-  color: #240047;
-  padding: 1%;
-  padding-left: 2%;
-}
-.container .form-group .control-label {
-  margin-bottom: 5px;
-}
-.container .navbar-brand {
-  height: auto;
-}
-.container .navbar {
-  display: block;
-  z-index: 1000;
-  border-radius: 10px;
-  margin: 1%;
-  box-shadow: 1px 1px 1px gray;
-}
-.container .navbar h1 {
+.filter {
+  min-height: 60px;
+  background-color: #1C0021;
+  margin: 0px;
   color: white;
 }
-.container .navbar.navbar-default {
-  background-color: rgba(28, 0, 33, 0.7);
-  color: white;
+.form-group {
+  margin: 0px;
 }
-.container .navbar.navbar-default span {
-  color: white;
+.control-label {
+  margin: 5px 0 0 0;
 }
-.container #diwata_head {
-  position: relative;
-  display: inline-block;
-  float: none;
+.fildiv {
+  padding: 2%;
+  border-right: 1px solid white;
+  min-height: 60px;
 }
-.container #diwata_head h1 {
-  margin-top: 25%;
-  vertical-align: middle;
-}
-.container .date span {
-  margin-left: 5px;
+#cart_fil {
+  padding: 2%;
 }
 #map {
-  height: 100%;
+  position: absolute;
+  height: 95%;
   width: 100%;
+  top: 60px;
 }
 .leaflet-areaselect-shade {
   background-color: rgba(83, 61, 80, 0.35);

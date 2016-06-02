@@ -2,66 +2,29 @@ extends layout
 
 block content
 
-    div#map_section.col-lg-4.main_section
+    //- div#filters.row.container
 
+    div#map_section.col-lg-4.main_section
+        div.row.container.filter.fildiv
+            h1 DIWATA I
         #map
 
     div#gallery_section.col-lg-8.main_section
-            div.navbar.navbar-default
-
-                    .container-fluid
-                        .navbar-header
-                            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
-                                span.icon-bar
-                                span.icon-bar
-                                span.icon-bar
-                            #diwata_head
-                                h1 Diwata
-
-                        .navbar-collapse.collapse.navbar-responsive-collapse
-                            #dwdate.col-lg-2.form-group
-                                .input-group.date
-                                    label.control-label
-                                        | Start Date
-                                        span.glyphicon.glyphicon-calendar
-                                    input#datefilterstart.form-control(type='text')
-
-                            #dwdate.col-lg-2.form-group
-                                .input-group.date
-                                    label.control-label
-                                        | End Date
-                                        span.glyphicon.glyphicon-calendar
-                                    input#datefilterend.form-control(type='text')
-                            .col-lg-2.form-group
-                                label.control-label Satellite:
-                                select#satelliteFilter.form-control
-                                    option(value='diwata-1', selected='') Diwata 1
-                                    option(value='others') Others
-
-                            .col-lg-2.form-group
-                                label.control-label Sensor:
-                                select#sensorFilter.form-control
-                                    option(value='hpt') HPT
-                                    option(value='smi') SMI-LCTF
-                                    option(value='mfc') MFC
-                                    option(value='wfc') WFC
-                                    option(value='other') Others
-
-                            .col-lg-2.form-group
-                                label.control-label Cloud Cover: 
-                                    span#cloudRange 0 - 100% 
-                                div#cloudFilter
-
-                            .col-lg-2( data-toggle="modal", data-target="#imageModal")
-                                label#imageCart Cart 
-                                    span.badge#imageCartCount  0
-                                   
-
-        
-            div#imageDiv.col-lg-12.main_section
-               
-                div#imageCards.row
-
+        div.row.container.filter
+            #date_fil.col-lg-5.fildiv
+                span.glyphicon.glyphicon-calendar
+                span#startdate
+                span#enddate
+            #cloud_fil.col-lg-4.fildiv
+                span.glyphicon.glyphicon-cloud
+                span.glyphicon.glyphicon-cloud
+            #sat_fil.col-lg-1.fildiv
+                span.glyphicon.glyphicon-record
+            #sensor_fil.col-lg-1.fildiv
+                span.glyphicon.glyphicon-hdd
+            #cart_fil.col-lg-1( data-toggle="modal", data-target="#imageModal")
+                span.glyphicon.glyphicon-shopping-cart   
+                span.badge#imageCartCount  0
 
     div.modal.fade#imageModal(role="dialog")
         div.modal-dialog
