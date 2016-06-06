@@ -11,20 +11,28 @@ block content
 
     div#gallery_section.col-lg-8.main_section
         div.row.container.filter
-            #date_fil.col-lg-5.fildiv
+            #date_fil.col-lg-4.fildiv
                 span.glyphicon.glyphicon-calendar
                 span#startdate
                 span#enddate
-            #cloud_fil.col-lg-4.fildiv
+            #cloud_fil.col-lg-3.fildiv
                 span.glyphicon.glyphicon-cloud
-            #sat_fil.col-lg-1.fildiv
-                span.glyphicon.glyphicon-record
-            #sensor_fil.col-lg-1.fildiv
-                span.glyphicon.glyphicon-hdd
+            #sat_fil.col-lg-2.fildiv
+                //- span.glyphicon.glyphicon-record
+                div.col-lg-12
+                    span.label.label-default.labels.labelActive HPT
+                    span.label.label-default.labels MFC
+                div.col-lg-12
+                    span.label.label-default.labels WFC
+                    span.label.label-default.labels SMI
+            #sensor_fil.col-lg-2.fildiv
+                //- span.glyphicon.glyphicon-hdd
+                span.label.label-default.labels.labelActive Diwata I
+                span.label.label-default.labels Landsat
             #cart_fil.col-lg-1( data-toggle="modal", data-target="#imageModal")
                 span.badge#imageCartCount  0 
                 span.glyphicon.glyphicon-shopping-cart
-        div.row.container.filter
+        div.row.container.filterContainer
 
                 
 
