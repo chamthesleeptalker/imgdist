@@ -86,12 +86,26 @@ body {
   margin: 5px 0 0 0;
 }
 .fildiv {
-  padding: 2%;
+  padding: 1%;
   border-right: 1px solid white;
   min-height: 60px;
 }
+.fildiv .glyphicon {
+  font-size: 30px;
+  margin: 5px 12px;
+}
 #cart_fil {
-  padding: 2%;
+  padding: 1%;
+}
+#cart_fil .glyphicon {
+  top: 13px;
+  font-size: 25px;
+  margin-left: 6px;
+  float: left;
+}
+#cart_fil .badge {
+  float: right;
+  font-size: 11px;
 }
 #map {
   position: absolute;
