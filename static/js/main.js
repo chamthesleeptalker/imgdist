@@ -5,7 +5,7 @@ var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 // General initialization scripts. Form elements, etc.
 
 // global cloudFilter object
-var cloudSlider = $('#cloudFilter')[0];
+//var cloudSlider = $('#cloudFilterContainer')[0];
 var map = L.map('map');
 
 function init(){
@@ -22,15 +22,22 @@ function init(){
         defaultDate: new Date()
     });
 
-    noUiSlider.create(cloudSlider, {
-        start: [0, 100],
-        connect: true,
-        margin: 5,
-        step: 5,
-        range: {
-            'min': 0,
-            'max': 100
-        }
+    // noUiSlider.create(cloudSlider, {
+    //     start: [0, 100],
+    //     connect: true,
+    //     margin: 5,
+    //     step: 5,
+    //     range: {
+    //         'min': 0,
+    //         'max': 100
+    //     }
+    // });
+
+    $("#cloud_slide").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 100,
+        grid: true
     });
 
 }
@@ -152,4 +159,9 @@ $(function(){
 
     // Run filters the first time
     executeFilters();
+});
+
+//cloud filter
+$("#cloud_fil").on('click',function(){
+    $("#cloudFilterContainer").slideToggle("fast");
 });

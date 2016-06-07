@@ -159,6 +159,16 @@ body {
   background-color: #fff;
   border: 2px solid #c8c8c8;
 }
+#dateFilterContainer,
+#cloudFilterContainer {
+  display: none;
+}
+#cloud_fil {
+  cursor: pointer;
+}
+#cloudFilterContainer {
+  padding: 3%;
+}
 .card {
   margin: 2%;
   width: 95%;
