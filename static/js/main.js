@@ -151,9 +151,9 @@ $(function(){
         executeFilters();
     });
 
-    $('#datefilterstart, #datefilterend').on('dp.change', function(){
-        executeFilters();
-    });
+    // $('#datefilterstart, #datefilterend').on('dp.change', function(){
+    //     executeFilters();
+    // });
 
     cloudSlider.on('change',function(){
         executeFilters();

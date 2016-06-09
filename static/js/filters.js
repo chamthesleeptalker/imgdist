@@ -7,20 +7,25 @@ function executeFilters(){
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
       $("#currentCloudFil").html("0 - 100%");
+      cloudRange.data().from = 0;
+      cloudRange.data().to = 100;
     }else{
       $("#currentCloudFil").html(cloudRange.data().from+" - "+cloudRange.data().to+"%");  
     }
-    
 
     var data = {
         satellite: $("#satelliteFilter").val(),
         sensor: $("#sensorFilter").val(),
-        start: $("#datefilterstart").val(),
-        end: $("#datefilterend").val(),
+        // start: $("#datefilterstart").val(),
+        // end: $("#datefilterend").val(),
+        start:dateformatfull(selection[0]),
+        end: dateformatfull(selection[1]),
         cloudRange: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
         bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat]),
         zoomtoscene:""
     };
+
+    console.log(data);
 
     $.get(main_url, data, function(result){
         updateMapMarkers(result);

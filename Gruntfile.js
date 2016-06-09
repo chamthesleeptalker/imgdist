@@ -13,9 +13,9 @@ module.exports = function(grunt) {
     uglify:{
       build:{
         src:[
+          'static/js/dateselect.js',
           'static/js/filters.js',
-          'static/js/main.js',
-          'static/js/dateselect.js'
+          'static/js/main.js'
         ],
         dest:'static/dist/js/diwata.min.js'
       }

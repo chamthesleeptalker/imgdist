@@ -24,6 +24,7 @@ var weekdays = ['S','M','T','W','T','F','S'];
 var wday = d3.time.format('%w');
 var dateformat = d3.time.format('%m-%d');
 var dateformatfull = d3.time.format('%Y-%m-%d');
+var fil_dateformat = d3.time.format("%B %d, %Y ");
 var weekdisp = d3.time.format('%b %e');  
  
 var end_date = moment().endOf();
@@ -33,6 +34,13 @@ var data, weeks;
 var brush, brushg, selection;
 var x = d3.time.scale();
 var y = d3.scale.linear();
+
+//initialize selection
+var selection = [start_date._d,end_date._d];
+
+//set current date in the filter nav
+$("#currentDateFil").html(fil_dateformat(selection[0])+" - "+fil_dateformat(selection[1]));  
+
  
 // SVG
 var svg = d3.select('#chart').append('svg')
@@ -133,14 +141,14 @@ var navNext = svg.append("g")
       start_date = end_date.clone().subtract(vis.numdays,'d').startOf();
       renderVis(1);
 
-      console.log(selection);
+      //console.log(selection);
       var selector_start_date = dateformatfull(selection[0]);
       var nav_start_date = dateformatfull(start_date._d);
       selection[0] = start_date._d;
-      console.log(selection);
+      //console.log(selection);
       //selectionChanged(selection);
       brushmove(selection);
-      console.log(brush.extent());
+      //console.log(brush.extent());
 
     })
     .attr('opacity', .4)
@@ -422,6 +430,6 @@ function getvalue(date) {
 } 
  
 function selectionChanged(selection) {
-  var daterange = selection ? dateformatfull(selection[0])+" - "+dateformatfull(selection[1]) : "";
+  var daterange = selection ? fil_dateformat(selection[0])+" - "+fil_dateformat(selection[1]) : "";
   $("#currentDateFil").html(daterange);    
 }
