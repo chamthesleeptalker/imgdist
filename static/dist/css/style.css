@@ -169,6 +169,36 @@ body {
 #cloudFilterContainer {
   padding: 3%;
 }
+#chart {
+  margin: 0px 10px;
+}
+.brush .extent {
+  stroke: #6c7aa8;
+  fill: #a18a8a;
+  fill-opacity: .5;
+  shape-rendering: crispEdges;
+}
+.brush .resize path {
+  fill: #eee;
+  stroke: #666;
+}
+.bar {
+  fill: #88bbee;
+  stroke: #336699;
+}
+.bar.selected {
+  fill: #369;
+}
+.span_week {
+  stroke: red;
+  /*border:1px solid steelblue;*/
+}
+.brush .resize path {
+  display: none;
+}
+.selection_caption {
+  display: none;
+}
 .card {
   margin: 2%;
   width: 95%;

@@ -14,7 +14,8 @@ module.exports = function(grunt) {
       build:{
         src:[
           'static/js/filters.js',
-          'static/js/main.js'
+          'static/js/main.js',
+          'static/js/dateselect.js'
         ],
         dest:'static/dist/js/diwata.min.js'
       }

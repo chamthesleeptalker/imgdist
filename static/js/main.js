@@ -166,6 +166,13 @@ $(function(){
 //cloud filter
 $("#cloud_fil").on('click',function(){
     $("#cloudFilterContainer").slideToggle("fast");
+    $("#dateFilterContainer").css("display","none");
+});
+
+//date filter
+$("#date_fil").on('click',function(){
+    $("#dateFilterContainer").slideToggle("fast");
+    $("#cloudFilterContainer").css("display","none");
 });
 
 

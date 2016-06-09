@@ -27,8 +27,9 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "mustache.js": "mustache#^2.2.1",
     "nouislider": "^8.5.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "d3": "^3.5.17",
+    "ion.rangeSlider": "ionrangeslider#^2.1.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
