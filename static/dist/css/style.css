@@ -84,6 +84,8 @@ body {
   background-color: grey;
   margin: 0px;
   color: white;
+  z-index: 1000;
+  position: absolute;
 }
 .form-group {
   margin: 0px;

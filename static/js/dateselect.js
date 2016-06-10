@@ -92,14 +92,14 @@ var navPrev = svg.append("g")
       end_date = end_date.clone().subtract(vis.navjump,'d').endOf();
       renderVis(-1);
 
-      console.log(selection);
+      //console.log(selection);
       var selector_end_date = dateformatfull(selection[1]);
       var nav_end_date = dateformatfull(end_date._d);
       selection[1] = end_date._d;
       console.log(selection);
       //selectionChanged(selection);
       brushmove(selection);
-      console.log(brush.extent());
+      //console.log(brush.extent());
 
     })
     .attr('opacity', .4)

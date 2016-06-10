@@ -14,26 +14,27 @@ function executeFilters(){
     }
 
     //gets and updates sensor and sat value
-    console.log(imageTray);
-    console.log(satTray);
+    //console.log(imageTray);
+    //console.log(satTray);
 
     var data = {
         // satellite: $("#satelliteFilter").val(),
         // sensor: $("#sensorFilter").val(),
-        satellite: satTray.toString(),
-        sensor: imageTray.toString(),
+        sat: satTray.toString(),
+        payload: imageTray.toString(),
         // start: $("#datefilterstart").val(),
         // end: $("#datefilterend").val(),
         start:dateformatfull(selection[0]),
         end: dateformatfull(selection[1]),
-        cloudRange: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
+        cloud: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
         bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat]),
-        zoomtoscene:""
+        //zoomtoscene:""
     };
 
-    console.log(data);
+    //console.log(data);
 
     $.get(main_url, data, function(result){
+        //console.log(result)
         updateMapMarkers(result);
         updateCards(result);
         updateOnImageCartCards(imageCartEntries);
@@ -109,22 +110,24 @@ function updateCards(data){
     Mustache.parse(card_template);
 
     data_array = data.features;
+    console.log(data);
 
     var cards = []
     for(var i in data_array){
         var card_params = {
-            image_url: img_url + data_array[i].properties.thumbnail_url,
-            sensor: data_array[i].properties.sensor,
-            satellite: data_array[i].properties.satellite,
-            date: data_array[i].properties.acquisition_date,
+            image_url: data_array[i].properties.links.thumbnail_url,
+            payload: data_array[i].properties.payload,
+            sat_id: data_array[i].properties.sat.sat_id,
+            published: data_array[i].properties.published,
             receiving_station: data_array[i].properties.receiving_station,
-            scene_name: data_array[i].properties.scene_name,
+            scene_id: data_array[i].properties.scene_id,
             cloud_cover: data_array[i].properties.cloud_cover,
             zoomtoscene: JSON.stringify(data_array[i].geometry.coordinates)
         }
         cards.push(card_params)
     }
 
+    console.log(cards);
     rendered_cards = Mustache.to_html(card_template, {cards: cards})
     $('#imageCards').html(rendered_cards);
 };

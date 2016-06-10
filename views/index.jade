@@ -48,19 +48,19 @@ block content
                 div.form-group#imageFilterForm
                     div.checkbox
                         label 
-                            input.imageFilter(type="checkbox",name="imgFilter",value="hpt",autocomplete="off")
+                            input.imageFilter(checked="",type="checkbox",name="imgFilter",value="hpt",autocomplete="off")
                             span   Diwata1 - HPT
                         label 
-                            input.imageFilter(type="checkbox",name="imgFilter",value="mfc",autocomplete="off")
+                            input.imageFilter(checked="",type="checkbox",name="imgFilter",value="mfc",autocomplete="off")
                             span   Diwata1 - MFC
                         label 
-                            input.imageFilter(type="checkbox",name="imgFilter",value="wfc",autocomplete="off")
+                            input.imageFilter(checked="",type="checkbox",name="imgFilter",value="wfc",autocomplete="off")
                             span   Diwata1 - WFC
                         label 
-                            input.imageFilter(type="checkbox",name="imgFilter",value="smi",autocomplete="off")
+                            input.imageFilter(checked="",type="checkbox",name="imgFilter",value="smi",autocomplete="off")
                             span   Diwata1 - SMI
                         label 
-                            input.imageFilter(type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
+                            input.imageFilter(checked="",type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
                             span   Landsat8
                     //- div.checkbox
                     //-     label 
@@ -87,6 +87,9 @@ block content
             //-           <input disabled="" type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Disabled Checkbox
             //-         </label>
             //-       </div>
+        div#imageDiv.col-lg-12.main_section
+               
+            div#imageCards.row
 
     div.modal.fade#imageModal(role="dialog")
         div.modal-dialog

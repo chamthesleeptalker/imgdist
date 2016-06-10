@@ -11,8 +11,8 @@ var cloudSlider = $('#cloud_slide');
 var map = L.map('map');
 
 //global image provider array
-var imageTray=[];
-var satTray=[];
+var imageTray=['hpt','mfc','wfc','smi','landsat8'];
+var satTray=['diwata-1','landsat-8'];
 
 function init(){
 
@@ -129,12 +129,12 @@ function init_map(){
             var popup = new L.popup(popupOptions);
 
             var content ="<h4>SCENE INFO</h4>";
-            content +="<p><b>Acquisition Date:</b> "+feature.properties.acquisition_date+"</p>"; //acquisition date
+            content +="<p><b>Acquisition Date:</b> "+feature.properties.published+"</p>"; //acquisition date
             content +="<p><b>Cloud Cover:</b> "+feature.properties.cloud_cover+"</p>"; //cloud cover
             content +="<p><b>Receiving Station:</b> "+feature.properties.receiving_station+"</p>"; //receiving station
-            content +="<p><b>Satellite:</b> "+feature.properties.satellite+"</p>"; //satellite
-            content +="<p><b>Scene Name:</b> "+feature.properties.scene_name+"</p>"; //scene name
-            content +="<p><b>Sensor:</b> "+feature.properties.sensor+"</p>"; //sensor
+            content +="<p><b>Satellite:</b> "+feature.properties.sat.sat_id+"</p>"; //satellite
+            content +="<p><b>Scene Name:</b> "+feature.properties.scene_id+"</p>"; //scene name
+            content +="<p><b>Sensor:</b> "+feature.properties.payload+"</p>"; //sensor
 
             popup.setContent(content);
 
@@ -173,11 +173,11 @@ $(function(){
         var satArrayCheck = isInArray("landsat8",imageTray);
 
         if(satArrayCheck === true && imageTray.length >= 2){
-            satTray=["diwata-1","landast-8"];
+            satTray=["diwata-1","landsat-8"];
         }else if(satArrayCheck === false && imageTray.length >= 1){
             satTray=["diwata-1"];
         }else{
-            satTray=["landast-8"];
+            satTray=["landsat-8"];
         }
 
         //console.log(imageTray);

@@ -46,9 +46,9 @@ html
             <div class="card-height-indicator">
                 <div class="card-content">
                     <div class="card-body">
-                      <h2>{{scene_name}} | {{date}}</h2>
+                      <h2>{{scene_id}} | {{published}}</h2>
                         <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
-                        <a id="imagetocart_{{scene_name}}" onclick="addImageToCart('{{scene_name}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
+                        <a id="imagetocart_{{scene_id}}" onclick="addImageToCart('{{scene_id}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
                         <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
                         <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
                         <p><b>Receiving Station: </b>{{receiving_station}}</p>
