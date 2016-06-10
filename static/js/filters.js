@@ -152,7 +152,7 @@ function isInArray(value,array){
 }
 
 function downloadAllImages(){
-  console.log(imageCartEntries);
+  //console.log(imageCartEntries);
 
   for(var i in imageCartEntries){
     var win = window.open(imageCartEntries[i].image_url,'_blank');

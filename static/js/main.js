@@ -1,5 +1,5 @@
 var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
-var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
+//var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 
   
 // General initialization scripts. Form elements, etc.

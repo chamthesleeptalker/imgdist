@@ -8,7 +8,7 @@ var vis = {
  
   margin: {top: 20, right: 30, bottom: 20, left: 30},
   
-  numdays: 50, // number of days to represent in current view
+  numdays: 365, // number of days to represent in current view
   navjump: 5, // number of days to shift when using next/prev buttons
   
   barWidth: 5, // width of individual bars (overidden)
@@ -27,7 +27,7 @@ var dateformatfull = d3.time.format('%Y-%m-%d');
 var fil_dateformat = d3.time.format("%B %d, %Y ");
 var weekdisp = d3.time.format('%b %e');  
  
-var end_date = moment().endOf();
+var end_date = moment().endOf('year');
 var start_date = end_date.clone().subtract(vis.numdays,'d').startOf();
 var datevaluemap = d3.map();
 var data, weeks;
@@ -36,7 +36,7 @@ var x = d3.time.scale();
 var y = d3.scale.linear();
 
 //initialize selection
-var selection = [start_date._d,end_date._d];
+selection = [start_date._d,end_date._d];
 
 //set current date in the filter nav
 $("#currentDateFil").html(fil_dateformat(selection[0])+" - "+fil_dateformat(selection[1]));  
@@ -96,7 +96,7 @@ var navPrev = svg.append("g")
       var selector_end_date = dateformatfull(selection[1]);
       var nav_end_date = dateformatfull(end_date._d);
       selection[1] = end_date._d;
-      console.log(selection);
+      //console.log(selection);
       //selectionChanged(selection);
       brushmove(selection);
       //console.log(brush.extent());
