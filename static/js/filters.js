@@ -110,7 +110,7 @@ function updateCards(data){
     Mustache.parse(card_template);
 
     data_array = data.features;
-    console.log(data);
+    //console.log(data);
 
     var cards = []
     for(var i in data_array){
@@ -127,7 +127,7 @@ function updateCards(data){
         cards.push(card_params)
     }
 
-    console.log(cards);
+    //console.log(cards);
     rendered_cards = Mustache.to_html(card_template, {cards: cards})
     $('#imageCards').html(rendered_cards);
 };
@@ -149,6 +149,16 @@ function onClickRemoveFromCart(imageCartEntry){
 
 function isInArray(value,array){
   return array.indexOf(value) !== -1;
+}
+
+function downloadAllImages(){
+  console.log(imageCartEntries);
+
+  for(var i in imageCartEntries){
+    var win = window.open(imageCartEntries[i].image_url,'_blank');
+    win.focus();
+  }
+
 }
 
 
