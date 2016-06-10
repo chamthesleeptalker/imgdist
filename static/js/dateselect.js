@@ -188,6 +188,7 @@ brush = d3.svg.brush()
     .x(x)
     .on("brushstart", brushstart)
     .on("brush", brushmove)
+    .on("brush", executeFilters)
     .on("brushend", brushend)
     
 brushg = svg.append("g")

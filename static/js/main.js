@@ -1,4 +1,4 @@
-var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/scene/multi/";
+var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
 var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 
   
@@ -6,7 +6,13 @@ var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
 
 // global cloudFilter object
 var cloudSlider = $('#cloud_slide');
+
+//global map object
 var map = L.map('map');
+
+//global image provider array
+var imageTray=[];
+var satTray=[];
 
 function init(){
 
@@ -155,6 +161,29 @@ $(function(){
     //     executeFilters();
     // });
 
+    $(".imageFilter").on('change',function(){
+        // imageTray.push($(".imageFilter").val());
+        // console.log(imageTray);
+        imageTray=[];
+        $.each($("input[name='imgFilter']:checked"), function(){
+            imageTray.push($(this).val());
+
+        });
+
+        var satArrayCheck = isInArray("landsat8",imageTray);
+
+        if(satArrayCheck === true && imageTray.length >= 2){
+            satTray=["diwata-1","landast-8"];
+        }else if(satArrayCheck === false && imageTray.length >= 1){
+            satTray=["diwata-1"];
+        }else{
+            satTray=["landast-8"];
+        }
+
+        //console.log(imageTray);
+        executeFilters();
+    });
+
     cloudSlider.on('change',function(){
         executeFilters();
     });
@@ -167,12 +196,20 @@ $(function(){
 $("#cloud_fil").on('click',function(){
     $("#cloudFilterContainer").slideToggle("fast");
     $("#dateFilterContainer").css("display","none");
+    $("#imageFilterContainer").css("display","none");
 });
 
 //date filter
 $("#date_fil").on('click',function(){
     $("#dateFilterContainer").slideToggle("fast");
     $("#cloudFilterContainer").css("display","none");
+    $("#imageFilterContainer").css("display","none");
+});
+
+$("#image_fil").on('click',function(){
+    $("#imageFilterContainer").slideToggle("fast");
+    $("#cloudFilterContainer").css("display","none");
+    $("#dateFilterContainer").css("display","none");
 });
 
 

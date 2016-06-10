@@ -17,14 +17,15 @@ block content
             #cloud_fil.col-lg-3.fildiv
                 span.glyphicon.glyphicon-cloud
                 span#currentCloudFil 0 - 100%
-            #sat_fil.col-lg-5.fildiv
-                //- span.glyphicon.glyphicon-record
-                div.col-lg-12.labelContainer1
-                    span.label.label-default.labels.diwataLabel.labelActive Diwata1 - HPT
-                    span.label.label-default.labels.diwataLabel Diwata1 - MFC
-                    span.label.label-default.labels.diwataLabel Diwata1 - WFC
-                    span.label.label-default.labels.diwataLabel Diwata1 - SMI
-                    span.label.label-default.labels.landsatLabel Landsat8
+            #image_fil.col-lg-5.fildiv
+                span.glyphicon.glyphicon-record
+                span#currentImgFil
+                //- div.col-lg-12.labelContainer1
+                //-     span.label.label-default.labels.diwataLabel.labelActive Diwata1 - HPT
+                //-     span.label.label-default.labels.diwataLabel Diwata1 - MFC
+                //-     span.label.label-default.labels.diwataLabel Diwata1 - WFC
+                //-     span.label.label-default.labels.diwataLabel Diwata1 - SMI
+                //-     span.label.label-default.labels.landsatLabel Landsat8
                 //- div.col-lg-12
                 //-     span.label.label-default.labels WFC
                 //-     span.label.label-default.labels SMI
@@ -42,10 +43,50 @@ block content
             input#cloud_slide(type="text",name="cloud_slide",value="")
         div#dateFilterContainer.row.container.filterContainer
             div#chart
+        div#imageFilterContainer.row.container.filterContainer
+            form.form-horizontal
+                div.form-group#imageFilterForm
+                    div.checkbox
+                        label 
+                            input.imageFilter(type="checkbox",name="imgFilter",value="hpt",autocomplete="off")
+                            span   Diwata1 - HPT
+                        label 
+                            input.imageFilter(type="checkbox",name="imgFilter",value="mfc",autocomplete="off")
+                            span   Diwata1 - MFC
+                        label 
+                            input.imageFilter(type="checkbox",name="imgFilter",value="wfc",autocomplete="off")
+                            span   Diwata1 - WFC
+                        label 
+                            input.imageFilter(type="checkbox",name="imgFilter",value="smi",autocomplete="off")
+                            span   Diwata1 - SMI
+                        label 
+                            input.imageFilter(type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
+                            span   Landsat8
+                    //- div.checkbox
+                    //-     label 
+                    //-         input(type="checkbox",value="{diwata-1,mfc}")
+                    //-         span   Diwata1 - MFC
+                    //- div.checkbox
+                    //-     label 
+                    //-         input(type="checkbox",value="{diwata-1,wfc}")
+                    //-         span   Diwata1 - WFC
+                    //- div.checkbox
+                    //-     label 
+                    //-         input(type="checkbox",value="{diwata-1,smi}")
+                    //-         span   Diwata1 - SMI
+                    //- div.checkbox
+                    //-     label 
+                    //-         input(type="checkbox",value="{landsat8}")
+                    //-         span   Landsat8
 
-
-
-                
+            //- <div class="checkbox">
+            //-         <label>
+            //-           <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Checkbox
+            //-         </label>
+            //-         <label>
+            //-           <input disabled="" type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Disabled Checkbox
+            //-         </label>
+            //-       </div>
 
     div.modal.fade#imageModal(role="dialog")
         div.modal-dialog

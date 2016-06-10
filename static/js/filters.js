@@ -13,9 +13,15 @@ function executeFilters(){
       $("#currentCloudFil").html(cloudRange.data().from+" - "+cloudRange.data().to+"%");  
     }
 
+    //gets and updates sensor and sat value
+    console.log(imageTray);
+    console.log(satTray);
+
     var data = {
-        satellite: $("#satelliteFilter").val(),
-        sensor: $("#sensorFilter").val(),
+        // satellite: $("#satelliteFilter").val(),
+        // sensor: $("#sensorFilter").val(),
+        satellite: satTray.toString(),
+        sensor: imageTray.toString(),
         // start: $("#datefilterstart").val(),
         // end: $("#datefilterend").val(),
         start:dateformatfull(selection[0]),
@@ -136,6 +142,10 @@ function onClickRemoveFromCart(imageCartEntry){
       $("#imagetocart_"+imageCartEntry.scene_name).removeClass('btn-info');
       $("#imagetocart_"+imageCartEntry.scene_name).addClass('btn-warning');
       $("#imagetocart_"+imageCartEntry.scene_name).attr('onclick','removeImageFromCart("'+imageCartEntry.scene_name+'","'+imageCartEntry.image_url+'")');
+}
+
+function isInArray(value,array){
+  return array.indexOf(value) !== -1;
 }
 
 

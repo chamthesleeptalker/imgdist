@@ -160,7 +160,8 @@ body {
   border: 2px solid #c8c8c8;
 }
 #dateFilterContainer,
-#cloudFilterContainer {
+#cloudFilterContainer,
+#satsensorFilterContainer {
   display: none;
 }
 #cloud_fil {
@@ -168,6 +169,12 @@ body {
 }
 #cloudFilterContainer {
   padding: 3%;
+}
+#imageFilterContainer {
+  padding: 1%;
+}
+#imageFilterContainer input {
+  margin: 1%;
 }
 #chart {
   margin: 0px 10px;
@@ -198,6 +205,21 @@ body {
 }
 .selection_caption {
   display: none;
+}
+#imageFilterContainer {
+  padding: 1%;
+}
+.checkbox label {
+  color: white;
+}
+.checkbox input[type="checkbox"]:checked + .checkbox-material .check {
+  border-color: white;
+  background-color: white;
+}
+#imageFilterContainer .form-group .checkbox label,
+#imageFilterContainer .form-group .radio label,
+#imageFilterContainer .form-group label {
+  margin: 1%;
 }
 .card {
   margin: 2%;
