@@ -304,10 +304,21 @@ body {
   display: block;
   overflow-y: auto;
   height: 100%;
+  cursor: pointer;
 }
 #image_section {
   float: right;
   padding: 0px;
+}
+#imageDiv::-webkit-scrollbar {
+  width: 1em;
+}
+#imageDiv::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+#imageDiv::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 .popup {
   color: white;
