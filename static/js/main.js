@@ -12,7 +12,12 @@ var map = L.map('map');
 
 //global image provider array
 var imageTray=['hpt','mfc','wfc','smi','landsat8'];
+
+//global sat provider array
 var satTray=['diwata-1','landsat-8'];
+
+//global date interval array
+var iniDateTray =selection;
 
 function init(){
 
@@ -98,10 +103,10 @@ function init_map(){
 
     //Footprint options
     var footprintOptions = {
-        color:"#1C0021",
+        color:"rgb(28,28,5)",
         weight:3,
         opacity: 1,
-        fillColor:"#1C0021",
+        fillColor:"rgb(28,28,5)",
         fillOpacity:0.3
     };
 
@@ -193,23 +198,26 @@ $(function(){
 });
 
 //cloud filter
-$("#cloud_fil").on('click',function(){
-    $("#cloudFilterContainer").slideToggle("fast");
-    $("#dateFilterContainer").css("display","none");
-    $("#imageFilterContainer").css("display","none");
-});
+// $("#cloud_fil").on('click',function(){
+//     $("#cloudFilterContainer").slideToggle("fast");
+//     $("#dateFilterContainer").css("display","none");
+//     $("#imageFilterContainer").css("display","none");
+// });
 
-//date filter
-$("#date_fil").on('click',function(){
-    $("#dateFilterContainer").slideToggle("fast");
-    $("#cloudFilterContainer").css("display","none");
-    $("#imageFilterContainer").css("display","none");
-});
+// //date filter
+// $("#date_fil").on('click',function(){
+//     $("#dateFilterContainer").slideToggle("fast");
+// });
 
-$("#image_fil").on('click',function(){
-    $("#imageFilterContainer").slideToggle("fast");
-    $("#cloudFilterContainer").css("display","none");
-    $("#dateFilterContainer").css("display","none");
+// $("#image_fil").on('click',function(){
+//     $("#imageFilterContainer").slideToggle("fast");
+//     $("#cloudFilterContainer").css("display","none");
+//     $("#dateFilterContainer").css("display","none");
+// });
+
+//morefilter filter
+$("#moreFilterShow").on('click',function(){
+    $("#cloud_image").slideToggle("fast");
 });
 
 

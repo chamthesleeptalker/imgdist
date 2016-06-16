@@ -1,3 +1,4 @@
+/*---Temp Color Scheme---*/
 .EBGaramond {
   font-family: 'EB Garamond', serif;
 }
@@ -19,7 +20,7 @@ body {
 h1,
 h2 {
   font-family: 'Raleway', sans-serif;
-  color: #022a47;
+  color: #1c1c05;
 }
 h3,
 h4,
@@ -33,57 +34,30 @@ nav {
   letter-spacing: 3px;
 }
 body {
-  background-color: white;
+  background-color: #f4f3f2;
   width: 100%;
 }
 .container {
   width: 100%;
   padding: 0%;
-  background-color: white;
+  background-color: #f4f3f2;
   overflow-y: hidden;
 }
 .container .main_section {
   padding-top: 0%;
   height: 100%;
 }
-.container #imageDiv {
-  padding-bottom: 10%;
-}
-.container #imageCards {
-  display: block;
-  overflow-y: auto;
-  height: 90%;
-}
-.container #map_section {
-  padding: 0px;
-  margin-bottom: 0px;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  overflow: -moz-hidden-unscrollable;
-  overflow-y: hidden;
-  float: left;
-}
-.container #map_section h1 {
-  margin: 0px;
-  color: white;
-}
-.container #gallery_section {
-  float: right;
-  padding: 0px;
-}
 .filter {
   min-height: 60px;
-  background-color: #1C0021;
+  background-color: rgba(12, 7, 228, 0.8);
   margin: 0px;
-  color: white;
+  color: #f4f3f2;
 }
 .filterContainer {
   min-height: 60px;
-  background-color: grey;
+  background-color: rgba(28, 28, 5, 0.75);
   margin: 0px;
-  color: white;
+  color: #f4f3f2;
   z-index: 1000;
   position: absolute;
 }
@@ -95,23 +69,26 @@ body {
 }
 .fildiv {
   padding: 1%;
-  border-right: 2px solid rgba(128, 128, 128, 0.5);
+  border-right: 2px solid rgba(244, 243, 242, 0.5);
   min-height: 60px;
 }
 .fildiv .glyphicon {
   font-size: 30px;
   margin: 5px 12px;
 }
-#cart_fil {
+#cart_fil,
+#moreFilterShow {
   padding: 1%;
 }
-#cart_fil .glyphicon {
+#cart_fil .glyphicon,
+#moreFilterShow .glyphicon {
   top: 13px;
   font-size: 25px;
   margin-left: 6px;
   float: left;
 }
-#cart_fil .badge {
+#cart_fil .badge,
+#moreFilterShow .badge {
   float: right;
   font-size: 11px;
 }
@@ -150,20 +127,51 @@ body {
 }
 #map {
   position: absolute;
-  height: 95%;
+  height: 100%;
   width: 100%;
-  top: 60px;
 }
 .leaflet-areaselect-shade {
-  background-color: rgba(83, 61, 80, 0.35);
+  background-color: rgba(45, 96, 210, 0.3);
+}
+#map_section {
+  padding: 0px;
+  margin-bottom: 0px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: -moz-hidden-unscrollable;
+  overflow-y: hidden;
+  float: left;
+}
+#map_section h1 {
+  margin: 0px;
+  color: white;
 }
 .noUi-handle.noUi-handle-upper {
   background-color: #fff;
   border: 2px solid #c8c8c8;
 }
-#dateFilterContainer,
-#cloudFilterContainer,
-#satsensorFilterContainer {
+#cart_fil_div {
+  height: 10%;
+}
+#mainFilterCon {
+  background-color: rgba(2, 1, 30, 0.9);
+  color: #f4f3f2;
+  padding: 1%;
+  padding-left: 3%;
+  padding-right: 3%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0px;
+  z-index: 1000;
+  position: absolute;
+  bottom: 60px;
+}
+#mainFilterCon div {
+  background-color: transparent;
+}
+#cloud_image {
   display: none;
 }
 #cloud_fil {
@@ -171,13 +179,26 @@ body {
 }
 #cloudFilterContainer {
   padding: 3%;
+  margin-top: 2%;
 }
-#imageFilterContainer {
-  padding: 1%;
+#dateFilterContainer {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: rgba(2, 1, 30, 0.9);
 }
-#imageFilterContainer input {
-  margin: 1%;
+#date_fil {
+  position: absolute;
+  bottom: 0px;
+  max-height: 60px;
+  background-color: #f4f3f2;
 }
+.filterName {
+  margin-bottom: 2%;
+  display: block;
+}
+/*---------filter Container-------------*/
+/*------------CHART-------------*/
 #chart {
   margin: 0px 10px;
 }
@@ -223,6 +244,17 @@ body {
 #imageFilterContainer .form-group label {
   margin: 1%;
 }
+#imageFilterContainer {
+  padding: 3%;
+}
+#imageFilterContainer input {
+  margin: 1%;
+}
+#imageFilterContainer form {
+  padding-left: 3%;
+  padding-right: 3%;
+  margin: 0px;
+}
 .card {
   margin: 2%;
   width: 95%;
@@ -242,13 +274,26 @@ body {
   width: 100%;
   height: auto;
 }
+#imageDiv {
+  padding-bottom: 1%;
+  overflow-x: hidden;
+}
+#imageCards {
+  display: block;
+  overflow-y: auto;
+  height: 90%;
+}
+#image_section {
+  float: right;
+  padding: 0px;
+}
 .popup {
   color: white;
 }
 .popup .leaflet-popup-content-wrapper,
 .popup .leaflet-popup-tip {
-  background-color: rgba(28, 0, 33, 0.8);
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+  background-color: rgba(28, 28, 5, 0.8);
+  box-shadow: 0 3px 14px rgba(28, 28, 5, 0.4);
 }
 .popup .leaflet-popup-content-wrapper p,
 .popup .leaflet-popup-tip p {

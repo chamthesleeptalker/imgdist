@@ -1,15 +1,15 @@
 .filter{
 	min-height:@margin_filter_height;
-	background-color: @nightmare;
+	background-color: fade(@colorOne,80);
 	margin:0px;
-	color:white;
+	color:@colorFive;
 }
 
 .filterContainer{
 	min-height:@margin_filter_height;
-	background-color:grey;
+	background-color:fade(@colorFour,75);
 	margin:0px;
-	color:white;
+	color:@colorFive;
 	z-index: 1000;
 	position:absolute;	
 }
@@ -24,7 +24,7 @@
 
 .fildiv{
 	padding:1%;
-	border-right: 2px solid fade(grey,50);
+	border-right: 2px solid fade(@colorFive,50);
 	min-height:@margin_filter_height;
 
 	.glyphicon{
@@ -33,7 +33,7 @@
 	}
 }
 
-#cart_fil{
+#cart_fil,#moreFilterShow{
 	padding:1%;
 
 	.glyphicon{

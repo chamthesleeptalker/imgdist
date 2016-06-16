@@ -6,16 +6,15 @@ function executeFilters(){
 
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
-      $("#currentCloudFil").html("0 - 100%");
+      $("#currentCloudFil").html("  0 - 100%");
       cloudRange.data().from = 0;
       cloudRange.data().to = 100;
     }else{
-      $("#currentCloudFil").html(cloudRange.data().from+" - "+cloudRange.data().to+"%");  
+      $("#currentCloudFil").html("   "+cloudRange.data().from+" - "+cloudRange.data().to+"%");  
     }
 
-    //gets and updates sensor and sat value
-    //console.log(imageTray);
-    //console.log(satTray);
+    //gets and updates image selection
+    $("#currentImgFil").html("  "+imageTray.toString());
 
     var data = {
         // satellite: $("#satelliteFilter").val(),
