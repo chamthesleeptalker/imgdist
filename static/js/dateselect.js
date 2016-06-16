@@ -4,7 +4,7 @@ var vis = {
   // height: 100,
 
   width: 800,
-  height: 90,
+  height: 50,
  
   margin: {top: 20, right: 30, bottom: 20, left: 30},
   

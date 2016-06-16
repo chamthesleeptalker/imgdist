@@ -47,91 +47,10 @@ body {
   padding-top: 0%;
   height: 100%;
 }
-.filter {
-  min-height: 60px;
-  background-color: rgba(12, 7, 228, 0.8);
-  margin: 0px;
-  color: #f4f3f2;
-}
-.filterContainer {
-  min-height: 60px;
-  background-color: rgba(28, 28, 5, 0.75);
-  margin: 0px;
-  color: #f4f3f2;
-  z-index: 1000;
-  position: absolute;
-}
-.form-group {
-  margin: 0px;
-}
-.control-label {
-  margin: 5px 0 0 0;
-}
-.fildiv {
-  padding: 1%;
-  border-right: 2px solid rgba(244, 243, 242, 0.5);
-  min-height: 60px;
-}
-.fildiv .glyphicon {
-  font-size: 30px;
-  margin: 5px 12px;
-}
-#cart_fil,
-#moreFilterShow {
-  padding: 1%;
-}
-#cart_fil .glyphicon,
-#moreFilterShow .glyphicon {
-  top: 13px;
-  font-size: 25px;
-  margin-left: 6px;
-  float: left;
-}
-#cart_fil .badge,
-#moreFilterShow .badge {
-  float: right;
-  font-size: 11px;
-}
-.label {
-  display: inline-block;
-}
-.labels {
-  margin: 2%;
-  margin-top: 0.5%;
-  margin-bottom: 1%;
-  padding: 2%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  min-width: 50px;
-  border-radius: 5px;
-  font-size: 10px;
-  cursor: pointer;
-}
-#sat_fil {
-  padding: 0%;
-  padding-top: 1%;
-}
-#sensor_fil {
-  padding: 0%;
-  padding-top: 2%;
-  padding-left: 1%;
-}
-.label.label-default.diwataLabel {
-  background-color: #40bf40;
-}
-.label.label-default.landsatLabel {
-  background-color: #5381a8;
-}
-.label.label-default.labelActive {
-  background-color: #cc0000;
-}
 #map {
   position: absolute;
   height: 100%;
   width: 100%;
-}
-.leaflet-areaselect-shade {
-  background-color: rgba(45, 96, 210, 0.3);
 }
 #map_section {
   padding: 0px;
@@ -148,12 +67,37 @@ body {
   margin: 0px;
   color: white;
 }
+.leaflet-areaselect-shade {
+  background-color: rgba(45, 96, 210, 0.3);
+}
 .noUi-handle.noUi-handle-upper {
   background-color: #fff;
   border: 2px solid #c8c8c8;
 }
 #cart_fil_div {
-  height: 10%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  max-height: 60px;
+  background-color: #f4f3f2;
+}
+#cart_fil,
+#moreFilterShow {
+  padding: 1%;
+  cursor: pointer;
+}
+#cart_fil .glyphicon,
+#moreFilterShow .glyphicon {
+  bottom: 13px;
+  font-size: 25px;
+  margin-left: 6px;
+  float: left;
+}
+#cart_fil .badge,
+#moreFilterShow .badge {
+  font-size: 11px;
 }
 #mainFilterCon {
   background-color: rgba(2, 1, 30, 0.9);
@@ -171,21 +115,44 @@ body {
 #mainFilterCon div {
   background-color: transparent;
 }
-#cloud_image {
-  display: none;
+.filterName {
+  margin-bottom: 2%;
+  display: block;
 }
-#cloud_fil {
+.filter {
+  min-height: 60px;
+  background-color: rgba(12, 7, 228, 0.8);
+  margin: 0px;
+  color: #f4f3f2;
+}
+.filterContainer {
+  min-height: 60px;
+  background-color: rgba(28, 28, 5, 0.75);
+  margin: 0px;
+  color: #f4f3f2;
+  z-index: 1000;
+  position: absolute;
+}
+.fildiv {
+  padding: 1%;
+  border-right: 2px solid rgba(244, 243, 242, 0.5);
+  min-height: 60px;
+}
+.fildiv .glyphicon {
+  font-size: 30px;
+  margin: 5px 12px;
+}
+#filterCloseButton {
+  float: right;
   cursor: pointer;
 }
-#cloudFilterContainer {
-  padding: 3%;
-  margin-top: 2%;
-}
+/*---------filter Container-------------*/
 #dateFilterContainer {
   display: block;
   width: 100%;
   overflow-x: hidden;
   background-color: rgba(2, 1, 30, 0.9);
+  margin-top: 1%;
 }
 #date_fil {
   position: absolute;
@@ -193,13 +160,12 @@ body {
   max-height: 60px;
   background-color: #f4f3f2;
 }
-.filterName {
-  margin-bottom: 2%;
-  display: block;
+#date_fil_container {
+  max-height: 100px;
 }
-/*---------filter Container-------------*/
 /*------------CHART-------------*/
 #chart {
+  width: 90%;
   margin: 0px 10px;
 }
 .brush .extent {
@@ -255,33 +221,89 @@ body {
   padding-right: 3%;
   margin: 0px;
 }
-.card {
-  margin: 2%;
-  width: 95%;
+.form-group {
+  margin: 0px;
 }
-.card p {
+.control-label {
+  margin: 5px 0 0 0;
+}
+.label {
+  display: inline-block;
+}
+.labels {
+  margin: 2%;
+  margin-top: 0.5%;
+  margin-bottom: 1%;
+  padding: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  min-width: 50px;
+  border-radius: 5px;
+  font-size: 10px;
+  cursor: pointer;
+}
+#sat_fil {
+  padding: 0%;
+  padding-top: 1%;
+}
+#sensor_fil {
+  padding: 0%;
+  padding-top: 2%;
+  padding-left: 1%;
+}
+.label.label-default.diwataLabel {
+  background-color: #40bf40;
+}
+.label.label-default.landsatLabel {
+  background-color: #5381a8;
+}
+.label.label-default.labelActive {
+  background-color: #cc0000;
+}
+#cloud_image {
+  display: none;
+}
+#cloud_fil {
+  cursor: pointer;
+}
+#cloudFilterContainer {
+  padding: 3%;
+  margin-top: 2%;
+}
+.ticket {
+  margin: 0%;
+  width: 100%;
+  min-height: 150px;
+  background-color: rgba(42, 39, 36, 0.9);
+  color: white;
+  border-bottom: 2px solid #544d47;
+}
+.ticket p {
   margin-top: 2px;
   margin-bottom: 2px;
 }
-.card .card-body {
-  height: 50%;
+.ticket .ticket-body {
+  height: 10%;
 }
-.card .card-image {
-  height: 50%;
+.ticket .ticket-image {
+  width: 30%;
+  padding: 1%;
 }
-.card .card-image img {
+.ticket .ticket-image img {
   display: block;
   width: 100%;
-  height: auto;
+  max-height: 200px;
 }
 #imageDiv {
-  padding-bottom: 1%;
+  padding-bottom: 180px;
+  padding-top: 2%;
   overflow-x: hidden;
+  background-color: #2a2724;
 }
 #imageCards {
   display: block;
   overflow-y: auto;
-  height: 90%;
+  height: 100%;
 }
 #image_section {
   float: right;

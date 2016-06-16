@@ -15,35 +15,44 @@
     }
 }
 
-#cloud_image{
-	display:none;
-}
-#cloud_fil{
-	cursor:pointer;
-}
-#cloudFilterContainer{
-	padding:3%;
-	margin-top: 2%;
-}
-
-#dateFilterContainer{
-	display: block;
-	width: 100%;
-	overflow-x: hidden;
-	background-color: fade(darken(@colorOne,40),90);
-}
-#date_fil{
-	position: absolute;
-	bottom:0px;
-	max-height:60px;
-	background-color: @colorFive;
-}
-
 .filterName{
 	margin-bottom: 2%;
 	display: block;
 }
 
+.filter{
+	min-height:@margin_filter_height;
+	background-color: fade(@colorOne,80);
+	margin:0px;
+	color:@colorFive;
+}
+
+.filterContainer{
+	min-height:@margin_filter_height;
+	background-color:fade(@colorFour,75);
+	margin:0px;
+	color:@colorFive;
+	z-index: 1000;
+	position:absolute;	
+}
+
+.fildiv{
+	padding:1%;
+	border-right: 2px solid fade(@colorFive,50);
+	min-height:@margin_filter_height;
+
+	.glyphicon{
+		font-size:30px;
+		margin: 5px 12px;
+	}
+}
+
+#filterCloseButton{
+	float:right;
+	cursor:pointer;
+}
+
 
 @import "datefilter";
 @import "imagefilter";
+@import "cloudfilter";

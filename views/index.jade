@@ -8,16 +8,12 @@ block content
         #map
     div#image_section.col-lg-7.main_section
         div#imageDiv.col-lg-12.main_section
-            div#cart_fil_div
-                div#cart_fil.col-lg-1( data-toggle="modal", data-target="#imageModal")
-                    span.badge#imageCartCount  0 
-                    span.glyphicon.glyphicon-shopping-cart
-                div#filter_icon.col-lg-1
-                    span.glyphicon.glyphicon-tasks#moreFilterShow
             div#imageCards.row
         div.row#mainFilterCon
             div#cloud_image
-                h3 Filters
+                h3 
+                    span Filters
+                    span.glyphicon.glyphicon-remove#filterCloseButton
                 #cloud_fil.row
                     div.col-lg-12.filterName
                         h4
@@ -49,12 +45,18 @@ block content
                                     label 
                                         input.imageFilter(checked="",type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
                                         span   Landsat8
-            #date_fil_.row
+            #date_fil_container.row
                 div#dateFilterContainer.row
                     div#chart
-        div#date_fil.col-lg-12.fildiv
+        div#date_fil.col-lg-6.fildiv
             span.glyphicon.glyphicon-calendar
             span#currentDateFil --- - ---
+        div#cart_fil_div.col-lg-6.fildiv
+                div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
+                    span.badge#imageCartCount  0 
+                    span.glyphicon.glyphicon-shopping-cart
+                div#filter_icon.col-lg-6
+                    span.glyphicon.glyphicon-tasks#moreFilterShow
 
     div.modal.fade#imageModal(role="dialog")
         div.modal-dialog

@@ -41,24 +41,18 @@ html
   // Templates for Mustache.js
   script(id="card-template" type="x-tmpl-mustache").
     {{#cards}}
-    <div class="col-lg-6">
-      <div class="card">
-            <div class="card-height-indicator">
-                <div class="card-content">
-                    <div class="card-body">
-                      <h2>{{scene_id}} | {{published}}</h2>
-                        <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
-                        <a id="imagetocart_{{scene_id}}" onclick="addImageToCart('{{scene_id}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
-                        <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
-                        <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
-                        <p><b>Receiving Station: </b>{{receiving_station}}</p>
-                    </div>
-                    <div class="card-image">
-                        <img src="{{image_url}}">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-lg-12 ticket">
+      <div class="col-lg-4 ticket-image">
+        <img src="{{image_url}}">
+      </div>
+      <div class="col-lg-8 ticket-body">
+        <h4>{{scene_id}} | {{published}}</h4>
+          <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
+          <a id="imagetocart_{{scene_id}}" onclick="addImageToCart('{{scene_id}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
+          <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
+          <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
+          <p><b>Receiving Station: </b>{{receiving_station}}</p>
+      </div>
     </div>
     {{/cards}}
 

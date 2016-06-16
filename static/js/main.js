@@ -216,7 +216,7 @@ $(function(){
 // });
 
 //morefilter filter
-$("#moreFilterShow").on('click',function(){
+$("#moreFilterShow,#filterCloseButton").on('click',function(){
     $("#cloud_image").slideToggle("fast");
 });
 
