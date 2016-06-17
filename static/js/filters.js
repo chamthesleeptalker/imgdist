@@ -17,12 +17,8 @@ function executeFilters(){
     $("#currentImgFil").html("  "+imageTray.toString());
 
     var data = {
-        // satellite: $("#satelliteFilter").val(),
-        // sensor: $("#sensorFilter").val(),
         sat: satTray.toString(),
         payload: imageTray.toString(),
-        // start: $("#datefilterstart").val(),
-        // end: $("#datefilterend").val(),
         start:dateformatfull(selection[0]),
         end: dateformatfull(selection[1]),
         cloud: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
@@ -30,10 +26,7 @@ function executeFilters(){
         //zoomtoscene:""
     };
 
-    //console.log(data);
-
     $.get(main_url, data, function(result){
-        //console.log(result)
         updateMapMarkers(result);
         updateCards(result);
         updateOnImageCartCards(imageCartEntries);
@@ -66,7 +59,7 @@ function addImageToCart(scene_name, image_url){
   imageCartEntries.push(addImageObj);
 
   var count = imageCartEntries.length;
-  $('#imageCartCount').text(count);
+  $('.imageCartCount').text(count);
 
   $("#imagetocart_"+scene_name).text('Remove from Cart');
   $("#imagetocart_"+scene_name).removeClass('btn-info');
@@ -77,7 +70,6 @@ function addImageToCart(scene_name, image_url){
   Mustache.parse(imagecart_template);
 
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
-  // $('#imageCartList').html(rendered_imageCartEntries);
   $('#image_fil_cart').html(rendered_imageCartEntries);
 
 }
@@ -90,7 +82,7 @@ function removeImageFromCart(scene_name, image_url){
   var newimageCartEntries = _.pullAt(imageCartEntries,removeEntry);
 
   var count = imageCartEntries.length;
-  $('#imageCartCount').text(count);
+  $('.imageCartCount').text(count);
 
   $("#imagetocart_"+scene_name).text('Add to Cart');
   $("#imagetocart_"+scene_name).removeClass('btn-warning');
@@ -110,7 +102,6 @@ function updateCards(data){
     Mustache.parse(card_template);
 
     data_array = data.features;
-    //console.log(data);
 
     var cards = []
     for(var i in data_array){
@@ -127,9 +118,11 @@ function updateCards(data){
         cards.push(card_params)
     }
 
-    //console.log(cards);
     rendered_cards = Mustache.to_html(card_template, {cards: cards})
     $('#imageCards').html(rendered_cards);
+
+    //   var count = cards.length;
+    // $('.imageFilterCount').text(count);
 };
 
 //Loops through the card entries in the image cart and applies the "Remove" state
@@ -152,8 +145,6 @@ function isInArray(value,array){
 }
 
 function downloadAllImages(){
-  //console.log(imageCartEntries);
-
   for(var i in imageCartEntries){
     var win = window.open(imageCartEntries[i].image_url,'_blank');
     win.focus();

@@ -1,6 +1,4 @@
 var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
-//var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
-
   
 // General initialization scripts. Form elements, etc.
 
@@ -23,27 +21,6 @@ function init(){
 
     $.material.init()
 
-    // $('#datefilterstart').datetimepicker({
-    //     format: "YYYY-MM-DD",
-    //     defaultDate: "2016-01-01"
-    // });
-
-    // $('#datefilterend').datetimepicker({
-    //     format: "YYYY-MM-DD",
-    //     defaultDate: new Date()
-    // });
-
-    // noUiSlider.create(cloudSlider, {
-    //     start: [0, 100],
-    //     connect: true,
-    //     margin: 5,
-    //     step: 5,
-    //     range: {
-    //         'min': 0,
-    //         'max': 100
-    //     }
-    // });
-
    cloudSlider.ionRangeSlider({
         type: "double",
         min: 0,
@@ -58,18 +35,15 @@ function init(){
 // Scripts for initializing the map
 function init_map(){
     
-
-    //map = L.map('map');
-    
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {
-        minZoom: 2,
-        maxZoom: 12,
+        minZoom: 5,
+        maxZoom: 8,
         attribution: osmAttrib
     });
 
-    map.setView(new L.LatLng(11.5, 121.8), 6);
+    map.setView(new L.LatLng(11.5, 121.8), 5);
     map.addLayer(osm);
 
     // Screen dimensions
@@ -162,13 +136,7 @@ $(function(){
         executeFilters();
     });
 
-    // $('#datefilterstart, #datefilterend').on('dp.change', function(){
-    //     executeFilters();
-    // });
-
     $(".imageFilter").on('change',function(){
-        // imageTray.push($(".imageFilter").val());
-        // console.log(imageTray);
         imageTray=[];
         $.each($("input[name='imgFilter']:checked"), function(){
             imageTray.push($(this).val());
@@ -185,7 +153,6 @@ $(function(){
             satTray=["landsat-8"];
         }
 
-        //console.log(imageTray);
         executeFilters();
     });
 
@@ -197,24 +164,6 @@ $(function(){
     executeFilters();
 });
 
-//cloud filter
-// $("#cloud_fil").on('click',function(){
-//     $("#cloudFilterContainer").slideToggle("fast");
-//     $("#dateFilterContainer").css("display","none");
-//     $("#imageFilterContainer").css("display","none");
-// });
-
-// //date filter
-// $("#date_fil").on('click',function(){
-//     $("#dateFilterContainer").slideToggle("fast");
-// });
-
-// $("#image_fil").on('click',function(){
-//     $("#imageFilterContainer").slideToggle("fast");
-//     $("#cloudFilterContainer").css("display","none");
-//     $("#dateFilterContainer").css("display","none");
-// });
-
 //morefilter filter
 $("#moreFilterShow,#imageShoppingCart").on('click',function(){
     var cloud_image_state = $("#cloud_image").css("display");
@@ -225,18 +174,9 @@ $("#moreFilterShow,#imageShoppingCart").on('click',function(){
     }
 });
 
-// $("#moreFilterShow").on('click',function(){
-//     var cloud_image_state = $("#cloud_image").css("display");
-//     var filter_state = $("#filtersBtn").hasClass("filter-tab-active");
-
-//     if(filter_state == true){
-//         $("#cloud_image").slideToggle("fast");    
-//     }
-    
-// });
-
 $("#filterCloseButton").on('click', function(){
     $("#cloud_image").slideToggle("fast");
+    $("#date_fil_container").css('display','block');
 });
 
 $('#imageCards').perfectScrollbar({
@@ -248,14 +188,14 @@ $('#image_fil_cart').perfectScrollbar({
 });
 
 $('#imagecartBtn,#cart_fil').on('click',function(){
-    $("#cloud_fil, #image_fil").css('display','none');
+    $("#cloud_fil, #image_fil,#date_fil_container").css('display','none');
     $("#image_fil_cart").css('display','block');
     $("#imagecartBtn").addClass("filter-tab-active");
     $("#filtersBtn").removeClass("filter-tab-active");
 });
 
 $('#filtersBtn,#filter_icon').on('click',function(){
-    $("#cloud_fil, #image_fil").css('display','block');
+    $("#cloud_fil, #image_fil,#date_fil_container").css('display','block');
     $("#image_fil_cart").css('display','none');
     $("#imagecartBtn").removeClass("filter-tab-active");
     $("#filtersBtn").addClass("filter-tab-active");

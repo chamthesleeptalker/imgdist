@@ -88,6 +88,7 @@ body {
 .irs-min,
 .irs-max {
   color: #1c1c05;
+  font-weight: 500;
 }
 #cart_fil_div {
   height: 100%;
@@ -116,6 +117,16 @@ body {
 #moreFilterShow .badge {
   font-size: 11px;
   float: left;
+  background-color: #f4f3f2;
+  color: #46403b;
+}
+.imageCartCount {
+  font-size: 11px;
+  background-color: #f4f3f2;
+}
+.btn-default .badge {
+  color: #46403b;
+  background-color: rgba(244, 243, 242, 0.7);
 }
 #mainFilterCon {
   background-color: rgba(2, 1, 30, 0.95);
@@ -186,8 +197,8 @@ body {
 #image_fil_cart {
   position: relative;
   display: block;
-  max-height: 245px;
-  min-height: 245px;
+  max-height: 300px;
+  min-height: 300px;
   overflow-y: auto;
   height: 100%;
   cursor: pointer;
@@ -287,6 +298,28 @@ body {
 .control-label {
   margin: 5px 0 0 0;
 }
+.checkbox .checkbox-material .check {
+  border: 2px solid #f4f3f2;
+}
+.form-group.is-focused .checkbox label {
+  color: #f4f3f2;
+}
+.form-group.is-focused .checkbox label:hover,
+.form-group.is-focused .checkbox label:focus {
+  color: #18b6d4;
+}
+.checkbox input[type=checkbox]:checked + .checkbox-material .check {
+  color: #205bdf;
+  border-color: #205bdf;
+}
+.checkbox input[type=checkbox]:checked + .checkbox-material .check:before {
+  color: #205bdf;
+  -webkit-box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+  box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+  -webkit-animation: checkbox-on 0.3s forwards;
+  -o-animation: checkbox-on 0.3s forwards;
+  animation: checkbox-on 0.3s forwards;
+}
 .label {
   display: inline-block;
 }
@@ -353,6 +386,21 @@ body {
   display: block;
   width: 100%;
   max-height: 200px;
+}
+#image_fil_cart .list-group-item {
+  background-color: rgba(244, 243, 242, 0.1);
+  color: #f4f3f2;
+  max-height: 100px;
+  border-radius: 0px;
+  border: 1px solid rgba(197, 192, 187, 0.1);
+}
+#image_fil_cart img {
+  width: auto;
+  max-height: 50px;
+}
+#image_fil_cart a {
+  color: #f4f3f2;
+  text-decoration: none;
 }
 #imageDiv {
   padding-bottom: 180px;
