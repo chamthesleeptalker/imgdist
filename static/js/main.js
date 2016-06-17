@@ -220,10 +220,9 @@ $("#moreFilterShow,#filterCloseButton").on('click',function(){
     $("#cloud_image").slideToggle("fast");
 });
 
-//scroll on the image div
-$("#imageDiv").mCustomScrollbar({
-    theme:"light",
-    scrollbarPosition: "inside"
-});
+
+$('#imageCards').perfectScrollbar({
+    maxScrollbarLength: 100
+}); 
 
 
