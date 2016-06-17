@@ -1,7 +1,8 @@
 #mainFilterCon{
-    background-color: fade(darken(@colorOne,40),90);
+    background-color: fade(darken(@colorOne,40),95);
     color:@colorFive;
     padding:1%;
+    padding-top: 0%;
     padding-left:3%;
     padding-right:3%;
     width: 100%;
@@ -38,7 +39,7 @@
 
 .fildiv{
 	padding:1%;
-	border-right: 2px solid fade(@colorFive,50);
+	border-right: 2px solid fade(@colorFive,10);
 	min-height:@margin_filter_height;
 
 	.glyphicon{
@@ -51,6 +52,26 @@
 	float:right;
 	cursor:pointer;
 }
+
+.filter-tab{
+	margin:0px;
+	border-radius: 0px;
+	h4{
+		color:@colorFive;	
+		height: 14px;
+	}
+}
+
+.filter-tab-active{
+	background-color: fade(@colorThree,50);
+}
+
+#cloud_image{
+	li{
+		padding:0px;
+	}
+}
+
 
 
 @import "datefilter";
