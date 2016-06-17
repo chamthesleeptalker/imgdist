@@ -77,7 +77,8 @@ function addImageToCart(scene_name, image_url){
   Mustache.parse(imagecart_template);
 
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
-  $('#imageCartList').html(rendered_imageCartEntries);
+  // $('#imageCartList').html(rendered_imageCartEntries);
+  $('#image_fil_cart').html(rendered_imageCartEntries);
 
 }
 

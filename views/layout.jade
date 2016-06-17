@@ -60,16 +60,16 @@ html
   // Mustache template for the Image Cart
   script(id="imagecart-template" type="x-tmpl-mustache").
     {{#imageCartEntries}}
-    <div class="list-group-item">
-      <div class="row-picture">
-        <img class="circle" style="width:50px;height:auto;" src="{{image_url}}" alt="icon">
-      </div>
-      <div class="row-content">
-        <h4 class="list-group-item-heading">{{scene_id}}</h4>
+      <div class="list-group-item">
+        <div class="row-picture">
+          <img class="circle" style="width:50px;height:auto;" src="{{image_url}}" alt="icon">
+        </div>
+        <div class="row-content">
+          <h4 class="list-group-item-heading">{{scene_id}}</h4>
 
-        <a class="list-group-item-text" target="_blank" href="{{image_url}}" download="">Download</a>
+          <a class="list-group-item-text" target="_blank" href="{{image_url}}" download="">Download</a>
+        </div>
       </div>
-    </div>
     {{/imageCartEntries}}
 
 

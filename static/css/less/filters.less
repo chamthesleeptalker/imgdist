@@ -11,9 +11,11 @@
     z-index: 1000;
     position:absolute;
     bottom:60px;
+    transition: height 1s;
     div{
         background-color: transparent;
     }
+
 }
 
 .filterName{
@@ -49,8 +51,11 @@
 }
 
 #filterCloseButton{
-	float:right;
-	cursor:pointer;
+	float: right;
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 15px;
 }
 
 .filter-tab{
@@ -72,6 +77,30 @@
 	}
 }
 
+#image_fil_cart{
+	position:relative;
+	display:block;
+	max-height: 245px;
+	min-height: 245px;
+    overflow-y: auto;
+    height:100%;
+    cursor: pointer;
+    width:100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
+
+    .ps-scrollbar-y-rail{
+    	background-color: fade(darken(@colorFive,50),30);
+    }
+    .ps-scrollbar-y{
+    	background-color: fade(darken(@colorFive,35), 50);
+    }
+}
+
+#moreFilterShow{
+	float:right;
+}
 
 
 @import "datefilter";

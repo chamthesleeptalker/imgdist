@@ -24,10 +24,7 @@
     "leaflet": "~0.7.7",
     "datatables": "~1.10.10",
     "roboto-fontface": "~0.4.3",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
     "mustache.js": "mustache#^2.2.1",
-    "nouislider": "^8.5.1",
-    "underscore": "^1.8.3",
     "d3": "^3.5.17",
     "ion.rangeSlider": "ionrangeslider#^2.1.4",
     "malihu-custom-scrollbar-plugin": "^3.1.4"

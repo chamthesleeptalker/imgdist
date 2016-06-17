@@ -11,13 +11,13 @@ block content
             div#imageCards
         div.row#mainFilterCon
             div#cloud_image
-                div.row
+                div
                     ul.list-inline
                         li
-                            button.btn.btn-default.filter-tab
+                            button#filtersBtn.btn.btn-default.filter-tab.filter-tab-active
                                 h4 Filters
                         li
-                            button.btn.btn-default.filter-tab
+                            button#imagecartBtn.btn.btn-default.filter-tab
                                 h4 Image Cart
                     span.glyphicon.glyphicon-remove#filterCloseButton
                 #cloud_fil.row
@@ -51,6 +51,8 @@ block content
                                     label 
                                         input.imageFilter(checked="",type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
                                         span   Landsat8
+                div#image_fil_cart
+                    h3 No images added to cart.
             #date_fil_container.row
                 div#dateFilterContainer.row
                     div#chart
@@ -58,19 +60,20 @@ block content
             span.glyphicon.glyphicon-calendar
             span#currentDateFil --- - ---
         div#cart_fil_div.col-lg-6.fildiv
-                div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
-                    span.badge#imageCartCount  0 
-                    span.glyphicon.glyphicon-shopping-cart
                 div#filter_icon.col-lg-6
                     span.glyphicon.glyphicon-tasks#moreFilterShow
+                div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
+                    span.badge#imageCartCount  0 
+                    span.glyphicon.glyphicon-shopping-cart#imageShoppingCart
 
-    div.modal.fade#imageModal(role="dialog")
-        div.modal-dialog
-            div.modal-content
-                div.modal-header
-                    button.close(type='button', data-dismiss="modal", aria-hidden="true") x
-                    h4.modal-title Diwata Image Cart
-                div.modal-body#imageCartList
-                div.modal-footer
-                    button.btn.btn-primary(type='button',onClick="downloadAllImages()") Download All
+
+    //- div.modal.fade#imageModal(role="dialog")
+    //-     div.modal-dialog
+    //-         div.modal-content
+    //-             div.modal-header
+    //-                 button.close(type='button', data-dismiss="modal", aria-hidden="true") x
+    //-                 h4.modal-title Diwata Image Cart
+    //-             div.modal-body#imageCartList
+    //-             div.modal-footer
+    //-                 button.btn.btn-primary(type='button',onClick="downloadAllImages()") Download All
 

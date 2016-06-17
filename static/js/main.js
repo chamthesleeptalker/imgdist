@@ -23,15 +23,15 @@ function init(){
 
     $.material.init()
 
-    $('#datefilterstart').datetimepicker({
-        format: "YYYY-MM-DD",
-        defaultDate: "2016-01-01"
-    });
+    // $('#datefilterstart').datetimepicker({
+    //     format: "YYYY-MM-DD",
+    //     defaultDate: "2016-01-01"
+    // });
 
-    $('#datefilterend').datetimepicker({
-        format: "YYYY-MM-DD",
-        defaultDate: new Date()
-    });
+    // $('#datefilterend').datetimepicker({
+    //     format: "YYYY-MM-DD",
+    //     defaultDate: new Date()
+    // });
 
     // noUiSlider.create(cloudSlider, {
     //     start: [0, 100],
@@ -216,13 +216,50 @@ $(function(){
 // });
 
 //morefilter filter
-$("#moreFilterShow,#filterCloseButton").on('click',function(){
+$("#moreFilterShow,#imageShoppingCart").on('click',function(){
+    var cloud_image_state = $("#cloud_image").css("display");
+    var filter_state = $("#filtersBtn").hasClass("filter-tab-active");
+
+    if(cloud_image_state == "none"){
+        $("#cloud_image").slideToggle("fast");    
+    }
+});
+
+// $("#moreFilterShow").on('click',function(){
+//     var cloud_image_state = $("#cloud_image").css("display");
+//     var filter_state = $("#filtersBtn").hasClass("filter-tab-active");
+
+//     if(filter_state == true){
+//         $("#cloud_image").slideToggle("fast");    
+//     }
+    
+// });
+
+$("#filterCloseButton").on('click', function(){
     $("#cloud_image").slideToggle("fast");
 });
 
-
 $('#imageCards').perfectScrollbar({
     maxScrollbarLength: 100
-}); 
+});
+
+$('#image_fil_cart').perfectScrollbar({
+    maxScrollbarLength: 70
+});
+
+$('#imagecartBtn,#cart_fil').on('click',function(){
+    $("#cloud_fil, #image_fil").css('display','none');
+    $("#image_fil_cart").css('display','block');
+    $("#imagecartBtn").addClass("filter-tab-active");
+    $("#filtersBtn").removeClass("filter-tab-active");
+});
+
+$('#filtersBtn,#filter_icon').on('click',function(){
+    $("#cloud_fil, #image_fil").css('display','block');
+    $("#image_fil_cart").css('display','none');
+    $("#imagecartBtn").removeClass("filter-tab-active");
+    $("#filtersBtn").addClass("filter-tab-active");
+});
+
 
 
