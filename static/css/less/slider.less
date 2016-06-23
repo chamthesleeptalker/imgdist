@@ -1,4 +1,16 @@
-.noUi-handle.noUi-handle-upper{
-	background-color: #fff;
-	border: 2px solid #c8c8c8;
+.irs-grid{
+	border-top: 2px solid fade(@colorFive,50);
+}
+.irs-from, .irs-to, .irs-single{
+	background:@colorTwo;
+	color:@colorFive;
+}
+
+.irs-from::after, .irs-to::after, .irs-single::after {
+    border-top-color: @colorTwo;
+}
+
+.irs-min, .irs-max {
+    color: @colorFour;
+    font-weight: 500;
 }

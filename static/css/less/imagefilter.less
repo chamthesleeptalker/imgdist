@@ -1,0 +1,67 @@
+#imageFilterContainer{
+	padding:1%;
+}
+.checkbox label{
+	color:white;
+}
+
+.checkbox input[type="checkbox"]:checked + .checkbox-material .check{
+	border-color:white;
+	background-color: white;
+}
+
+#imageFilterContainer{
+	.form-group .checkbox label, .form-group .radio label, .form-group label{
+		margin:1%;
+	}
+}
+
+#imageFilterContainer{
+	padding:3%;
+	// background-color: whitesmoke;
+	input{
+		margin:1%;
+	}
+	form{
+		padding-left:3%;
+		padding-right:3%;
+		margin:0px;
+	}
+}
+
+.form-group{
+	margin:0px;
+}
+
+.control-label{
+	margin: 5px 0 0 0;
+}
+
+.checkbox .checkbox-material .check {
+    border: 2px solid @colorFive;
+}
+
+.form-group.is-focused .checkbox label {
+  color: @colorFive;
+}
+.form-group.is-focused .checkbox label:hover,
+.form-group.is-focused .checkbox label:focus {
+  color: desaturate(@colorThree, 20);
+}
+
+.checkbox input[type=checkbox]:checked + .checkbox-material .check {
+  color: saturate(@colorTwo, 10);
+  border-color: saturate(@colorTwo, 10);
+}
+
+.checkbox input[type=checkbox]:checked + .checkbox-material .check:before {
+  color: saturate(@colorTwo, 10);
+  -webkit-box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+          box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
+  -webkit-animation: checkbox-on 0.3s forwards;
+       -o-animation: checkbox-on 0.3s forwards;
+          animation: checkbox-on 0.3s forwards;
+}
+
+
+@import "labels";

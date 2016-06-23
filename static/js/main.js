@@ -1,36 +1,39 @@
-var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/scene/multi/";
-var img_url="http://diwataapi-lkpanganiban.rhcloud.com/static";
-
-  
+//var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
+var main_url = "http://api.images.phl-microsat.xyz/scene/multi/?format=json";
 // General initialization scripts. Form elements, etc.
 
 // global cloudFilter object
-var cloudSlider = $('#cloudFilter')[0];
+var cloudSlider = $('#cloud_slide');
+
+//global map object
 var map = L.map('map');
+
+//global image provider array
+var imageTray = ['hpt','mfc','wfc','smi','landsat8'];
+
+//global sat provider array
+var satTray= ['diwata-1','landsat8'];
+
+//global date interval array
+//var iniDateTray = selection;
+//var iniDateTray = selection;
+
+//global available months array
+var availMonths = [1,1,2,2,3,4,5,6,7,8,9];
+
+
 
 function init(){
 
     $.material.init()
 
-    $('#datefilterstart').datetimepicker({
-        format: "YYYY-MM-DD",
-        defaultDate: "2016-01-01"
-    });
-
-    $('#datefilterend').datetimepicker({
-        format: "YYYY-MM-DD",
-        defaultDate: new Date()
-    });
-
-    noUiSlider.create(cloudSlider, {
-        start: [0, 100],
-        connect: true,
-        margin: 5,
-        step: 5,
-        range: {
-            'min': 0,
-            'max': 100
-        }
+   cloudSlider.ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 100,
+        from:0,
+        to:100,
+        grid: true
     });
 
 }
@@ -38,18 +41,15 @@ function init(){
 // Scripts for initializing the map
 function init_map(){
     
-
-    //map = L.map('map');
-    
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {
-        minZoom: 2,
-        maxZoom: 12,
+        minZoom: 5,
+        maxZoom: 8,
         attribution: osmAttrib
     });
 
-    map.setView(new L.LatLng(11.5, 121.8), 6);
+    map.setView(new L.LatLng(11.5, 121.8), 5);
     map.addLayer(osm);
 
     // Screen dimensions
@@ -83,10 +83,10 @@ function init_map(){
 
     //Footprint options
     var footprintOptions = {
-        color:"#1C0021",
+        color:"rgb(28,28,5)",
         weight:3,
         opacity: 1,
-        fillColor:"#1C0021",
+        fillColor:"rgb(28,28,5)",
         fillOpacity:0.3
     };
 
@@ -114,12 +114,12 @@ function init_map(){
             var popup = new L.popup(popupOptions);
 
             var content ="<h4>SCENE INFO</h4>";
-            content +="<p><b>Acquisition Date:</b> "+feature.properties.acquisition_date+"</p>"; //acquisition date
+            content +="<p><b>Acquisition Date:</b> "+feature.properties.published+"</p>"; //acquisition date
             content +="<p><b>Cloud Cover:</b> "+feature.properties.cloud_cover+"</p>"; //cloud cover
             content +="<p><b>Receiving Station:</b> "+feature.properties.receiving_station+"</p>"; //receiving station
-            content +="<p><b>Satellite:</b> "+feature.properties.satellite+"</p>"; //satellite
-            content +="<p><b>Scene Name:</b> "+feature.properties.scene_name+"</p>"; //scene name
-            content +="<p><b>Sensor:</b> "+feature.properties.sensor+"</p>"; //sensor
+            content +="<p><b>Satellite:</b> "+feature.properties.sat.sat_id+"</p>"; //satellite
+            content +="<p><b>Scene Name:</b> "+feature.properties.scene_id+"</p>"; //scene name
+            content +="<p><b>Sensor:</b> "+feature.properties.payload+"</p>"; //sensor
 
             popup.setContent(content);
 
@@ -142,14 +142,70 @@ $(function(){
         executeFilters();
     });
 
-    $('#datefilterstart, #datefilterend').on('dp.change', function(){
+    $(".imageFilter").on('change',function(){
+        imageTray=[];
+        $.each($("input[name='imgFilter']:checked"), function(){
+            imageTray.push($(this).val());
+
+        });
+
+        var satArrayCheck = isInArray("landsat8",imageTray);
+
+        if(satArrayCheck === true && imageTray.length >= 2){
+            satTray=["diwata-1","landsat8"];
+        }else if(satArrayCheck === false && imageTray.length >= 1){
+            satTray=["diwata-1"];
+        }else{
+            satTray=["landsat8"];
+        }
+
         executeFilters();
     });
 
-    cloudSlider.noUiSlider.on('update',function(){
+    cloudSlider.on('change',function(){
         executeFilters();
     });
 
     // Run filters the first time
     executeFilters();
 });
+
+//morefilter filter
+$("#moreFilterShow,#imageShoppingCart").on('click',function(){
+    var cloud_image_state = $("#cloud_image").css("display");
+    var filter_state = $("#filtersBtn").hasClass("filter-tab-active");
+
+    if(cloud_image_state == "none"){
+        $("#cloud_image").slideToggle("fast");    
+    }
+});
+
+$("#filterCloseButton").on('click', function(){
+    $("#cloud_image").slideToggle("fast");
+    $("#date_fil_container").css('display','block');
+});
+
+$('#imageCards').perfectScrollbar({
+    maxScrollbarLength: 100
+});
+
+$('#image_fil_cart').perfectScrollbar({
+    maxScrollbarLength: 70
+});
+
+$('#imagecartBtn,#cart_fil').on('click',function(){
+    $("#cloud_fil, #image_fil,#date_fil_container").css('display','none');
+    $("#image_fil_cart").css('display','block');
+    $("#imagecartBtn").addClass("filter-tab-active");
+    $("#filtersBtn").removeClass("filter-tab-active");
+});
+
+$('#filtersBtn,#filter_icon').on('click',function(){
+    $("#cloud_fil, #image_fil,#date_fil_container").css('display','block');
+    $("#image_fil_cart").css('display','none');
+    $("#imagecartBtn").removeClass("filter-tab-active");
+    $("#filtersBtn").addClass("filter-tab-active");
+});
+
+
+

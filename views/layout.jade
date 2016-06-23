@@ -12,13 +12,21 @@ html
     link(rel='stylesheet', type='text/css', href='bower-components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
     link(rel='stylesheet', type='text/css', href='bower-components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css')
     link(rel='stylesheet', type='text/css', href='bower-components/bootstrap-material-design/dist/css/ripples.min.css')
+
+    //Perfect Scrollbar
+    link(rel='stylesheet', type='text/css', href='bower-components/perfect-scrollbar/css/perfect-scrollbar.min.css')
+
     
     // Leaflet
     link(rel='stylesheet', type='text/css', href='bower-components/leaflet/dist/leaflet.css')
     link(rel='stylesheet', type='text/css', href='bower-components/leaflet-areaselect/src/leaflet-areaselect.css')
 
-    //NoUiSlider
-    link(rel='stylesheet', type='text/css', href='bower-components/nouislider/distribute/nouislider.min.css')    
+    //IonRangeSlider
+    link(rel='stylesheet', type='text/css', href='bower-components/ion.rangeSlider/css/normalize.css')    
+    link(rel='stylesheet', type='text/css', href='bower-components/ion.rangeSlider/css/ion.rangeSlider.css')    
+    link(rel='stylesheet', type='text/css', href='bower-components/ion.rangeSlider/css/ion.rangeSlider.skinFlat.css')    
+
+
 
     // Global CSS
     link(rel='stylesheet', type='text/css', href='css/style.css')
@@ -34,40 +42,41 @@ html
   // Templates for Mustache.js
   script(id="card-template" type="x-tmpl-mustache").
     {{#cards}}
-    <div class="col-lg-6">
-      <div class="card">
-            <div class="card-height-indicator">
-                <div class="card-content">
-                    <div class="card-body">
-                      <h2>{{scene_name}} | {{date}}</h2>
-                        <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
-                        <a id="imagetocart_{{scene_name}}" onclick="addImageToCart('{{scene_name}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
-                        <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
-                        <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
-                        <p><b>Receiving Station: </b>{{receiving_station}}</p>
-                    </div>
-                    <div class="card-image">
-                        <img src="{{image_url}}">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-lg-12 ticket">
+      <div class="col-lg-4 ticket-image">
+        <img src="{{image_url}}">
+      </div>
+      <div class="col-lg-8 ticket-body">
+        <h4>{{scene_id}} | {{published}}</h4>
+          <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
+          <a id="imagetocart_{{scene_id}}" onclick="addImageToCart('{{scene_id}}', '{{image_url}}', '{{published}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
+          <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
+          <div class="col-lg-6">
+            <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
+            <p><b>Receiving Station: </b>{{receiving_station}}</p>
+          </div>
+          <div class="col-lg-6">
+            <p><b>Satellite: </b>{{sat_id}}</p>
+            <p><b>Payload: </b>{{payload}}</p>
+          </div>
+          
+      </div>
     </div>
     {{/cards}}
 
   // Mustache template for the Image Cart
   script(id="imagecart-template" type="x-tmpl-mustache").
     {{#imageCartEntries}}
-    <div class="list-group-item">
-      <div class="row-picture">
-        <img class="circle" style="width:50px;height:auto;" src="{{image_url}}" alt="icon">
+      <div class="list-group-item col-lg-12">
+        <div class="row-picture col-lg-3">
+          <img class="circle" src="{{image_url}}" alt="icon">
+          <a class="list-group-item-text" target="_blank" href="{{bundlink}}" download="">Download</a>
+        </div>
+        <div class="row-content col-lg-9">
+          <h4 class="list-group-item-heading">{{scene_id}}</h4>
+          <h4 class="list-group-item-text">{{published}}</h4>
+        </div>
       </div>
-      <div class="row-content">
-        <h4 class="list-group-item-heading">{{scene_name}}</h4>
-
-        <a class="list-group-item-text" href="{{image_url}}" download>Download</a>
-      </div>
-    </div>
     {{/imageCartEntries}}
 
 
@@ -75,16 +84,29 @@ html
   script(type='text/javascript', src='bower-components/jquery/dist/jquery.min.js')
   script(type='text/javascript', src='bower-components/bootstrap/dist/js/bootstrap.min.js')
   script(type='text/javascript', src='bower-components/moment/min/moment.min.js')
+
+  //script(type='text/javascript', src='https://d3js.org/d3.v4.0.0-alpha.45.min.js')
+
   script(type='text/javascript', src='bower-components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
+  //script(type='text/javascript', src='js/dateselect.js')
+
   script(type='text/javascript', src='bower-components/bootstrap-material-design/dist/js/material.min.js')
   script(type='text/javascript', src='bower-components/bootstrap-material-design/dist/js/ripples.min.js')
+
+  script(type='text/javascript', src='bower-components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js')
+
   script(type='text/javascript', src='bower-components/leaflet/dist/leaflet.js')
   script(type='text/javascript', src='bower-components/leaflet-areaselect/src/leaflet-areaselect.js')
-  script(type='text/javascript', src='bower-components/nouislider/distribute/nouislider.min.js')
+
+  script(type='text/javascript', src='bower-components/ion.rangeSlider/js/ion.rangeSlider.min.js')
+
   script(type='text/javascript', src='bower-components/mustache.js/mustache.min.js')
 
   // notInBower:JS
   script(type='text/javascript', src='https://cdn.jsdelivr.net/lodash/4.12.0/lodash.min.js')  
+
+  script(type='text/javascript', src='bower-components/d3/d3.min.js')
+
   
   // MainApp
   script(type='text/javascript', src='js/diwata.min.js')

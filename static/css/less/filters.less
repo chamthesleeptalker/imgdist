@@ -1,0 +1,108 @@
+#mainFilterCon{
+    background-color: fade(darken(@colorOne,40),95);
+    color:@colorFive;
+    padding:1%;
+    padding-top: 0%;
+    padding-left:3%;
+    padding-right:3%;
+    width: 100%;
+    overflow: hidden;
+    margin:0px;
+    z-index: 1000;
+    position:absolute;
+    bottom:60px;
+    transition: height 1s;
+    div{
+        background-color: transparent;
+    }
+
+}
+
+.filterName{
+	margin-bottom: 2%;
+	display: block;
+}
+
+.filter{
+	min-height:@margin_filter_height;
+	background-color: fade(@colorOne,80);
+	margin:0px;
+	color:@colorFive;
+}
+
+.filterContainer{
+	min-height:@margin_filter_height;
+	background-color:fade(@colorFour,75);
+	margin:0px;
+	color:@colorFive;
+	z-index: 1000;
+	position:absolute;	
+}
+
+.fildiv{
+	padding:1%;
+	border-right: 2px solid fade(@colorFive,10);
+	min-height:@margin_filter_height;
+
+	.glyphicon{
+		font-size:30px;
+		margin: 5px 12px;
+	}
+}
+
+#filterCloseButton{
+	float: right;
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.filter-tab{
+	margin:0px;
+	border-radius: 0px;
+	h4{
+		color:@colorFive;	
+		height: 14px;
+	}
+}
+
+.filter-tab-active{
+	background-color: fade(@colorThree,50);
+}
+
+#cloud_image{
+	li{
+		padding:0px;
+	}
+}
+
+#image_fil_cart{
+	position:relative;
+	display:block;
+	max-height: 300px;
+	min-height: 300px;
+    overflow-y: auto;
+    height:100%;
+    cursor: pointer;
+    width:100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
+
+    .ps-scrollbar-y-rail{
+    	background-color: fade(darken(@colorFive,50),30);
+    }
+    .ps-scrollbar-y{
+    	background-color: fade(darken(@colorFive,35), 50);
+    }
+}
+
+#moreFilterShow{
+	float:right;
+}
+
+
+@import "datefilter";
+@import "imagefilter";
+@import "cloudfilter";

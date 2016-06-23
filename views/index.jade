@@ -2,74 +2,80 @@ extends layout
 
 block content
 
-    div#map_section.col-lg-4.main_section
+    //- div#filters.row.container
 
+    div#map_section.col-lg-5.main_section
         #map
+    div#image_section.col-lg-7.main_section
+        div#imageDiv.col-lg-12.main_section
+            div#imageCards
+        div.row#mainFilterCon
+            div#cloud_image
+                div
+                    ul.list-inline
+                        li
+                            button#filtersBtn.btn.btn-default.filter-tab.filter-tab-active
+                                h4 Filters
+                                    //- span.badge.imageFilterCount  0 
+                        li
+                            button#imagecartBtn.btn.btn-default.filter-tab
+                                h4 Image Cart 
+                                    span.badge.imageCartCount  0 
+                    span.glyphicon.glyphicon-remove#filterCloseButton
+                #cloud_fil.row
+                    div.col-lg-12.filterName
+                        h4
+                            span.glyphicon.glyphicon-cloud(alt="Define cloud cover range") 
+                            span#currentCloudFil 0 - 100%
+                    div#cloudFilterContainer.row
+                        input#cloud_slide(type="text",name="cloud_slide",value="")
+                #image_fil.row
+                    div.col-lg-12.filterName
+                        h4
+                            span.glyphicon.glyphicon-record(alt="Select image source")
+                            span#currentImgFil 
+                    div#imageFilterContainer.row
+                        form.form-horizontal
+                            div.form-group#imageFilterForm
+                                div.checkbox
+                                    label 
+                                        input.imageFilter(checked="",type="checkbox",name="imgFilter",value="hpt",autocomplete="off")
+                                        span   Diwata1 - HPT
+                                    label 
+                                        input.imageFilter(checked="",type="checkbox",name="imgFilter",value="mfc",autocomplete="off")
+                                        span   Diwata1 - MFC
+                                    label 
+                                        input.imageFilter(checked="",type="checkbox",name="imgFilter",value="wfc",autocomplete="off")
+                                        span   Diwata1 - WFC
+                                    label 
+                                        input.imageFilter(checked="",type="checkbox",name="imgFilter",value="smi",autocomplete="off")
+                                        span   Diwata1 - SMI
+                                    label 
+                                        input.imageFilter(checked="",type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
+                                        span   Landsat8
+                div#image_fil_cart
+                    h3 No images added to cart.
+            #date_fil_container.row
+                div#dateFilterContainer.row
+                    div#chart
+        div#date_fil.col-lg-6.fildiv
+            span.glyphicon.glyphicon-calendar
+            span#currentDateFil --- - ---
+        div#cart_fil_div.col-lg-6.fildiv
+                div#filter_icon.col-lg-6
+                    span.glyphicon.glyphicon-tasks#moreFilterShow
+                div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
+                    span.badge.imageCartCount  0 
+                    span.glyphicon.glyphicon-shopping-cart#imageShoppingCart
 
-    div#gallery_section.col-lg-8.main_section
-            div.navbar.navbar-default
 
-                    .container-fluid
-                        .navbar-header
-                            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-responsive-collapse')
-                                span.icon-bar
-                                span.icon-bar
-                                span.icon-bar
-                            #diwata_head
-                                h1 Diwata
-
-                        .navbar-collapse.collapse.navbar-responsive-collapse
-                            #dwdate.col-lg-2.form-group
-                                .input-group.date
-                                    label.control-label
-                                        | Start Date
-                                        span.glyphicon.glyphicon-calendar
-                                    input#datefilterstart.form-control(type='text')
-
-                            #dwdate.col-lg-2.form-group
-                                .input-group.date
-                                    label.control-label
-                                        | End Date
-                                        span.glyphicon.glyphicon-calendar
-                                    input#datefilterend.form-control(type='text')
-                            .col-lg-2.form-group
-                                label.control-label Satellite:
-                                select#satelliteFilter.form-control
-                                    option(value='diwata-1', selected='') Diwata 1
-                                    option(value='others') Others
-
-                            .col-lg-2.form-group
-                                label.control-label Sensor:
-                                select#sensorFilter.form-control
-                                    option(value='hpt') HPT
-                                    option(value='smi') SMI-LCTF
-                                    option(value='mfc') MFC
-                                    option(value='wfc') WFC
-                                    option(value='other') Others
-
-                            .col-lg-2.form-group
-                                label.control-label Cloud Cover: 
-                                    span#cloudRange 0 - 100% 
-                                div#cloudFilter
-
-                            .col-lg-2( data-toggle="modal", data-target="#imageModal")
-                                label#imageCart Cart 
-                                    span.badge#imageCartCount  0
-                                   
-
-        
-            div#imageDiv.col-lg-12.main_section
-               
-                div#imageCards.row
-
-
-    div.modal.fade#imageModal(role="dialog")
-        div.modal-dialog
-            div.modal-content
-                div.modal-header
-                    button.close(type='button', data-dismiss="modal", aria-hidden="true") x
-                    h4.modal-title Diwata Image Cart
-                div.modal-body#imageCartList
-                div.modal-footer
-                    button.btn.btn-primary(type='button') Download All
+    //- div.modal.fade#imageModal(role="dialog")
+    //-     div.modal-dialog
+    //-         div.modal-content
+    //-             div.modal-header
+    //-                 button.close(type='button', data-dismiss="modal", aria-hidden="true") x
+    //-                 h4.modal-title Diwata Image Cart
+    //-             div.modal-body#imageCartList
+    //-             div.modal-footer
+    //-                 button.btn.btn-primary(type='button',onClick="downloadAllImages()") Download All
 

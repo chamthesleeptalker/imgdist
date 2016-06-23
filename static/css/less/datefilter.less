@@ -1,0 +1,67 @@
+/*---------filter Container-------------*/
+#dateFilterContainer{
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: fade(darken(@colorOne,40),90);
+  margin-top: 1%;
+}
+#date_fil{
+  position: absolute;
+  bottom:0px;
+  max-height:60px;
+  background-color: darken(@colorFive,80);
+  color:@colorFive;
+}
+#date_fil_container{
+  max-height:100px;
+}
+
+/*------------CHART-------------*/
+
+// body {
+//   border:1px solid black;
+// }
+
+#chart {
+  width:90%;
+  margin:0px 10px;
+}
+
+// .top, .bottom {
+//   margin: 10px 40px;
+// }
+
+.brush .extent {
+  stroke: rgb(108, 122, 168);
+  fill: rgb(161, 138, 138);
+  fill-opacity: .5;
+  shape-rendering: crispEdges;
+}
+ 
+.brush .resize path {
+  fill: #eee;
+  stroke: #666;
+}
+ 
+.bar {
+  fill: #88bbee;
+  stroke: #336699;
+}
+ 
+.bar.selected {
+  fill: #369;
+}
+
+.span_week{
+  stroke: red;
+  /*border:1px solid steelblue;*/
+}
+
+.brush .resize path{
+  display:none;
+}
+
+.selection_caption{
+  display: none;
+}
