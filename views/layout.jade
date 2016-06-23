@@ -49,14 +49,14 @@ html
       <div class="col-lg-8 ticket-body">
         <h4>{{scene_id}} | {{published}}</h4>
           <a id="zoomtoscene" onclick="zoomToScene({{zoomtoscene}})" class="btn btn-raised btn-info btn-xs">Zoom to Scene<div class="ripple-container"></div></a>
-          <a id="imagetocart_{{scene_id}}" onclick="addImageToCart('{{scene_id}}', '{{image_url}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
+          <a id="imagetocart_{{scene_id}}" onclick="addImageToCart('{{scene_id}}', '{{image_url}}', '{{published}}')" class="btn btn-raised btn-info btn-xs">Add to Cart<div class="ripple-container"></div></a>
           <a href="javascript:void(0)" class="btn btn-raised btn-info btn-xs">Download<div class="ripple-container"></div></a>
           <div class="col-lg-6">
             <p><b>Cloud Cover: </b>{{cloud_cover}}%</p>
             <p><b>Receiving Station: </b>{{receiving_station}}</p>
           </div>
           <div class="col-lg-6">
-            <p><b>Satellite: </b>{{sat_id}}%</p>
+            <p><b>Satellite: </b>{{sat_id}}</p>
             <p><b>Payload: </b>{{payload}}</p>
           </div>
           
@@ -67,14 +67,14 @@ html
   // Mustache template for the Image Cart
   script(id="imagecart-template" type="x-tmpl-mustache").
     {{#imageCartEntries}}
-      <div class="list-group-item">
-        <div class="row-picture">
+      <div class="list-group-item col-lg-12">
+        <div class="row-picture col-lg-3">
           <img class="circle" src="{{image_url}}" alt="icon">
+          <a class="list-group-item-text" target="_blank" href="{{bundlink}}" download="">Download</a>
         </div>
-        <div class="row-content">
+        <div class="row-content col-lg-9">
           <h4 class="list-group-item-heading">{{scene_id}}</h4>
-
-          <a class="list-group-item-text" target="_blank" href="{{image_url}}" download="">Download</a>
+          <h4 class="list-group-item-text">{{published}}</h4>
         </div>
       </div>
     {{/imageCartEntries}}
@@ -84,6 +84,8 @@ html
   script(type='text/javascript', src='bower-components/jquery/dist/jquery.min.js')
   script(type='text/javascript', src='bower-components/bootstrap/dist/js/bootstrap.min.js')
   script(type='text/javascript', src='bower-components/moment/min/moment.min.js')
+
+  //script(type='text/javascript', src='https://d3js.org/d3.v4.0.0-alpha.45.min.js')
 
   script(type='text/javascript', src='bower-components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
   //script(type='text/javascript', src='js/dateselect.js')
@@ -104,6 +106,7 @@ html
   script(type='text/javascript', src='https://cdn.jsdelivr.net/lodash/4.12.0/lodash.min.js')  
 
   script(type='text/javascript', src='bower-components/d3/d3.min.js')
+
   
   // MainApp
   script(type='text/javascript', src='js/diwata.min.js')

@@ -1,5 +1,5 @@
-var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
-  
+//var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
+var main_url = "http://api.images.phl-microsat.xyz/scene/multi/?format=json";
 // General initialization scripts. Form elements, etc.
 
 // global cloudFilter object
@@ -9,13 +9,19 @@ var cloudSlider = $('#cloud_slide');
 var map = L.map('map');
 
 //global image provider array
-var imageTray=['hpt','mfc','wfc','smi','landsat8'];
+var imageTray = ['hpt','mfc','wfc','smi','landsat8'];
 
 //global sat provider array
-var satTray=['diwata-1','landsat-8'];
+var satTray= ['diwata-1','landsat8'];
 
 //global date interval array
-var iniDateTray =selection;
+//var iniDateTray = selection;
+//var iniDateTray = selection;
+
+//global available months array
+var availMonths = [1,1,2,2,3,4,5,6,7,8,9];
+
+
 
 function init(){
 
@@ -146,11 +152,11 @@ $(function(){
         var satArrayCheck = isInArray("landsat8",imageTray);
 
         if(satArrayCheck === true && imageTray.length >= 2){
-            satTray=["diwata-1","landsat-8"];
+            satTray=["diwata-1","landsat8"];
         }else if(satArrayCheck === false && imageTray.length >= 1){
             satTray=["diwata-1"];
         }else{
-            satTray=["landsat-8"];
+            satTray=["landsat8"];
         }
 
         executeFilters();

@@ -397,6 +397,7 @@ body {
 #image_fil_cart img {
   width: auto;
   max-height: 50px;
+  margin-top: 5px;
 }
 #image_fil_cart a {
   color: #f4f3f2;
@@ -446,5 +447,14 @@ body {
   font-size: 14px;
   margin-top: 2px;
   margin-bottom: 2px;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font: 10px sans-serif;
 }
 /*# sourceMappingURL=style.css.map */
