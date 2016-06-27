@@ -457,4 +457,29 @@ body {
 .axis text {
   font: 10px sans-serif;
 }
+.daterangepicker {
+  width: auto;
+  min-width: 320px;
+  background: transparent;
+}
+.daterangepicker .calendar-table {
+  background: transparent;
+  border: transparent;
+}
+.daterangepicker .table-condensed {
+  background: #7d736a;
+  color: white;
+  padding: 2%;
+}
+.daterangepicker_input {
+  display: none;
+}
+.calendar.right {
+  visibility: hidden;
+  position: absolute;
+  float: left;
+}
+.calendar.right .calendar-table {
+  position: absolute;
+}
 /*# sourceMappingURL=style.css.map */

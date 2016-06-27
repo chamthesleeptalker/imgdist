@@ -36,6 +36,18 @@ function init(){
         grid: true
     });
 
+
+   $('#date_fil').daterangepicker({
+    "showDropdowns": true,
+    "autoApply": true,
+    "linkedCalendars": false,
+    "startDate": "06/21/2016",
+    "endDate": "06/27/2016",
+    "drops": "up"
+    }, function(start, end, label) {
+      $('#currentDateFil').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') );
+    });
+
 }
 
 // Scripts for initializing the map
