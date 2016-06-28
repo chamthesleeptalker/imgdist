@@ -69,7 +69,14 @@ body {
   color: white;
 }
 .leaflet-areaselect-shade {
-  background-color: rgba(45, 96, 210, 0.3);
+  background-color: rgba(70, 64, 59, 0.3);
+}
+.leaflet-areaselect-handle {
+  border-radius: 50px;
+  background: #2956bd;
+  height: 15px;
+  width: 15px;
+  border: transparent;
 }
 .irs-grid {
   border-top: 2px solid rgba(244, 243, 242, 0.5);

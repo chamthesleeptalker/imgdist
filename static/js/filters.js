@@ -20,8 +20,6 @@ function executeFilters(){
     var data = {
         sat: satTray.toString(),
         payload: imageTray.toString(),
-        // start:dateformatfull(selection[0]),
-        // end: dateformatfull(selection[1]),
         start:"2015-8-1",
         end: "2015-12-10",
         cloud: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
@@ -29,17 +27,15 @@ function executeFilters(){
         limit:"100"
     };
 
-    //console.log(start_date);
     //updates date range
     if(start_date != undefined){
       daterange=[start_date,end_date];
       data.start = daterange[0];
       data.end = daterange[1];
-      //console.log("cham");
     }
 
     $.get(main_url, data, function(result){
-        //console.log(result);
+        console.log(result);
         //updates the footprints in the map view      
         updateMapMarkers(result);
 
@@ -52,9 +48,6 @@ function executeFilters(){
         //update calendar filter based on query results
         //updateCalendarFilter(result);
 
-
-        //availMonths=dateHistogramData(result);
-        //countAvailableDates(availMonths);
     });
 }
 
@@ -184,13 +177,9 @@ function dateHistogramData(data){
     var entry = data_array[i].properties.published_time;
     var split_T_= entry.split("T")[0].split("-");
     availableDates.push(parseInt(split_T_[1]));
-    //availableDates.push(entry.split("T")[0]);
   }
 
-  //console.log(data);
-  //var data = availableDates;
-
-    //create 12 months
+  //create 12 months
   for(var i = 1;i<13;i++){
     month_count.push({"month":i,"count":0});
   }
@@ -202,14 +191,11 @@ function dateHistogramData(data){
     }
   }
 
-  //console.log(month_count);
-
   return month_count;
 
 }
 
 function countAvailableDates(availableDates){
-  //console.log(availableDates);
   createHistogram(availableDates);
 }
 
@@ -217,13 +203,8 @@ function updateCalendarFilter(result){
   data_array = result.features;
   start_date = data_array[0].properties.published_time.split("T")[0]
   end_date = data_array[data_array.length - 1].properties.published_time.split("T")[0]
-
-  
-  // var split_T_= entry.split("T")[0].split("-");
-  // availableDates.push(parseInt(split_T_[1]));
   
   $('#currentDateFil').html(start_date + ' - ' + end_date );
-
 }
 
 

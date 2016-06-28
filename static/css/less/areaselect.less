@@ -1,5 +1,14 @@
-@areaselect-shadow:fade(@colorTwo,30);
+@areaselect-shadow:fade(darken(@colorFive,70),30);
 
 .leaflet-areaselect-shade{
     background-color: @areaselect-shadow;
+}
+
+.leaflet-areaselect-handle{
+	border-radius: 50px;
+	background: darken(@colorTwo,5);
+	height: 15px;
+	width: 15px;
+	border:transparent;
+	//border: 1px solid darken(@colorFive,15);
 }
