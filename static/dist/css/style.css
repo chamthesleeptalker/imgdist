@@ -69,11 +69,11 @@ body {
   color: white;
 }
 .leaflet-areaselect-shade {
-  background-color: rgba(70, 64, 59, 0.3);
+  background-color: rgba(70, 64, 59, 0.5);
 }
 .leaflet-areaselect-handle {
   border-radius: 50px;
-  background: #2956bd;
+  background: #1b3a7e;
   height: 15px;
   width: 15px;
   border: transparent;
