@@ -1,0 +1,22 @@
+.leaflet-control-zoom{
+	a{
+		background-color:darken(@colorTwo,30);
+		color:white;
+
+		&:hover{
+			background-color: fade(darken(@colorTwo,30),80);
+			color:darken(@colorFive,20);
+		}
+	}
+}
+
+.leaflet-bar a:first-child {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.leaflet-bar a:last-child {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: none;
+}
