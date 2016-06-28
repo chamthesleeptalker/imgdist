@@ -135,6 +135,7 @@ body {
   padding-top: 0%;
   padding-left: 3%;
   padding-right: 3%;
+  padding-bottom: 2%;
   width: 100%;
   overflow: hidden;
   margin: 0px;
@@ -405,7 +406,7 @@ body {
   text-decoration: none;
 }
 #imageDiv {
-  padding-bottom: 180px;
+  padding-bottom: 80px;
   padding-top: 2%;
   overflow-x: hidden;
   overflow-y: hidden;

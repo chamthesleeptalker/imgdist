@@ -194,7 +194,8 @@ $("#moreFilterShow,#imageShoppingCart").on('click',function(){
 
 $("#filterCloseButton").on('click', function(){
     $("#cloud_image").slideToggle("fast");
-    $("#date_fil_container").css('display','block');
+    //$("#date_fil_container").css('display','block');
+    //$("#date_fil_container").css('display','block');
 });
 
 $('#imageCards').perfectScrollbar({

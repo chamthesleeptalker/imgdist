@@ -53,11 +53,14 @@ block content
                                     label 
                                         input.imageFilter(checked="",type="checkbox",name="imgFilter",value="landsat8",autocomplete="off")
                                         span   Landsat8
+                #date_fil_container.row
+                    div#dateFilterContainer.row
+                        h4
+                            span.glyphicon.glyphicon-record(alt="Select image source")
+                            span#currentImgFil 
+                        div#chart
                 div#image_fil_cart
                     h3 No images added to cart.
-            #date_fil_container.row
-                div#dateFilterContainer.row
-                    div#chart
         div#date_fil.fildiv
             span.glyphicon.glyphicon-calendar
             span#currentDateFil --- - ---
