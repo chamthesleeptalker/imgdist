@@ -3,6 +3,7 @@ function executeFilters(){
     var sw = bounds._southWest;
     var ne = bounds._northEast;
     var cloudRange = cloudSlider;
+    var daterange = [];
 
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
@@ -19,22 +20,41 @@ function executeFilters(){
     var data = {
         sat: satTray.toString(),
         payload: imageTray.toString(),
-
         // start:dateformatfull(selection[0]),
         // end: dateformatfull(selection[1]),
         start:"2015-8-1",
-        end: "2015-10-10",
+        end: "2015-12-10",
         cloud: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
         bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat]),
-        limit:"10"
+        limit:"100"
     };
 
+    //console.log(start_date);
+    //updates date range
+    if(start_date != undefined){
+      daterange=[start_date,end_date];
+      data.start = daterange[0];
+      data.end = daterange[1];
+      //console.log("cham");
+    }
+
     $.get(main_url, data, function(result){
+        //console.log(result);
+        //updates the footprints in the map view      
         updateMapMarkers(result);
+
+        //updates ticket results
         updateCards(result);
+
+        //update added tickets in the image cart
         updateOnImageCartCards(imageCartEntries);
-        availMonths=dateHistogramData(result);
-        countAvailableDates(availMonths);
+
+        //update calendar filter based on query results
+        //updateCalendarFilter(result);
+
+
+        //availMonths=dateHistogramData(result);
+        //countAvailableDates(availMonths);
     });
 }
 
@@ -126,9 +146,6 @@ function updateCards(data){
 
     rendered_cards = Mustache.to_html(card_template, {cards: cards})
     $('#imageCards').html(rendered_cards);
-
-    //   var count = cards.length;
-    // $('.imageFilterCount').text(count);
 };
 
 //Loops through the card entries in the image cart and applies the "Remove" state
@@ -170,7 +187,7 @@ function dateHistogramData(data){
     //availableDates.push(entry.split("T")[0]);
   }
 
-  console.log(data);
+  //console.log(data);
   //var data = availableDates;
 
     //create 12 months
@@ -185,6 +202,8 @@ function dateHistogramData(data){
     }
   }
 
+  //console.log(month_count);
+
   return month_count;
 
 }
@@ -192,6 +211,19 @@ function dateHistogramData(data){
 function countAvailableDates(availableDates){
   //console.log(availableDates);
   createHistogram(availableDates);
+}
+
+function updateCalendarFilter(result){
+  data_array = result.features;
+  start_date = data_array[0].properties.published_time.split("T")[0]
+  end_date = data_array[data_array.length - 1].properties.published_time.split("T")[0]
+
+  
+  // var split_T_= entry.split("T")[0].split("-");
+  // availableDates.push(parseInt(split_T_[1]));
+  
+  $('#currentDateFil').html(start_date + ' - ' + end_date );
+
 }
 
 

@@ -1,4 +1,5 @@
 function createHistogram(results){
+    //console.log(results);
     var image_section_width=$("#image_section").width()-60;
 
     var formatCount = d3.format("");

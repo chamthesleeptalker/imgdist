@@ -240,6 +240,12 @@ body {
 #date_fil_container {
   max-height: 300px;
 }
+#currentDateFil {
+  padding-bottom: 10px;
+  display: inline-block;
+  position: absolute;
+  bottom: 10px;
+}
 /*------------CHART-------------*/
 #chart {
   width: 90%;
