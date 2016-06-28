@@ -148,7 +148,7 @@ body {
   background-color: transparent;
 }
 .filterName {
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   display: block;
 }
 .filter {
@@ -223,7 +223,11 @@ body {
   width: 100%;
   overflow-x: hidden;
   background-color: rgba(2, 1, 30, 0.9);
+  margin: 0px;
   margin-top: 1%;
+}
+#dateFilterContainer h4 {
+  margin-left: 2%;
 }
 #date_fil {
   position: absolute;
@@ -234,7 +238,7 @@ body {
   color: #f4f3f2;
 }
 #date_fil_container {
-  max-height: 100px;
+  max-height: 300px;
 }
 /*------------CHART-------------*/
 #chart {
@@ -269,7 +273,9 @@ body {
   display: none;
 }
 #imageFilterContainer {
-  padding: 1%;
+  padding: 0%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 .checkbox label {
   color: white;
@@ -282,9 +288,6 @@ body {
 #imageFilterContainer .form-group .radio label,
 #imageFilterContainer .form-group label {
   margin: 1%;
-}
-#imageFilterContainer {
-  padding: 3%;
 }
 #imageFilterContainer input {
   margin: 1%;
@@ -388,6 +391,9 @@ body {
   display: block;
   width: 100%;
   max-height: 200px;
+}
+#image_fil_cart {
+  min-height: 370px;
 }
 #image_fil_cart .list-group-item {
   background-color: rgba(244, 243, 242, 0.1);
