@@ -14,14 +14,8 @@ var imageTray = ['hpt','mfc','wfc','smi','landsat8'];
 //global sat provider array
 var satTray= ['diwata-1','landsat8'];
 
-//global date interval array
-//var iniDateTray = selection;
-//var iniDateTray = selection;
-
-//global available months array
-var availMonths = [1,1,2,2,3,4,5,6,7,8,9];
-
-
+//global calendar variable
+var calendar_fil,start_date,end_date;
 
 function init(){
 
@@ -35,7 +29,6 @@ function init(){
         to:100,
         grid: true
     });
-
 }
 
 // Scripts for initializing the map
@@ -132,7 +125,6 @@ function init_map(){
 
 
 $(function(){
-
     // Initialize everything
     init();
     init_map();
@@ -166,6 +158,25 @@ $(function(){
         executeFilters();
     });
 
+    calendar_fil = $('#date_fil').daterangepicker({
+                        "showDropdowns": true,
+                        "autoApply": true,
+                        "linkedCalendars": false,
+                        "startDate": "01/1/2015",
+                        "endDate": "12/31/2015",
+                        "drops": "up"
+                        }, function(start, end, label) {
+                            $('#currentDateFil').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') );
+
+                            start_date = start.format('YYYY-MM-DD');
+                            end_date = end.format('YYYY-MM-DD');
+
+                            //console.log(start_date);
+                            //return start_date,end_date;
+
+                            executeFilters();
+                    });
+
     // Run filters the first time
     executeFilters();
 });
@@ -182,7 +193,6 @@ $("#moreFilterShow,#imageShoppingCart").on('click',function(){
 
 $("#filterCloseButton").on('click', function(){
     $("#cloud_image").slideToggle("fast");
-    $("#date_fil_container").css('display','block');
 });
 
 $('#imageCards').perfectScrollbar({
