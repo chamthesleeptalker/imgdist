@@ -69,7 +69,31 @@ body {
   color: white;
 }
 .leaflet-areaselect-shade {
-  background-color: rgba(45, 96, 210, 0.3);
+  background-color: rgba(70, 64, 59, 0.5);
+}
+.leaflet-areaselect-handle {
+  border-radius: 50px;
+  background: #1b3a7e;
+  height: 15px;
+  width: 15px;
+  border: transparent;
+}
+.leaflet-control-zoom a {
+  background-color: #122654;
+  color: white;
+}
+.leaflet-control-zoom a:hover {
+  background-color: rgba(18, 38, 84, 0.8);
+  color: #c5c0bb;
+}
+.leaflet-bar a:first-child {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.leaflet-bar a:last-child {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom: none;
 }
 .irs-grid {
   border-top: 2px solid rgba(244, 243, 242, 0.5);

@@ -29,5 +29,7 @@
     "ion.rangeSlider": "ionrangeslider#^2.1.4",
     "malihu-custom-scrollbar-plugin": "^3.1.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "please-wait": "^0.0.5"
+  }
 }

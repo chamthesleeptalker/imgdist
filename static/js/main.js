@@ -76,10 +76,10 @@ function init_map(){
 
     //Footprint options
     var footprintOptions = {
-        color:"rgb(28,28,5)",
+        color:"#2956bd",
         weight:3,
         opacity: 1,
-        fillColor:"rgb(28,28,5)",
+        fillColor:"rgba(45, 96, 210,0.5)",
         fillOpacity:0.3
     };
 
@@ -170,9 +170,6 @@ $(function(){
 
                             start_date = start.format('YYYY-MM-DD');
                             end_date = end.format('YYYY-MM-DD');
-
-                            //console.log(start_date);
-                            //return start_date,end_date;
 
                             executeFilters();
                     });
