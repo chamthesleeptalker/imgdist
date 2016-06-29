@@ -1,45 +1,46 @@
 function createHistogram(results){
 
+    //get mainFilterCon screen width
     var image_section_width=$("#image_section").width()-60;
 
-    var formatCount = d3.format("");
+    //format date info
     var formatDate_m = d3.time.format("%m").parse;
     var formatDate = d3.time.format("%m/%y");
 
+    //set margins for the graph
     var margin = {top: 15, right: 5, bottom: 25, left: 20},
         width = image_section_width - margin.left - margin.right,
         height = 100 - margin.top - margin.bottom;
 
+    //start and end date based scale
     var x = d3.time.scale()
-        .range([0,width]);
+        .domain([new Date(start_date),d3.time.day.offset(new Date(end_date)),1])
+        .rangeRound([0,width-margin.left - margin.right]);
 
-    var y = d3.scale.linear()
-        .range([height,0]);
-
-    var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left").ticks(6);
-
-    // Create the SVG drawing area
-        var svg = d3.select("#chart")
-          .append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-          .append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    var x = d3.scale.linear()
-        .domain([1,12])
-        .rangeRound([0, width]);
-
+    //scale for count or frequency for each temporal bins
     var y = d3.scale.linear()
         .domain([0, d3.max(results, function(d){ return d.count})])
         .range([height, 0]);
 
+    //xAxis formatting
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom");
 
+    //yAxis formatting
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left").ticks(6);
+
+    //Create the SVG drawing area
+    var svg = d3.select("#chart")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    //create the rect for the scaled frequency/count
     var bar = svg.selectAll(".bar")
         .data(results)
       .enter().append("g")
@@ -65,4 +66,8 @@ function createHistogram(results){
         .attr("transform", "translate(0," + width + ")")
         .attr("stroke","white")
         .call(yAxis);
+}
+
+function updateHistogram(){
+
 }
