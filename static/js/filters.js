@@ -35,7 +35,6 @@ function executeFilters(){
     }
 
     $.get(main_url, data, function(result){
-        console.log(result);
         //updates the footprints in the map view      
         updateMapMarkers(result);
 
@@ -44,10 +43,6 @@ function executeFilters(){
 
         //update added tickets in the image cart
         updateOnImageCartCards(imageCartEntries);
-
-        //update calendar filter based on query results
-        //updateCalendarFilter(result);
-
     });
 }
 
@@ -127,7 +122,7 @@ function updateCards(data){
             image_url: data_array[i].properties.links.thumbnail_url,
             payload: data_array[i].properties.payload,
             sat_id: data_array[i].properties.sat.sat_id,
-            published: data_array[i].properties.published_time,
+            published: data_array[i].properties.published_time.split("T")[0],
             receiving_station: data_array[i].properties.receiving_station,
             scene_id: data_array[i].properties.scene_id,
             cloud_cover: data_array[i].properties.cloud_cover,

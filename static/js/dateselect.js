@@ -1,5 +1,5 @@
 function createHistogram(results){
-    //console.log(results);
+
     var image_section_width=$("#image_section").width()-60;
 
     var formatCount = d3.format("");
@@ -65,5 +65,4 @@ function createHistogram(results){
         .attr("transform", "translate(0," + width + ")")
         .attr("stroke","white")
         .call(yAxis);
-
 }
