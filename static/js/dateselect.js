@@ -1,5 +1,16 @@
-function createHistogram(results){
+function createHistogram(result){
+    //get date array
+    var data = getAllDates(result);
+    
+    //get the histogram start date
+    var start_date = data[0].date;
 
+    //get the histogram end date
+    var end_date = data[data.length - 1].date;
+
+    //compute for appropriate tick interval
+    var tick_interval = Math.floor(data.length/6);
+    
     //get mainFilterCon screen width
     var image_section_width=$("#image_section").width()-60;
 
@@ -14,18 +25,23 @@ function createHistogram(results){
 
     //start and end date based scale
     var x = d3.time.scale()
-        .domain([new Date(start_date),d3.time.day.offset(new Date(end_date)),1])
+        .domain([d3.time.day.offset(new Date(start_date),-10),d3.time.day.offset(new Date(end_date),10)])
         .rangeRound([0,width-margin.left - margin.right]);
 
     //scale for count or frequency for each temporal bins
     var y = d3.scale.linear()
-        .domain([0, d3.max(results, function(d){ return d.count})])
+        .domain([0, d3.max(data, function(d){ return d.f })])
         .range([height, 0]);
 
     //xAxis formatting
     var xAxis = d3.svg.axis()
         .scale(x)
-        .orient("bottom");
+        .orient("bottom")
+        .ticks(d3.time.days, tick_interval)
+        //.ticks(12)
+        .tickFormat(d3.time.format("%m/%d"))
+        .tickSize(3)
+        .tickPadding(12);
 
     //yAxis formatting
     var yAxis = d3.svg.axis()
@@ -42,18 +58,18 @@ function createHistogram(results){
 
     //create the rect for the scaled frequency/count
     var bar = svg.selectAll(".bar")
-        .data(results)
+        .data(data)
       .enter().append("g")
         .attr("class", "bar")
-        .attr("transform", function(d) { 
-            var xTranslate = x(d.month) - 0.5*((width*0.5)/results.length);
-            return "translate(" + xTranslate + "," + y(d.count) + ")"; 
+        .attr("transform", function(d) {
+            var xTranslate = x(new Date(d.date)) - 0.5*((width*0.5)/data.length);
+            return "translate(" + xTranslate + "," + y(d.f) + ")"; 
         });
 
     bar.append("rect")
           .attr("x", function(d,i) { return i*0; })
-          .attr("width", (width*0.5)/results.length)
-          .attr("height", function(d) { return height - y(d.count); });
+          .attr("width", (width*0.5)/data.length)
+          .attr("height", function(d) { return height - y(d.f); });
 
     svg.append("g")
         .attr("class", "axis axis--x")
@@ -68,6 +84,28 @@ function createHistogram(results){
         .call(yAxis);
 }
 
-function updateHistogram(){
+function updateData(result) {
 
+    // Get the data again
+    data = getAllDates(result);
+    //get the histogram start date
+    start_date = data[0].date;
+
+    //get the histogram end date
+    end_date = data[data.length - 1].date;
+
+        // Scale the range of the data again 
+        x.domain([d3.time.day.offset(new Date(start_date),-10),d3.time.day.offset(new Date(end_date),10)]);
+        y.domain([0, d3.max(data, function(d) { return d.f; })]);
+}
+
+function getAllDates(result){
+    var data_array = result.histogram;
+    var c = Object.keys(data_array)
+    var date = c.map(function(d){ return new Date(d) });
+    var date_lodash = _.sortBy(date, function(value) {return new Date(value);});
+    var date_keys = date_lodash.map(function(d){ return (moment(d).format('YYYY-M-D')).toString()});
+    var date_keys_values = date_keys.map(function(d){ return {'date':moment(d).format('YYYY-MM-DD'),'f':data_array[d]}});
+    
+    return date_keys_values;
 }

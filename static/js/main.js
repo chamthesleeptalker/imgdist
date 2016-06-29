@@ -1,5 +1,5 @@
 //var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
-var main_url = "http://api.images.phl-microsat.xyz/scene/multi/?format=json";
+var main_url = "http://api.images.phl-microsat.xyz/scene/multi/?format=json&date_hist=day";
 // General initialization scripts. Form elements, etc.
 
 // global cloudFilter object

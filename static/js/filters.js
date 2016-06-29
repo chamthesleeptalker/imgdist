@@ -45,6 +45,7 @@ function executeFilters(){
         updateOnImageCartCards(imageCartEntries);
 
         //create or update Image Availability Histogram
+        createHistogram(result);
         
 
     });
