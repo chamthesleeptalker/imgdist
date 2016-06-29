@@ -43,6 +43,10 @@ function executeFilters(){
 
         //update added tickets in the image cart
         updateOnImageCartCards(imageCartEntries);
+
+        //create or update Image Availability Histogram
+        
+
     });
 }
 
