@@ -128,6 +128,7 @@ $(function(){
     // Initialize everything
     init();
     init_map();
+    //createHistogram();
 
     // Setup event handlers for the filters 
     $("#satelliteFilter, #sensorFilter").on('change', function(){

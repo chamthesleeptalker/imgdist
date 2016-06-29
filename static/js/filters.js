@@ -45,7 +45,7 @@ function executeFilters(){
         updateOnImageCartCards(imageCartEntries);
 
         //create or update Image Availability Histogram
-        createHistogram(result);
+        updateData(result); 
         
 
     });
@@ -168,36 +168,36 @@ function downloadAllImages(){
 
 }
 
-function dateHistogramData(data){
-  var data_array = data.features;
-  var availableDates = [];
-  var month_count=[]
+// function dateHistogramData(data){
+//   var data_array = data.features;
+//   var availableDates = [];
+//   var month_count=[]
 
-  for(var i in data_array){
-    var entry = data_array[i].properties.published_time;
-    var split_T_= entry.split("T")[0].split("-");
-    availableDates.push(parseInt(split_T_[1]));
-  }
+//   for(var i in data_array){
+//     var entry = data_array[i].properties.published_time;
+//     var split_T_= entry.split("T")[0].split("-");
+//     availableDates.push(parseInt(split_T_[1]));
+//   }
 
-  //create 12 months
-  for(var i = 1;i<13;i++){
-    month_count.push({"month":i,"count":0});
-  }
+//   //create 12 months
+//   for(var i = 1;i<13;i++){
+//     month_count.push({"month":i,"count":0});
+//   }
 
-  //create counts for each month
-  for(var i = 0;i<availableDates.length;i++){
-    if(month_count[availableDates[i]-1].month == availableDates[i]){
-      month_count[availableDates[i]-1].count++ 
-    }
-  }
+//   //create counts for each month
+//   for(var i = 0;i<availableDates.length;i++){
+//     if(month_count[availableDates[i]-1].month == availableDates[i]){
+//       month_count[availableDates[i]-1].count++ 
+//     }
+//   }
 
-  return month_count;
+//   return month_count;
 
-}
+// }
 
-function countAvailableDates(availableDates){
-  createHistogram(availableDates);
-}
+// function countAvailableDates(availableDates){
+//   createHistogram(availableDates);
+// }
 
 function updateCalendarFilter(result){
   data_array = result.features;
