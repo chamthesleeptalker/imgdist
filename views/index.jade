@@ -2,7 +2,6 @@ extends layout
 
 block content
 
-    //- div#filters.row.container
 
     div#map_section.col-lg-5.main_section
         #map
@@ -16,7 +15,6 @@ block content
                         li
                             button#filtersBtn.btn.btn-default.filter-tab.filter-tab-active
                                 h4 Filters
-                                    //- span.badge.imageFilterCount  0 
                         li
                             button#imagecartBtn.btn.btn-default.filter-tab
                                 h4 Image Cart 
@@ -27,6 +25,10 @@ block content
                         h4
                             span.glyphicon.glyphicon-cloud(alt="Define cloud cover range") 
                             span#currentCloudFil 0 - 100%
+                            span.checkbox#ccNoData                                    
+                                label 
+                                    input.ccNoDataFilter(checked="",type="checkbox",name="ccNoData",value="no data",autocomplete="off")
+                                    span Include No Data
                     div#cloudFilterContainer.row
                         input#cloud_slide(type="text",name="cloud_slide",value="")
                 #image_fil.row

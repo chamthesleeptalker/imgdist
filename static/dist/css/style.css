@@ -398,6 +398,14 @@ body {
   padding: 3%;
   margin-top: 2%;
 }
+#ccNoData {
+  margin-left: 10px;
+  float: right;
+  bottom: 15px;
+}
+.checkbox-material {
+  margin-right: 10px;
+}
 .ticket {
   margin: 0%;
   width: 100%;

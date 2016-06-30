@@ -155,6 +155,15 @@ $(function(){
         executeFilters();
     });
 
+    $(".ccNoDataFilter").on('change',function(){
+        var ccNoDataValue = $('.ccNoDataFilter').val();
+        //console.log(ccNoDataValue);
+
+        executeFilters();
+    });
+
+
+
     cloudSlider.on('change',function(){
         executeFilters();
     });

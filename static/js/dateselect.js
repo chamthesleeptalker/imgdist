@@ -51,7 +51,6 @@ var margin = {top: 15, right: 5, bottom: 25, left: 20},
     //create brush object
     var brush = d3.svg.brush()
         .x(x)
-        //.extent([[0,0,],[width,height]])
         .on("brushend", brushed);
 
     svg.append("g")
@@ -88,7 +87,7 @@ function updateData(result) {
         x.domain([d3.time.day.offset(new Date(start_date),-10),d3.time.day.offset(new Date(end_date),10)]);
         y.domain([0, d3.max(data, function(d) { return d.f; })]);
 
-        if(result_count > 25){
+        if(result_count > 10){
             xAxis.ticks(d3.time.month, 1);    
         }else{
             xAxis.ticks(d3.time.days, tick_interval);    
