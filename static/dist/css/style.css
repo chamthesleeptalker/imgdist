@@ -398,6 +398,10 @@ body {
   padding: 3%;
   margin-top: 2%;
 }
+#ccNoData {
+  margin-left: 10px;
+  float: right;
+}
 .ticket {
   margin: 0%;
   width: 100%;
