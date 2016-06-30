@@ -401,6 +401,10 @@ body {
 #ccNoData {
   margin-left: 10px;
   float: right;
+  bottom: 15px;
+}
+.checkbox-material {
+  margin-right: 10px;
 }
 .ticket {
   margin: 0%;
