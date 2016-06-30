@@ -48,6 +48,22 @@ var margin = {top: 15, right: 5, bottom: 25, left: 20},
         .attr("stroke","white")
         .call(yAxis);
 
+    //create brush object
+    var brush = d3.svg.brush()
+        .x(x)
+        //.extent([[0,0,],[width,height]])
+        .on("brushend", brushed);
+
+    svg.append("g")
+        .attr("class", "x brush")
+        .call(brush)
+    .selectAll("rect")
+        .attr("y",-6)
+        .attr("height", height + 7);
+
+function brushed(){
+    histogramToCalendar(brush.extent());
+}
 
 function updateData(result) {
     if(result.length == 0){
@@ -55,7 +71,6 @@ function updateData(result) {
     }else{
         // Get the data again
         data = getAllDates(result);
-        console.log(data);
 
         //get the histogram start date
         start_date = data[0].date;
@@ -66,10 +81,6 @@ function updateData(result) {
         //gets the number of query results
         var result_count = data.length;
 
-        //computes for the appropriate bar width
-        var barwidth = width/(2*result_count);
-        console.log(barwidth);
-
         //get the histogram end date
         end_date = data[data.length - 1].date;
 
@@ -77,22 +88,26 @@ function updateData(result) {
         x.domain([d3.time.day.offset(new Date(start_date),-10),d3.time.day.offset(new Date(end_date),10)]);
         y.domain([0, d3.max(data, function(d) { return d.f; })]);
 
-        if(result_count > 50){
+        if(result_count > 25){
             xAxis.ticks(d3.time.month, 1);    
         }else{
             xAxis.ticks(d3.time.days, tick_interval);    
         }
 
         //update xAxis and yAxis
-        svg.select('.x.axis').transition().duration(300).call(xAxis);
-        svg.select('.y.axis').transition().duration(300).call(yAxis);
+        svg.select('.x.axis').transition().duration(500).call(xAxis);
+        svg.select('.y.axis').transition().duration(500).call(yAxis);
+
+        //update brush extent
+        brush.extent([new Date(start_date), new Date(end_date)]);
+        svg.select('.brush').call(brush);
 
         //create the rect for the scaled frequency/count
         var bars = svg.selectAll(".bar").data(data);
 
         bars.exit()
             .transition()
-                .duration(300)
+                .duration(500)
             .attr("y", y(0))
             .attr("height", height - y(0))
             .style('fill-opacity', 1e-6)
@@ -101,7 +116,7 @@ function updateData(result) {
         bars.enter().append("rect")
             .attr("class","bar");
 
-        bars.transition().duration(300)
+        bars.transition().duration(500)
             .attr("width", function(d){
                 return 5;
             })
@@ -109,18 +124,23 @@ function updateData(result) {
                 var xTranslate = x(new Date(d.date)) - 0.5*((width*0.5)/data.length);
                 return "translate(" + xTranslate + "," + y(d.f) + ")"; 
             })
-            .attr("height",function(d){ return height - y(d.f)});    
+            .attr("height",function(d){ return height - y(d.f)});
+
+
     }
     
 }
 
-// function updateCalendarFilter(result){
-//   data_array = result.features;
-//   start_date = data_array[0].properties.published_time.split("T")[0]
-//   end_date = data_array[data_array.length - 1].properties.published_time.split("T")[0]
-  
-//   $('#currentDateFil').html(start_date + ' - ' + end_date );
-// }
+function histogramToCalendar(extent){
+    start_date = moment(extent[0]).format('YYYY-MM-DD');
+    end_date = moment(extent[1]).format('YYYY-MM-DD');
+    $("#date_fil").data('daterangepicker').setStartDate(extent[0]);
+    $("#date_fil").data('daterangepicker').setEndDate(extent[1]);
+
+    $('#currentDateFil').html(start_date + ' - ' + end_date);
+
+    executeFilters();
+}
 
 function getAllDates(result){
     var data_array = result.histogram;
