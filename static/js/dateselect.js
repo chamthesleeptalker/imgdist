@@ -19,7 +19,7 @@ var margin = {top: 15, right: 5, bottom: 25, left: 20},
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .tickFormat(d3.time.format("%m/%d"))
+        .tickFormat(d3.time.format("%b %d"))
         .tickSize(3)
         .tickPadding(12);
 
@@ -30,11 +30,11 @@ var margin = {top: 15, right: 5, bottom: 25, left: 20},
 
     //Create the SVG drawing area
     var svg = d3.select("#chart")
-      .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     svg.append("g")
         .attr("class", "x axis")
@@ -53,22 +53,22 @@ function updateData(result) {
     if(result.length == 0){
 
     }else{
-        //get date array
-        var data = getAllDates(result);
-        
-        //get the histogram start date
-        var start_date = data[0].date;
-
-        //get the histogram end date
-        var end_date = data[data.length - 1].date;
-
-        //compute for appropriate tick interval
-        var tick_interval = Math.floor(data.length/6);
-
         // Get the data again
         data = getAllDates(result);
+        console.log(data);
+
         //get the histogram start date
         start_date = data[0].date;
+
+        //compute for appropriate tick interval
+        var tick_interval = Math.floor(data.length/2);
+
+        //gets the number of query results
+        var result_count = data.length;
+
+        //computes for the appropriate bar width
+        var barwidth = width/(2*result_count);
+        console.log(barwidth);
 
         //get the histogram end date
         end_date = data[data.length - 1].date;
@@ -77,8 +77,13 @@ function updateData(result) {
         x.domain([d3.time.day.offset(new Date(start_date),-10),d3.time.day.offset(new Date(end_date),10)]);
         y.domain([0, d3.max(data, function(d) { return d.f; })]);
 
-        xAxis.ticks(d3.time.days, tick_interval);
+        if(result_count > 50){
+            xAxis.ticks(d3.time.month, 1);    
+        }else{
+            xAxis.ticks(d3.time.days, tick_interval);    
+        }
 
+        //update xAxis and yAxis
         svg.select('.x.axis').transition().duration(300).call(xAxis);
         svg.select('.y.axis').transition().duration(300).call(yAxis);
 
@@ -94,15 +99,12 @@ function updateData(result) {
             .remove();
           
         bars.enter().append("rect")
-            .attr("class","bar")
-            .attr("transform", function(d) {
-                var xTranslate = x(new Date(d.date)) - 0.5*((width*0.5)/data.length);
-                return "translate(" + xTranslate + "," + y(d.f) + ")"; 
-            });
+            .attr("class","bar");
 
         bars.transition().duration(300)
-            //.attr("x", function(d){ return x(new Date(d.date));})
-            .attr("width", (width*0.5)/data.length)
+            .attr("width", function(d){
+                return 5;
+            })
             .attr("transform", function(d) {
                 var xTranslate = x(new Date(d.date)) - 0.5*((width*0.5)/data.length);
                 return "translate(" + xTranslate + "," + y(d.f) + ")"; 
@@ -111,6 +113,14 @@ function updateData(result) {
     }
     
 }
+
+// function updateCalendarFilter(result){
+//   data_array = result.features;
+//   start_date = data_array[0].properties.published_time.split("T")[0]
+//   end_date = data_array[data_array.length - 1].properties.published_time.split("T")[0]
+  
+//   $('#currentDateFil').html(start_date + ' - ' + end_date );
+// }
 
 function getAllDates(result){
     var data_array = result.histogram;

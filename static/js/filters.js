@@ -199,13 +199,7 @@ function downloadAllImages(){
 //   createHistogram(availableDates);
 // }
 
-function updateCalendarFilter(result){
-  data_array = result.features;
-  start_date = data_array[0].properties.published_time.split("T")[0]
-  end_date = data_array[data_array.length - 1].properties.published_time.split("T")[0]
-  
-  $('#currentDateFil').html(start_date + ' - ' + end_date );
-}
+
 
 
 
