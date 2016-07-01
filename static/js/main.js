@@ -27,7 +27,10 @@ function init(){
         max: 100,
         from:0,
         to:100,
-        grid: true
+        grid: true,
+        onFinish: function(){
+            executeFilters();
+        }
     });
 }
 
@@ -160,12 +163,6 @@ $(function(){
         executeFilters();
     });
 
-
-
-    cloudSlider.on('change',function(){
-        setTimeout(function(){executeFilters();},2000);
-        
-    });
 
     calendar_fil = $('#date_fil').daterangepicker({
                         "showDropdowns": true,
