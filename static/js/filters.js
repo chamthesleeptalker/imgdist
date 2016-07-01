@@ -5,6 +5,12 @@ function executeFilters(){
     var cloudRange = cloudSlider;
     var daterange = [];
 
+    $("#imageSpinner").fadeIn("slow",function(){
+      $("#imageSpinner").css("display","block");
+      $("#imageSpinner").css("z-index","1000");
+      $("#imageCards").fadeOut("fast");
+    });
+
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
       $("#currentCloudFil").html("  0 - 100%");
@@ -34,7 +40,8 @@ function executeFilters(){
       data.end = daterange[1];
     }
 
-    $.get(main_url, data, function(result){
+    var results_load = $.get(main_url, data, function(result){
+
         //updates the footprints in the map view      
         updateMapMarkers(result);
 
@@ -45,9 +52,16 @@ function executeFilters(){
         updateOnImageCartCards(imageCartEntries);
 
         //create or update Image Availability Histogram
-        updateData(result); 
-        
+        updateData(result);
 
+        //loading_screen.finish(); 
+    })
+    .done(function(){
+      $("#imageSpinner").fadeOut("slow",function(){
+        $("#imageSpinner").css("display","none");
+        $("#imageSpinner").css("z-index","-1");
+        $("#imageCards").fadeIn("slow");
+      });
     });
 }
 

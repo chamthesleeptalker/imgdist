@@ -27,7 +27,8 @@
     "mustache.js": "mustache#^2.2.1",
     "d3": "^3.5.17",
     "ion.rangeSlider": "ionrangeslider#^2.1.4",
-    "malihu-custom-scrollbar-plugin": "^3.1.4"
+    "malihu-custom-scrollbar-plugin": "^3.1.4",
+    "SpinKit": "spinkit#^1.2.5"
   },
   "devDependencies": {
     "please-wait": "^0.0.5"

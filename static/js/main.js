@@ -157,15 +157,14 @@ $(function(){
 
     $(".ccNoDataFilter").on('change',function(){
         var ccNoDataValue = $('.ccNoDataFilter').val();
-        //console.log(ccNoDataValue);
-
         executeFilters();
     });
 
 
 
     cloudSlider.on('change',function(){
-        executeFilters();
+        setTimeout(function(){executeFilters();},2000);
+        
     });
 
     calendar_fil = $('#date_fil').daterangepicker({

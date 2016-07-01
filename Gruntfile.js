@@ -13,6 +13,7 @@ module.exports = function(grunt) {
     uglify:{
       build:{
         src:[
+          'static/js/loading.js',
           'static/js/dateselect.js',
           'static/js/filters.js',
           'static/js/main.js'
