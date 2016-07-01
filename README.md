@@ -1,4 +1,4 @@
-# Diwata Image Gallery
+# Diwata Image Browser
 
 ## Overview
 A diwata image gallery app which contains the images taken by diwata-1.
