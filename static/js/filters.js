@@ -11,6 +11,14 @@ function executeFilters(){
       $("#imageCards").fadeOut("fast");
     });
 
+
+    // $(".leaflet-tile-pane").fadeOut("slow");
+    // $(".leaflet-overlay-pane-pane").fadeOut("slow");
+      // map.on("viewreset",function(){
+      //     $(".leaflet-tile-pane").fadeOut("slow");
+      //     $(".leaflet-overlay-pane-pane").fadeOut("slow");
+      // });
+
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
       $("#currentCloudFil").html("  0 - 100%");
@@ -62,6 +70,11 @@ function executeFilters(){
         $("#imageSpinner").css("z-index","-1");
         $("#imageCards").fadeIn("slow");
       });
+
+      // map.on("viewreset",function(){
+      //     $(".leaflet-tile-pane").fadeIn("slow");
+      //     $(".leaflet-overlay-pane-pane").fadeIn("slow");
+      // });
     });
 }
 

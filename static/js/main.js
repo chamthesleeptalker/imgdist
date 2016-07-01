@@ -124,6 +124,9 @@ function init_map(){
     });
 
     image_markers.addTo(map);
+    // map.on('load',function(){
+    //     console.log("loaded");    
+    // });    
 }
 
 
@@ -132,6 +135,7 @@ $(function(){
     init();
     init_map();
     //createHistogram();
+
 
     // Setup event handlers for the filters 
     $("#satelliteFilter, #sensorFilter").on('change', function(){
@@ -190,12 +194,12 @@ $("#moreFilterShow,#imageShoppingCart").on('click',function(){
     var filter_state = $("#filtersBtn").hasClass("filter-tab-active");
 
     if(cloud_image_state == "none"){
-        $("#cloud_image").slideToggle("fast");    
+        $("#cloud_image").slideToggle(450,"swing");    
     }
 });
 
 $("#filterCloseButton").on('click', function(){
-    $("#cloud_image").slideToggle("fast");
+    $("#cloud_image").slideToggle(450,"swing"); 
 });
 
 $('#imageCards').perfectScrollbar({
