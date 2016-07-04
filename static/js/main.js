@@ -123,10 +123,7 @@ function init_map(){
         } 
     });
 
-    image_markers.addTo(map);
-    // map.on('load',function(){
-    //     console.log("loaded");    
-    // });    
+    image_markers.addTo(map);   
 }
 
 
@@ -134,7 +131,6 @@ $(function(){
     // Initialize everything
     init();
     init_map();
-    //createHistogram();
 
 
     // Setup event handlers for the filters 
@@ -191,15 +187,17 @@ $(function(){
 //morefilter filter
 $("#moreFilterShow,#imageShoppingCart").on('click',function(){
     var cloud_image_state = $("#cloud_image").css("display");
-    var filter_state = $("#filtersBtn").hasClass("filter-tab-active");
 
     if(cloud_image_state == "none"){
-        $("#cloud_image").slideToggle(450,"swing");    
+        $("#cloud_image").slideToggle(450,"swing",function(){
+
+        });    
     }
 });
 
 $("#filterCloseButton").on('click', function(){
-    $("#cloud_image").slideToggle(450,"swing"); 
+    $("#cloud_image").slideToggle(450,"swing");
+
 });
 
 $('#imageCards').perfectScrollbar({
@@ -207,7 +205,7 @@ $('#imageCards').perfectScrollbar({
 });
 
 $('#image_fil_cart').perfectScrollbar({
-    maxScrollbarLength: 70
+    maxScrollbarLength: 100
 });
 
 $('#imagecartBtn,#cart_fil').on('click',function(){

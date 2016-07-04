@@ -166,7 +166,7 @@ body {
   z-index: 1000;
   position: absolute;
   bottom: 60px;
-  transition: height 1s;
+  max-height: 500px;
 }
 #mainFilterCon div {
   background-color: transparent;
@@ -215,6 +215,9 @@ body {
 }
 .filter-tab-active {
   background-color: rgba(0, 198, 236, 0.5);
+}
+#cloud_image {
+  min-height: 500px;
 }
 #cloud_image li {
   padding: 0px;
@@ -431,7 +434,7 @@ body {
   max-height: 200px;
 }
 #image_fil_cart {
-  min-height: 370px;
+  max-height: 420px;
 }
 #image_fil_cart .list-group-item {
   background-color: rgba(244, 243, 242, 0.1);
