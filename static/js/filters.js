@@ -11,14 +11,6 @@ function executeFilters(){
       $("#imageCards").fadeOut("fast");
     });
 
-
-    // $(".leaflet-tile-pane").fadeOut("slow");
-    // $(".leaflet-overlay-pane-pane").fadeOut("slow");
-      // map.on("viewreset",function(){
-      //     $(".leaflet-tile-pane").fadeOut("slow");
-      //     $(".leaflet-overlay-pane-pane").fadeOut("slow");
-      // });
-
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
       $("#currentCloudFil").html("  0 - 100%");
@@ -70,11 +62,6 @@ function executeFilters(){
         $("#imageSpinner").css("z-index","-1");
         $("#imageCards").fadeIn("slow");
       });
-
-      // map.on("viewreset",function(){
-      //     $(".leaflet-tile-pane").fadeIn("slow");
-      //     $(".leaflet-overlay-pane-pane").fadeIn("slow");
-      // });
     });
 }
 
@@ -194,37 +181,6 @@ function downloadAllImages(){
   }
 
 }
-
-// function dateHistogramData(data){
-//   var data_array = data.features;
-//   var availableDates = [];
-//   var month_count=[]
-
-//   for(var i in data_array){
-//     var entry = data_array[i].properties.published_time;
-//     var split_T_= entry.split("T")[0].split("-");
-//     availableDates.push(parseInt(split_T_[1]));
-//   }
-
-//   //create 12 months
-//   for(var i = 1;i<13;i++){
-//     month_count.push({"month":i,"count":0});
-//   }
-
-//   //create counts for each month
-//   for(var i = 0;i<availableDates.length;i++){
-//     if(month_count[availableDates[i]-1].month == availableDates[i]){
-//       month_count[availableDates[i]-1].count++ 
-//     }
-//   }
-
-//   return month_count;
-
-// }
-
-// function countAvailableDates(availableDates){
-//   createHistogram(availableDates);
-// }
 
 
 
