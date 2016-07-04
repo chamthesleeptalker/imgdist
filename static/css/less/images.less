@@ -5,7 +5,7 @@
     overflow-y:hidden;
     background-color: darken(@colorFive,80);
 }
-#imageCards{
+#imageCards,#imageSpinner{
 	position:relative;
 	display:block;
     overflow-y: auto;
@@ -13,10 +13,22 @@
     cursor: pointer;
     width:100%;
     padding-right: 15px;
+    display: none;
 }
 #image_section{
     float:right;
     padding:0px;
 }
 
+//spinner
+#imageSpinner{
+    position: absolute;
+    height:50%;
+    display:block;
+    top:25%;
+    z-index:1000;
+    transition: display 2s;
+}
+
 @import "imageScroll";
+@import "imageSpinner";
