@@ -79,11 +79,14 @@ function init_map(){
 
     //Footprint options
     var footprintOptions = {
-        color:"#2956bd",
+        //color:"#2956bd",
+        color:"transparent",
         weight:3,
         opacity: 1,
         fillColor:"rgba(45, 96, 210,0.5)",
-        fillOpacity:0.3
+        //fillColor:"#0198D8",
+        fillOpacity:0.5
+        //fillOpacity:0.3
     };
 
     //Layer popup options
