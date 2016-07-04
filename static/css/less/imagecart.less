@@ -1,4 +1,27 @@
 #image_fil_cart{
+	position:relative;
+	display:block;
+	max-height: 300px;
+	min-height: 300px;
+    overflow-y: auto;
+    height:100%;
+    cursor: pointer;
+    width:100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
+
+    .ps-scrollbar-y-rail{
+    	background-color: fade(darken(@colorFive,50),30);
+    }
+    .ps-scrollbar-y{
+    	background-color: fade(darken(@colorFive,35), 50);
+    }
+}
+
+
+
+#image_fil_cart{
 	max-height: 420px;
 	.list-group-item{
 		background-color: fade(@colorFive,10);

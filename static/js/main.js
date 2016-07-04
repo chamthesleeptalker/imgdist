@@ -189,15 +189,20 @@ $("#moreFilterShow,#imageShoppingCart").on('click',function(){
     var cloud_image_state = $("#cloud_image").css("display");
 
     if(cloud_image_state == "none"){
-        $("#cloud_image").slideToggle(450,"swing",function(){
-
-        });    
+        
+        $("#mainFilterCon").animate({height: ['500px','swing']},750,'swing'); 
+        //$("#cloud_image").css("display","block");   
+        $("#cloud_image").fadeIn("slow")
+        //$("#cloud_image").animate({height: ['500px','swing']},2000,'swing'); 
     }
 });
 
 $("#filterCloseButton").on('click', function(){
-    $("#cloud_image").slideToggle(450,"swing");
-
+    $("#mainFilterCon").animate({height: ['0px','swing']},750,'swing'); 
+    //$("#cloud_image").css("display","block");   
+    $("#cloud_image").fadeOut("slow");   
+    //$("#cloud_image").animate({display:['none','swing']},1100,'swing');
+    //$("#cloud_image").animate({height: ['0px','swing'},2000,'swing'); 
 });
 
 $('#imageCards').perfectScrollbar({
