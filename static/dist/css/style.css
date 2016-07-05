@@ -152,6 +152,11 @@ body {
   color: #46403b;
   background-color: rgba(244, 243, 242, 0.7);
 }
+.imagecart_close {
+  float: right;
+  font-size: 13px;
+  color: #de4a69;
+}
 #mainFilterCon {
   background-color: rgba(2, 1, 30, 0.95);
   color: #f4f3f2;

@@ -79,7 +79,9 @@ html
           <a class="list-group-item-text" target="_blank" href="{{bundlink}}" download="">Download</a>
         </div>
         <div class="row-content col-lg-9">
-          <h4 class="list-group-item-heading">{{scene_id}}</h4>
+          <h4 class="list-group-item-heading imagecart_sceneid">{{scene_id}}
+            <span class="glyphicon glyphicon-remove imagecart_close" title="Remove image from cart" onclick="removeImageFromCart('{{scene_id}}', '{{image_url}}', '{{published}}')"></span>
+          </h4>
           <h4 class="list-group-item-text">{{published}}</h4>
         </div>
       </div>
