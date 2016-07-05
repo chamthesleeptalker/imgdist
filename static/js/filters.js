@@ -117,11 +117,29 @@ function addImageToCart(scene_id, image_url, published, bundlink){
 
 //On click function. When clicked, removes the selected image to the image cart
 function removeImageFromCart(scene_id, image_url, published,bundlink){
-  var removeImageObj ={scene_id:scene_id, image_url:image_url, published: published, bundlink: bundlink};
-  removedCartEntries.push(removeImageObj);
+  //initialize template for image cart entries
+  var imagecart_template = $('#imagecart-template').html();
+  Mustache.parse(imagecart_template);
 
-  var removeEntry = _.findIndex(imageCartEntries, removeImageObj);
+  var removeImageObj ={'bundlink': bundlink, 'image_url':image_url, 'published': published, 'scene_id':scene_id };
+  removedCartEntries.push(removeImageObj);
+  console.log("removeImageObj");
+  console.log(removeImageObj);
+  console.log("removedCartEntries");  
+  console.log(removedCartEntries);
+  console.log("imageCartEntries");
+  console.log(imageCartEntries);
+  var removeEntry = _.findIndex(imageCartEntries, ['scene_id',removeImageObj.scene_id]);
   var newimageCartEntries = _.pullAt(imageCartEntries,removeEntry);
+
+  console.log("removeEntry");
+  console.log(removeEntry);
+  console.log("newimageCartEntries");
+  console.log(newimageCartEntries);
+
+  removedCartEntries.length=0;
+  console.log("removedCartEntries_length");
+  console.log(removedCartEntries);
 
   var count = imageCartEntries.length;
   $('.imageCartCount').text(count);
@@ -131,11 +149,8 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
   $("#imagetocart_"+scene_id).addClass('btn-info');
   $("#imagetocart_"+scene_id).attr('onclick','addImageToCart("'+scene_id+'","'+image_url+'")');
 
-  var imagecart_template = $('#imagecart-template').html();
-  Mustache.parse(imagecart_template);
-
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
-  $('#imageCartList').html(rendered_imageCartEntries);
+  $('#image_fil_cart').html(rendered_imageCartEntries);
 
 }
 
