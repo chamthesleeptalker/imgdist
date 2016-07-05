@@ -1,10 +1,12 @@
 function executeFilters(){
+    //query parameters objects
     var bounds = areaSelect.getBounds();
     var sw = bounds._southWest;
     var ne = bounds._northEast;
     var cloudRange = cloudSlider;
     var daterange = [];
 
+    //Runs the loading spinner when query is called
     $("#imageSpinner").fadeIn("slow",function(){
       $("#imageSpinner").css("display","block");
       $("#imageSpinner").css("z-index","1000");
@@ -23,6 +25,7 @@ function executeFilters(){
     //gets and updates image selection
     $("#currentImgFil").html("  "+imageTray.toString());
 
+    //Creating an object array of the necessary query params
     var data = {
         sat: satTray.toString(),
         payload: imageTray.toString(),
@@ -33,14 +36,15 @@ function executeFilters(){
         limit:"100"
     };
 
-    //updates date range
+    //Updates date range
     if(start_date != undefined){
       daterange=[start_date,end_date];
       data.start = daterange[0];
       data.end = daterange[1];
     }
 
-    var results_load = $.get(main_url, data, function(result){
+  //call the built query
+  $.get(main_url, data, function(result){
 
         //updates the footprints in the map view      
         updateMapMarkers(result);
@@ -54,9 +58,9 @@ function executeFilters(){
         //create or update Image Availability Histogram
         updateData(result);
 
-        //loading_screen.finish(); 
     })
     .done(function(){
+      //Runs the loading spinner when query is done
       $("#imageSpinner").fadeOut("slow",function(){
         $("#imageSpinner").css("display","none");
         $("#imageSpinner").css("z-index","-1");
@@ -65,11 +69,14 @@ function executeFilters(){
     });
 }
 
+//update geojson footprints in the map
 function updateMapMarkers(data){
+
     if(image_markers) image_markers.clearLayers();
     image_markers.addData(data);
 }
 
+//On click function. When clicked zoom in the selected footprint onscreen
 function zoomToScene(coordinates){
     if(coordinates.length < 2){
         var footprint = L.polygon(coordinates[0]);
@@ -82,9 +89,11 @@ function zoomToScene(coordinates){
     }
 }
 
-//add to image cart
+//Image cart object
 var imageCartEntries=[];
 var removedCartEntries=[];
+
+//On click function. When clicked, adds the selected image to the image cart
 function addImageToCart(scene_id, image_url, published, bundlink){
 
   var addImageObj ={scene_id:scene_id, image_url:image_url, published:published, bundlink: bundlink};
@@ -106,6 +115,7 @@ function addImageToCart(scene_id, image_url, published, bundlink){
 
 }
 
+//On click function. When clicked, removes the selected image to the image cart
 function removeImageFromCart(scene_id, image_url, published,bundlink){
   var removeImageObj ={scene_id:scene_id, image_url:image_url, published: published, bundlink: bundlink};
   removedCartEntries.push(removeImageObj);
@@ -129,6 +139,7 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
 
 }
 
+//Creates the tickets of the images in the query result
 function updateCards(data){
     var card_template = $('#card-template').html();
     Mustache.parse(card_template);
@@ -170,10 +181,7 @@ function onClickRemoveFromCart(imageCartEntry){
       $("#imagetocart_"+imageCartEntry.scene_id).attr('onclick','removeImageFromCart("'+imageCartEntry.scene_id+'","'+imageCartEntry.image_url+'")');
 }
 
-function isInArray(value,array){
-  return array.indexOf(value) !== -1;
-}
-
+//On click function to download all the images in the image cart
 function downloadAllImages(){
   for(var i in imageCartEntries){
     var win = window.open(imageCartEntries[i].image_url,'_blank');

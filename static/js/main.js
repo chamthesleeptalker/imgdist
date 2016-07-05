@@ -1,4 +1,3 @@
-//var main_url="http://diwataapi-lkpanganiban.rhcloud.com/api/v2/scene/multi/";
 var main_url = "http://api.images.phl-microsat.xyz/scene/multi/?format=json&date_hist=day";
 // General initialization scripts. Form elements, etc.
 
@@ -17,10 +16,14 @@ var satTray= ['diwata-1','landsat8'];
 //global calendar variable
 var calendar_fil,start_date,end_date;
 
+
+/*************Scripts for initializing various objects***************/
 function init(){
 
+    //required bootstrap material design initialization
     $.material.init()
 
+    //initialization the cloud cover slider using Ion Range Slider
    cloudSlider.ionRangeSlider({
         type: "double",
         min: 0,
@@ -34,9 +37,10 @@ function init(){
     });
 }
 
-// Scripts for initializing the map
+/**********Scripts for initializing the map************/
 function init_map(){
     
+    //basemap tiles objects
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {
@@ -45,6 +49,7 @@ function init_map(){
         attribution: osmAttrib
     });
 
+    //set the map's initial view to a specified center and zoom level
     map.setView(new L.LatLng(11.5, 121.8), 5);
     map.addLayer(osm);
 
@@ -55,7 +60,7 @@ function init_map(){
     width = $("#map_section").width();
     height = $("#map_section").height();
 
-    // Area select plugin
+    //Bounding box filter plugin
     areaSelect=L.areaSelect({
         width: width-100,
         height: height-100,
@@ -67,26 +72,13 @@ function init_map(){
         executeFilters(bounds);
     });
 
-    // Circle Marker Options
-    var geojsonMarkerOptions = {
-        radius: 8,
-        fillColor: "#1c3166",
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.4
-    };
-
     //Footprint options
     var footprintOptions = {
-        //color:"#2956bd",
         color:"transparent",
         weight:3,
         opacity: 1,
         fillColor:"rgba(45, 96, 210,0.5)",
-        //fillColor:"#0198D8",
         fillOpacity:0.5
-        //fillOpacity:0.3
     };
 
     //Layer popup options
@@ -98,15 +90,8 @@ function init_map(){
 
     //Image point markers in the map
     image_markers = L.geoJson(false,{
-        style: function(feature){
-            if (feature.geometry.type == "Point") {
-                return geojsonMarkerOptions;
-            } else{                
+        style: function(feature){              
                 return footprintOptions;
-            }
-        },
-        pointToLayer: function(feature,latlng){
-            return L.circleMarker(latlng, geojsonMarkerOptions);
         },
         onEachFeature: function(feature, layer){
             
@@ -130,17 +115,13 @@ function init_map(){
 }
 
 
+/***********Execute Filters***********/
 $(function(){
     // Initialize everything
     init();
     init_map();
 
-
-    // Setup event handlers for the filters 
-    $("#satelliteFilter, #sensorFilter").on('change', function(){
-        executeFilters();
-    });
-
+    //Execute Qquery after change in image filter cart
     $(".imageFilter").on('change',function(){
         imageTray=[];
         $.each($("input[name='imgFilter']:checked"), function(){
@@ -161,12 +142,13 @@ $(function(){
         executeFilters();
     });
 
+    //Handles query run when cloud cover with "no data" values are included
     $(".ccNoDataFilter").on('change',function(){
         var ccNoDataValue = $('.ccNoDataFilter').val();
         executeFilters();
     });
 
-
+    //Handles the query when the date range is changed
     calendar_fil = $('#date_fil').daterangepicker({
                         "showDropdowns": true,
                         "autoApply": true,
@@ -187,35 +169,34 @@ $(function(){
     executeFilters();
 });
 
-//morefilter filter
+/*********Filter Interface*********/
+//When the Filter/Cart Icon are clicked and the filter div is not yet displayed
 $("#moreFilterShow,#imageShoppingCart").on('click',function(){
     var cloud_image_state = $("#cloud_image").css("display");
 
     if(cloud_image_state == "none"){
-        
-        $("#mainFilterCon").animate({height: ['500px','swing']},750,'swing'); 
-        //$("#cloud_image").css("display","block");   
+        $("#mainFilterCon").animate({height: ['500px','swing']},750,'swing');  
         $("#cloud_image").fadeIn("slow")
-        //$("#cloud_image").animate({height: ['500px','swing']},2000,'swing'); 
     }
 });
 
+//When the filter div is open and is closed using the close button
 $("#filterCloseButton").on('click', function(){
-    $("#mainFilterCon").animate({height: ['0px','swing']},750,'swing'); 
-    //$("#cloud_image").css("display","block");   
+    $("#mainFilterCon").animate({height: ['0px','swing']},750,'swing');  
     $("#cloud_image").fadeOut("slow");   
-    //$("#cloud_image").animate({display:['none','swing']},1100,'swing');
-    //$("#cloud_image").animate({height: ['0px','swing'},2000,'swing'); 
 });
 
+//Scroll plugin setup for the resulting images
 $('#imageCards').perfectScrollbar({
     maxScrollbarLength: 100
 });
 
+//Scroll plugin setup for images in cart
 $('#image_fil_cart').perfectScrollbar({
     maxScrollbarLength: 100
 });
 
+//Handles the higlight background and content swap when the cart icon or the cart tab is clicked
 $('#imagecartBtn,#cart_fil').on('click',function(){
     $("#cloud_fil, #image_fil,#date_fil_container").css('display','none');
     $("#image_fil_cart").css('display','block');
@@ -223,6 +204,7 @@ $('#imagecartBtn,#cart_fil').on('click',function(){
     $("#filtersBtn").removeClass("filter-tab-active");
 });
 
+//Handles the higlight background and content swap when the filter icon or the filter tab is clicked
 $('#filtersBtn,#filter_icon').on('click',function(){
     $("#cloud_fil, #image_fil,#date_fil_container").css('display','block');
     $("#image_fil_cart").css('display','none');

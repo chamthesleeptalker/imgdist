@@ -124,12 +124,11 @@ function updateData(result) {
                 return "translate(" + xTranslate + "," + y(d.f) + ")"; 
             })
             .attr("height",function(d){ return height - y(d.f)});
-
-
     }
     
 }
 
+//handle filters and query when histogram range is called
 function histogramToCalendar(extent){
     start_date = moment(extent[0]).format('YYYY-MM-DD');
     end_date = moment(extent[1]).format('YYYY-MM-DD');
@@ -141,6 +140,7 @@ function histogramToCalendar(extent){
     executeFilters();
 }
 
+//Get the date values queried
 function getAllDates(result){
     var data_array = result.histogram;
     var c = Object.keys(data_array)
