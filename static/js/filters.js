@@ -91,7 +91,6 @@ function zoomToScene(coordinates){
 
 //Image cart object
 var imageCartEntries=[];
-var removedCartEntries=[];
 
 //On click function. When clicked, adds the selected image to the image cart
 function addImageToCart(scene_id, image_url, published, bundlink){
@@ -112,15 +111,17 @@ function addImageToCart(scene_id, image_url, published, bundlink){
 
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
   $('#image_fil_cart').html(rendered_imageCartEntries);
-
 }
 
 //On click function. When clicked, removes the selected image to the image cart
 function removeImageFromCart(scene_id, image_url, published,bundlink){
-  var removeImageObj ={scene_id:scene_id, image_url:image_url, published: published, bundlink: bundlink};
-  removedCartEntries.push(removeImageObj);
+  //initialize template for image cart entries
+  var imagecart_template = $('#imagecart-template').html();
+  Mustache.parse(imagecart_template);
 
-  var removeEntry = _.findIndex(imageCartEntries, removeImageObj);
+  var removeImageObj ={'bundlink': bundlink, 'image_url':image_url, 'published': published, 'scene_id':scene_id };
+
+  var removeEntry = _.findIndex(imageCartEntries, ['scene_id',removeImageObj.scene_id]);
   var newimageCartEntries = _.pullAt(imageCartEntries,removeEntry);
 
   var count = imageCartEntries.length;
@@ -131,11 +132,12 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
   $("#imagetocart_"+scene_id).addClass('btn-info');
   $("#imagetocart_"+scene_id).attr('onclick','addImageToCart("'+scene_id+'","'+image_url+'")');
 
-  var imagecart_template = $('#imagecart-template').html();
-  Mustache.parse(imagecart_template);
-
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
-  $('#imageCartList').html(rendered_imageCartEntries);
+  $('#image_fil_cart').html(rendered_imageCartEntries);
+
+  if(count === 0){
+    $("#image_fil_cart").html("<h3 id='cart_noimage'>No images in cart.</h3>");
+  }
 
 }
 
