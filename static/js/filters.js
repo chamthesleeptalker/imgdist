@@ -135,6 +135,10 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
   $('#image_fil_cart').html(rendered_imageCartEntries);
 
+  if(count === 0){
+    $("#image_fil_cart").html("<h3 id='cart_noimage'>No images in cart.</h3>");
+  }
+
 }
 
 //Creates the tickets of the images in the query result
