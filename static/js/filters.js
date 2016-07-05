@@ -91,7 +91,6 @@ function zoomToScene(coordinates){
 
 //Image cart object
 var imageCartEntries=[];
-var removedCartEntries=[];
 
 //On click function. When clicked, adds the selected image to the image cart
 function addImageToCart(scene_id, image_url, published, bundlink){
@@ -112,7 +111,6 @@ function addImageToCart(scene_id, image_url, published, bundlink){
 
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
   $('#image_fil_cart').html(rendered_imageCartEntries);
-
 }
 
 //On click function. When clicked, removes the selected image to the image cart
@@ -122,24 +120,9 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
   Mustache.parse(imagecart_template);
 
   var removeImageObj ={'bundlink': bundlink, 'image_url':image_url, 'published': published, 'scene_id':scene_id };
-  removedCartEntries.push(removeImageObj);
-  console.log("removeImageObj");
-  console.log(removeImageObj);
-  console.log("removedCartEntries");  
-  console.log(removedCartEntries);
-  console.log("imageCartEntries");
-  console.log(imageCartEntries);
+
   var removeEntry = _.findIndex(imageCartEntries, ['scene_id',removeImageObj.scene_id]);
   var newimageCartEntries = _.pullAt(imageCartEntries,removeEntry);
-
-  console.log("removeEntry");
-  console.log(removeEntry);
-  console.log("newimageCartEntries");
-  console.log(newimageCartEntries);
-
-  removedCartEntries.length=0;
-  console.log("removedCartEntries_length");
-  console.log(removedCartEntries);
 
   var count = imageCartEntries.length;
   $('.imageCartCount').text(count);
