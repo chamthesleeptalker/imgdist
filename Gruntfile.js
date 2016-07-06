@@ -3,8 +3,10 @@ module.exports = function(grunt) {
   //plugins
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express-server');
+
 
   //tasks
   grunt.initConfig({
@@ -33,10 +35,41 @@ module.exports = function(grunt) {
               outputSourceFiles: true
         },
         files: {
-          "static/dist/css/style.css": "static/css/less/style.less"
+          "static/css/style.css": "static/css/less/style.less"
         },
       }
     },
+
+    postcss:{
+      options:{
+        map:{
+          inline:false,
+          annotation:'static/css/'
+        },
+        processors:[
+          require('pixrem')(), // add fallbacks for rem units
+          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+          require('cssnano')() // minify the result
+        ]
+      },
+      dist:{
+        expand:true,
+        flatten:true,
+        src:'static/css/style.css',
+        dest:'static/dist/css/'
+      }
+    },
+    // autoprefixer:{
+    //   options:{
+    //     browsers:['> 0.5%','last 2 versions', 'Firefox ESR','Opera 12.1']
+    //   },
+    //   main:{
+    //     expand:true,
+    //     flatten:true,
+    //     src:'static/css/*.css',
+    //     dest:'static/dist/css/'
+    //   }
+    // },
 
     express: {
       dev: {
@@ -73,6 +106,6 @@ module.exports = function(grunt) {
   });
 
   //runner
-  grunt.registerTask('rebuild', ['uglify', 'less'])
+  grunt.registerTask('rebuild', ['uglify', 'less','postcss'])
   grunt.registerTask('serve', ['rebuild', 'express', 'watch'])
 }
