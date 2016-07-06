@@ -427,7 +427,7 @@ body {
 #image_fil_cart {
   position: relative;
   display: block;
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 100%;
   cursor: pointer;
   width: 100%;
@@ -442,7 +442,7 @@ body {
   background-color: rgba(162, 154, 145, 0.5);
 }
 #image_fil_cart {
-  max-height: 400px;
+  max-height: 370px;
   padding-bottom: 30px;
 }
 #image_fil_cart .list-group-item {
@@ -460,6 +460,13 @@ body {
 #image_fil_cart a {
   color: #f4f3f2;
   text-decoration: none;
+}
+#image_cart_dl_all {
+  position: fixed;
+  right: 40px;
+  bottom: 75px;
+  background-color: rgba(244, 243, 242, 0.6);
+  color: #ddd9d6;
 }
 #imageDiv {
   padding-bottom: 80px;

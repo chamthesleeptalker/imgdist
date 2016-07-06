@@ -3,7 +3,7 @@
 	display:block;
 	// max-height: 300px;
 	// min-height: 300px;
-    overflow-y: auto;
+    overflow-y: hidden;
     height:100%;
     cursor: pointer;
     width:100%;
@@ -22,7 +22,7 @@
 
 
 #image_fil_cart{
-	max-height: 400px;
+	max-height: 370px;
 	padding-bottom:30px;
 	.list-group-item{
 		background-color: fade(@colorFive,10);
@@ -42,4 +42,12 @@
 		color:@colorFive;
 		text-decoration: none;
 	}
+}
+
+#image_cart_dl_all{
+	position:fixed;
+	right:40px;
+	bottom: 75px;
+	background-color: fade(@colorFive,60);
+	color: darken(@colorFive,10)
 }
