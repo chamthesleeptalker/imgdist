@@ -59,17 +59,6 @@ module.exports = function(grunt) {
         dest:'static/dist/css/'
       }
     },
-    // autoprefixer:{
-    //   options:{
-    //     browsers:['> 0.5%','last 2 versions', 'Firefox ESR','Opera 12.1']
-    //   },
-    //   main:{
-    //     expand:true,
-    //     flatten:true,
-    //     src:'static/css/*.css',
-    //     dest:'static/dist/css/'
-    //   }
-    // },
 
     express: {
       dev: {
