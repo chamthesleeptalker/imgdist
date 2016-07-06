@@ -48,7 +48,7 @@ module.exports = function(grunt) {
         },
         processors:[
           require('pixrem')(), // add fallbacks for rem units
-          require('autoprefixer')({browsers: 'last 2 versions'}), // add vendor prefixes
+          require('autoprefixer')({browsers: 'last 2 versions','> 2%','Firefox ESR','Opera 12.1'}), // add vendor prefixes
           require('cssnano')() // minify the result
         ]
       },
@@ -59,17 +59,6 @@ module.exports = function(grunt) {
         dest:'static/dist/css/'
       }
     },
-    // autoprefixer:{
-    //   options:{
-    //     browsers:['> 0.5%','last 2 versions', 'Firefox ESR','Opera 12.1']
-    //   },
-    //   main:{
-    //     expand:true,
-    //     flatten:true,
-    //     src:'static/css/*.css',
-    //     dest:'static/dist/css/'
-    //   }
-    // },
 
     express: {
       dev: {
