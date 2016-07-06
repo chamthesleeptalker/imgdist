@@ -192,7 +192,7 @@ $('#imageCards').perfectScrollbar({
 });
 
 //Scroll plugin setup for images in cart
-$('#image_fil_cart').perfectScrollbar({
+$('#image_fil_cart_list').perfectScrollbar({
     maxScrollbarLength: 100
 });
 

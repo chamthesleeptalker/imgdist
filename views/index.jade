@@ -66,16 +66,17 @@ block content
                             span     Image Availability
                         div#chart
                 div#image_fil_cart
-                    h3#cart_noimage No images in cart.
+                    div#image_fil_cart_list
+                        h3#cart_noimage No images in cart.
         div#date_fil.fildiv
-            span.glyphicon.glyphicon-calendar
+            span.glyphicon.glyphicon-calendar(title="Select date range")
             span#currentDateFil --- - ---
         div#cart_fil_div.col-lg-6.fildiv
                 div#filter_icon.col-lg-6
-                    span.glyphicon.glyphicon-tasks#moreFilterShow
+                    span.glyphicon.glyphicon-tasks#moreFilterShow(title="Show Filters")
                 div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
                     span.badge.imageCartCount  0 
-                    span.glyphicon.glyphicon-shopping-cart#imageShoppingCart
+                    span.glyphicon.glyphicon-shopping-cart#imageShoppingCart(title="Go to Cart")
 
 
     //- div.modal.fade#imageModal(role="dialog")

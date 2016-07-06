@@ -110,7 +110,13 @@ function addImageToCart(scene_id, image_url, published, bundlink){
   Mustache.parse(imagecart_template);
 
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
-  $('#image_fil_cart').html(rendered_imageCartEntries);
+  $('#image_fil_cart_list').html(rendered_imageCartEntries);
+
+  if(count != 0){
+    if($("#image_cart_dl_all").length === 0){
+      $("#image_fil_cart").append("<button id='image_cart_dl_all' class='btn btn-primary' type='button' onClick='downloadAllImages()'>Download All</button>");
+    }
+  }
 }
 
 //On click function. When clicked, removes the selected image to the image cart
@@ -133,10 +139,17 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
   $("#imagetocart_"+scene_id).attr('onclick','addImageToCart("'+scene_id+'","'+image_url+'")');
 
   rendered_imageCartEntries = Mustache.to_html(imagecart_template,{imageCartEntries:imageCartEntries})
-  $('#image_fil_cart').html(rendered_imageCartEntries);
+  $('#image_fil_cart_list').html(rendered_imageCartEntries);
 
   if(count === 0){
-    $("#image_fil_cart").html("<h3 id='cart_noimage'>No images in cart.</h3>");
+    $("#image_fil_cart_list").html("<h3 id='cart_noimage'>No images in cart.</h3>");
+    $("#image_cart_dl_all").length = 0;
+  }
+
+  if(count != 0){
+    if($("#image_cart_dl_all").length === 0){
+      $("#image_fil_cart").append("<button id='image_cart_dl_all' class='btn btn-primary' type='button' onClick='downloadAllImages()'>Download All</button>");
+    }
   }
 
 }

@@ -427,8 +427,6 @@ body {
 #image_fil_cart {
   position: relative;
   display: block;
-  max-height: 300px;
-  min-height: 300px;
   overflow-y: auto;
   height: 100%;
   cursor: pointer;
@@ -444,7 +442,8 @@ body {
   background-color: rgba(162, 154, 145, 0.5);
 }
 #image_fil_cart {
-  max-height: 420px;
+  max-height: 400px;
+  padding-bottom: 30px;
 }
 #image_fil_cart .list-group-item {
   background-color: rgba(244, 243, 242, 0.1);
@@ -1057,5 +1056,8 @@ body {
 }
 .calendar.right .calendar-table {
   position: absolute;
+}
+.glyphicon-calendar {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
