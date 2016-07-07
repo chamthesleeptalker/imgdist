@@ -209,6 +209,7 @@ $('#imagecartBtn,#cart_fil').on('click',function(){
 
 //Handles the higlight background and content swap when the filter icon or the filter tab is clicked
 $('#filtersBtn,#filter_icon').on('click',function(){
+    
     $("#imagecartBtn").removeClass("filter-tab-active");
     $("#filtersBtn").addClass("filter-tab-active");
 

@@ -33,7 +33,8 @@ function executeFilters(){
         end: "2015-12-10",
         cloud: "["+cloudRange.data().from+","+cloudRange.data().to+"]",
         bbox: JSON.stringify([sw.lng, sw.lat, ne.lng, ne.lat]),
-        limit:"100"
+        limit:"100",
+        page:1
     };
 
     //Updates date range
@@ -46,6 +47,9 @@ function executeFilters(){
   //call the built query
   $.get(main_url, data, function(result){
 
+        console.log(this.url);
+        console.log(result.page_meta.page_count);
+
         //updates the footprints in the map view      
         updateMapMarkers(result);
 
@@ -57,6 +61,8 @@ function executeFilters(){
 
         //create or update Image Availability Histogram
         updateData(result);
+
+        getPageCount(result);
 
     })
     .done(function(){

@@ -88,6 +88,17 @@ html
     {{/imageCartEntries}}
 
 
+
+  // Mustache template for the Image Cart
+  script(id="pagination-template" type="x-tmpl-mustache").
+    <li><i class="glyphicon glyphicon-chevron-left"></i></li>
+    {{#pages}}
+      <li>
+        <a>{{.}}</a>
+      </li>
+    {{/pages}}
+    <li><i class="glyphicon glyphicon-chevron-right"></i></li>
+
   // bower:JS
   script(type='text/javascript', src='bower-components/please-wait/build/please-wait.min.js')
   script(type='text/javascript', src='bower-components/jquery/dist/jquery.min.js')
