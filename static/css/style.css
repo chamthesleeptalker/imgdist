@@ -473,6 +473,7 @@ body {
 #image_cart_dl_all:hover {
   background-color: rgba(255, 0, 0, 0.6);
   box-shadow: inset 5px 5px 16px 5px rgba(0, 0, 0, 0.5);
+  color: rgba(244, 243, 242, 0.5);
 }
 #imageDiv {
   padding-bottom: 80px;
