@@ -654,9 +654,13 @@ body {
 }
 #imagePagination {
   color: #f4f3f2;
+  cursor: pointer;
 }
 #imagePagination .pagination {
   margin: 0px;
+}
+#imagePagination .page_chevron {
+  height: 30px;
 }
 .popup {
   color: white;

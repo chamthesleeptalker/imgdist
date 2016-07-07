@@ -47,8 +47,8 @@ function executeFilters(){
   //call the built query
   $.get(main_url, data, function(result){
 
-        console.log(this.url);
-        console.log(result.page_meta.page_count);
+        //console.log(this.url);
+        //console.log(result.page_meta.page_count);
 
         //updates the footprints in the map view      
         updateMapMarkers(result);
@@ -62,7 +62,7 @@ function executeFilters(){
         //create or update Image Availability Histogram
         updateData(result);
 
-        getPageCount(result);
+        getPageCount(result,this.url);
 
     })
     .done(function(){
