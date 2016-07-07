@@ -465,12 +465,14 @@ body {
   position: fixed;
   right: 40px;
   bottom: 75px;
-  background-color: rgba(255, 0, 0, 0.9);
+  background-color: rgba(255, 0, 0, 0.85);
   color: #f4f3f2;
-  box-shadow: 10px 10px 5px #f4f3f2;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.95);
+  user-select: none;
 }
-.button_class {
-  color: red;
+#image_cart_dl_all:hover {
+  background-color: rgba(255, 0, 0, 0.6);
+  box-shadow: inset 5px 5px 16px 5px rgba(0, 0, 0, 0.5);
 }
 #imageDiv {
   padding-bottom: 80px;
