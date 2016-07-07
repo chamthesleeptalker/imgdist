@@ -114,7 +114,7 @@ function addImageToCart(scene_id, image_url, published, bundlink){
 
   if(count != 0){
     if($("#image_cart_dl_all").length === 0){
-      $("#image_fil_cart").append("<button class='button_class' id='image_cart_dl_all' type='button' class='btn btn-primary' onClick='downloadAllImages()'>Download All</button>");
+      $("#image_fil_cart").append("<button id='image_cart_dl_all' type='button' class='btn btn-primary button_class' onClick='downloadAllImages()'>Download All</button>");
     }
   }
 }
@@ -148,7 +148,7 @@ function removeImageFromCart(scene_id, image_url, published,bundlink){
 
   if(count != 0){
     if($("#image_cart_dl_all").length === 0){
-      $("#image_fil_cart").append("<button class='button_class' id='image_cart_dl_all' type='button' class='btn btn-primary' onClick='downloadAllImages()'>Download All</button>");
+      $("#image_fil_cart").append("<button id='image_cart_dl_all' type='button' class='btn btn-primary button_class' onClick='downloadAllImages()'>Download All</button>");
     }
   }
 

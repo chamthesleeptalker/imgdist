@@ -71,7 +71,7 @@ module.exports = function(grunt) {
     watch: {
       css: {
           files: ['static/css/less/*.less'],
-          tasks: ['less'],
+          tasks: ['less','postcss']
       },
       configFiles: {
         files: [ 'Gruntfile.js' ],
@@ -95,6 +95,6 @@ module.exports = function(grunt) {
   });
 
   //runner
-  grunt.registerTask('rebuild', ['uglify', 'less','postcss'])
+  grunt.registerTask('rebuild', ['uglify', 'less'])
   grunt.registerTask('serve', ['rebuild', 'express', 'watch'])
 }

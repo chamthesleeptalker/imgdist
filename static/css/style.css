@@ -465,8 +465,12 @@ body {
   position: fixed;
   right: 40px;
   bottom: 75px;
-  background-color: rgba(0, 198, 236, 0.6);
+  background-color: rgba(255, 0, 0, 0.9);
   color: #f4f3f2;
+  box-shadow: 10px 10px 5px #f4f3f2;
+}
+.button_class {
+  color: red;
 }
 #imageDiv {
   padding-bottom: 80px;
@@ -1066,11 +1070,5 @@ body {
 }
 .glyphicon-calendar {
   cursor: pointer;
-}
-button_class {
-  box-shadow: 10px 10px 5px #888888;
-}
-button_class:hover {
-  box-shadow: inset 0 0 10px #000000;
 }
 /*# sourceMappingURL=style.css.map */
