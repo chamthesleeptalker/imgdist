@@ -1,9 +1,7 @@
 #image_fil_cart{
 	position:relative;
 	display:block;
-	max-height: 300px;
-	min-height: 300px;
-    overflow-y: auto;
+    overflow-y: hidden;
     height:100%;
     cursor: pointer;
     width:100%;
@@ -22,7 +20,8 @@
 
 
 #image_fil_cart{
-	max-height: 420px;
+	max-height: 370px;
+	padding-bottom:30px;
 	.list-group-item{
 		background-color: fade(@colorFive,10);
 		color:@colorFive;
@@ -42,3 +41,21 @@
 		text-decoration: none;
 	}
 }
+
+#image_cart_dl_all{
+	position:fixed;
+	right:40px;
+	bottom: 75px;
+	background-color: fade(red,85);
+	color: @colorFive;
+	box-shadow: 3px 3px 3px RGBA(0, 0, 0, 0.95);
+	user-select: none;
+
+	&:hover{
+		background-color: fade(red,60);
+		box-shadow: inset 5px 5px 16px 5px rgba(0, 0, 0, 0.5);
+		color:fade(@colorFive,50);
+	}
+}
+
+

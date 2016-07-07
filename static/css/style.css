@@ -427,9 +427,7 @@ body {
 #image_fil_cart {
   position: relative;
   display: block;
-  max-height: 300px;
-  min-height: 300px;
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 100%;
   cursor: pointer;
   width: 100%;
@@ -444,7 +442,8 @@ body {
   background-color: rgba(162, 154, 145, 0.5);
 }
 #image_fil_cart {
-  max-height: 420px;
+  max-height: 370px;
+  padding-bottom: 30px;
 }
 #image_fil_cart .list-group-item {
   background-color: rgba(244, 243, 242, 0.1);
@@ -461,6 +460,20 @@ body {
 #image_fil_cart a {
   color: #f4f3f2;
   text-decoration: none;
+}
+#image_cart_dl_all {
+  position: fixed;
+  right: 40px;
+  bottom: 75px;
+  background-color: rgba(255, 0, 0, 0.85);
+  color: #f4f3f2;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.95);
+  user-select: none;
+}
+#image_cart_dl_all:hover {
+  background-color: rgba(255, 0, 0, 0.6);
+  box-shadow: inset 5px 5px 16px 5px rgba(0, 0, 0, 0.5);
+  color: rgba(244, 243, 242, 0.5);
 }
 #imageDiv {
   padding-bottom: 80px;
@@ -1057,5 +1070,8 @@ body {
 }
 .calendar.right .calendar-table {
   position: absolute;
+}
+.glyphicon-calendar {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
