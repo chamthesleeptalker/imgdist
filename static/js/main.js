@@ -172,12 +172,14 @@ $(function(){
 /*********Filter Interface*********/
 //When the Filter/Cart Icon are clicked and the filter div is not yet displayed
 $("#moreFilterShow,#imageShoppingCart").on('click',function(){
-    var cloud_image_state = $("#cloud_image").css("display");
+    // var cloud_image_state = $("#cloud_image").css("display");
 
-    if(cloud_image_state == "none"){
-        $("#mainFilterCon").animate({height: ['500px','swing']},750,'swing');  
-        $("#cloud_image").fadeIn("slow")
-    }
+    // if(cloud_image_state == "none"){
+    //     $("#mainFilterCon").animate({height: ['500px','swing']},750,'swing');  
+    //     $("#cloud_image").fadeIn("slow")
+    // }
+
+    openFilters();
 });
 
 //When the filter div is open and is closed using the close button

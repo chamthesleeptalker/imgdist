@@ -13,10 +13,13 @@ function executeFilters(){
 
     //Runs the loading spinner when query is called
     $("#imageSpinner").fadeIn("slow",function(){
+      $("#cloud_image").addClass("cloudImageOpacity");
       $("#imageSpinner").css("display","block");
       $("#imageSpinner").css("z-index","1000");
       $("#imageCards").fadeOut("fast");
     });
+
+    
 
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
@@ -60,15 +63,11 @@ function executeFilters(){
         setTimeout(function(){
           $("#imagePagination").html("<h1 id='noResults' style='display:none;'>No image matched your query.<br>Please try again.</h1>");
           $("#noResults").fadeIn("slow");
-          if($("#cloud_image").css('display') === 'none'){
-            $("#imagePagination").append("<button id='changeMyFilters' type='button' class='btn btn-primary' style='display:none;'>change filters</button>");
-            $("#changeMyFilters").fadeIn("slow");
-          }
+
+          $("#imagePagination").append("<button id='changeMyFilters' type='button' class='btn btn-primary button_class' style='display:none;' onClick='openFilters()'>change filters</button>");
+          $("#changeMyFilters").fadeIn("slow");
+          
         },500);
-
-
-
-
 
       }else{
         //updates the footprints in the map view      
@@ -90,7 +89,6 @@ function executeFilters(){
         console.log("zero results");
         console.log(result.features.length);
 
-
     })
     .done(function(){
       //Runs the loading spinner when query is done
@@ -98,8 +96,11 @@ function executeFilters(){
         $("#imageSpinner").css("display","none");
         $("#imageSpinner").css("z-index","-1");
         $("#imageCards").fadeIn("slow");
+        $("#cloud_image").removeClass("cloudImageOpacity");
       });
     });
+
+    
 }
 
 //update geojson footprints in the map
@@ -235,7 +236,16 @@ function downloadAllImages(){
     var win = window.open(imageCartEntries[i].image_url,'_blank');
     win.focus();
   }
+}
 
+//Open Filters div when there are no results for the previous query
+function openFilters(){
+      var cloud_image_state = $("#cloud_image").css("display");
+
+    if(cloud_image_state == "none"){
+        $("#mainFilterCon").animate({height: ['500px','swing']},750,'swing');  
+        $("#cloud_image").fadeIn("slow")
+    }
 }
 
 
