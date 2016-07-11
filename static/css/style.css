@@ -442,6 +442,7 @@ body {
   background-color: rgba(162, 154, 145, 0.5);
 }
 #image_fil_cart {
+  display: none;
   max-height: 370px;
   padding-bottom: 30px;
 }
@@ -491,7 +492,7 @@ body {
   width: 100%;
   padding-right: 15px;
   display: none;
-  top: 5%;
+  top: 2%;
 }
 #image_section {
   float: right;
@@ -504,6 +505,10 @@ body {
   top: 25%;
   z-index: 1000;
   transition: display 2s;
+}
+.cloudImageOpacity {
+  opacity: 0.2;
+  pointer-events: none;
 }
 #imageCards::-webkit-scrollbar {
   width: 5px;
@@ -661,6 +666,24 @@ body {
 }
 #imagePagination .page_chevron {
   height: 30px;
+}
+#noResults {
+  color: white;
+  margin-left: 50px;
+  margin-top: 100px;
+}
+#changeMyFilters {
+  color: white;
+  margin-left: 50px;
+  margin-top: 10px;
+  background-color: #00c6ec;
+}
+#changeMyFilters:hover {
+  color: #e8e6e4;
+  background-color: red;
+}
+#ticket_pagination {
+  display: none;
 }
 .popup {
   color: white;

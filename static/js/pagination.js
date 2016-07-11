@@ -23,6 +23,8 @@ function getPageCount(result){
 
 	var rendered_pagination = Mustache.to_html(pagination_template,pagination);
 	$('#imagePagination').html(rendered_pagination);
+	$('#ticket_pagination').fadeIn("slow");
+
 }
 
 function plusone(n){
