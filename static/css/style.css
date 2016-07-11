@@ -487,11 +487,11 @@ body {
   position: relative;
   display: block;
   overflow-y: auto;
-  height: 100%;
-  cursor: pointer;
+  height: 95%;
   width: 100%;
   padding-right: 15px;
   display: none;
+  top: 5%;
 }
 #image_section {
   float: right;
@@ -651,6 +651,16 @@ body {
     -webkit-transform: scale(1);
     transform: scale(1);
   }
+}
+#imagePagination {
+  color: #f4f3f2;
+  cursor: pointer;
+}
+#imagePagination .pagination {
+  margin: 0px;
+}
+#imagePagination .page_chevron {
+  height: 30px;
 }
 .popup {
   color: white;

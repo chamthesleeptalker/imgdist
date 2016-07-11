@@ -18,6 +18,7 @@ module.exports = function(grunt) {
           'static/js/loading.js',
           'static/js/dateselect.js',
           'static/js/filters.js',
+          'static/js/pagination.js',
           'static/js/main.js'
         ],
         dest:'static/dist/js/diwata.min.js'

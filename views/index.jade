@@ -7,6 +7,13 @@ block content
         #map
     div#image_section.col-lg-7.main_section
         div#imageDiv.col-lg-12.main_section
+            div#imagePagination
+                //- ul.pagination.pagination-sm
+                //-     li.pagination_prev
+                //-         i.glyphicon.glyphicon-chevron-left
+                //-     li.pagination_next
+                //-         i.glyphicon.glyphicon-chevron-right
+                        
             div#imageSpinner
                 div.sk-wandering-cubes
                     div.sk-cube.sk-cube1
@@ -68,24 +75,15 @@ block content
                 div#image_fil_cart
                     div#image_fil_cart_list
                         h3#cart_noimage No images in cart.
-        div#date_fil.fildiv
-            span.glyphicon.glyphicon-calendar(title="Select date range")
-            span#currentDateFil --- - ---
-        div#cart_fil_div.col-lg-6.fildiv
-                div#filter_icon.col-lg-6
-                    span.glyphicon.glyphicon-tasks#moreFilterShow(title="Show Filters")
-                div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
-                    span.badge.imageCartCount  0 
-                    span.glyphicon.glyphicon-shopping-cart#imageShoppingCart(title="Go to Cart")
+        div
+            div#date_fil.fildiv
+                span.glyphicon.glyphicon-calendar(title="Select date range")
+                span#currentDateFil --- - ---
+            div#cart_fil_div.col-lg-6.fildiv
+                    div#filter_icon.col-lg-6
+                        span.glyphicon.glyphicon-tasks#moreFilterShow(title="Show Filters")
+                    div#cart_fil.col-lg-6( data-toggle="modal", data-target="#imageModal")
+                        span.badge.imageCartCount  0 
+                        span.glyphicon.glyphicon-shopping-cart#imageShoppingCart(title="Go to Cart")
 
-
-    //- div.modal.fade#imageModal(role="dialog")
-    //-     div.modal-dialog
-    //-         div.modal-content
-    //-             div.modal-header
-    //-                 button.close(type='button', data-dismiss="modal", aria-hidden="true") x
-    //-                 h4.modal-title Diwata Image Cart
-    //-             div.modal-body#imageCartList
-    //-             div.modal-footer
-    //-                 button.btn.btn-primary(type='button',onClick="downloadAllImages()") Download All
 
