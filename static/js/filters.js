@@ -8,6 +8,7 @@ function executeFilters(){
 
     if($('#noResults')){
         $('#noResults').fadeOut("slow");
+        $("#changeMyFilters").fadeOut("slow");
     }
 
     //Runs the loading spinner when query is called
@@ -61,6 +62,7 @@ function executeFilters(){
           $("#noResults").fadeIn("slow");
           if($("#cloud_image").css('display') === 'none'){
             $("#imagePagination").append("<button id='changeMyFilters' type='button' class='btn btn-primary' style='display:none;'>change filters</button>");
+            $("#changeMyFilters").fadeIn("slow");
           }
         },500);
 

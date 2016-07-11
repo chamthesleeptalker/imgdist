@@ -667,6 +667,16 @@ body {
   margin-left: 50px;
   margin-top: 100px;
 }
+#changeMyFilters {
+  color: white;
+  margin-left: 50px;
+  margin-top: 100px;
+  background-color: #00c6ec;
+}
+#changeMyFilters:hover {
+  color: #c5c0bb;
+  background-color: red;
+}
 .popup {
   color: white;
 }
