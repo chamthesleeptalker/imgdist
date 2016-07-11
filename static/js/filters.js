@@ -6,6 +6,10 @@ function executeFilters(){
     var cloudRange = cloudSlider;
     var daterange = [];
 
+    if($('#noResults')){
+        $('#noResults').fadeOut("slow");
+    }
+
     //Runs the loading spinner when query is called
     $("#imageSpinner").fadeIn("slow",function(){
       $("#imageSpinner").css("display","block");
@@ -46,10 +50,25 @@ function executeFilters(){
 
   //call the built query
   $.get(main_url, data, function(result){
+      var resultCount = result.features.length;
 
-        //console.log(this.url);
-        //console.log(result.page_meta.page_count);
+      if(resultCount === 0){
+        $("#ticket_pagination").fadeOut("slow");
+        $("#imageCards div").fadeOut("slow");
+  
+        setTimeout(function(){
+          $("#imagePagination").html("<h1 id='noResults' style='display:none;'>No image matched your query.<br>Please try again.</h1>");
+          $("#noResults").fadeIn("slow");
+          if($("#cloud_image").css('display') === 'none'){
+            $("#imagePagination").append("<button id='changeMyFilters' type='button' class='btn btn-primary' style='display:none;'>change filters</button>");
+          }
+        },500);
 
+
+
+
+
+      }else{
         //updates the footprints in the map view      
         updateMapMarkers(result);
 
@@ -63,6 +82,12 @@ function executeFilters(){
         updateData(result);
 
         getPageCount(result,this.url);
+
+      }
+
+        console.log("zero results");
+        console.log(result.features.length);
+
 
     })
     .done(function(){

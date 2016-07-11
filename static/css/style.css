@@ -491,7 +491,7 @@ body {
   width: 100%;
   padding-right: 15px;
   display: none;
-  top: 5%;
+  top: 2%;
 }
 #image_section {
   float: right;
@@ -661,6 +661,11 @@ body {
 }
 #imagePagination .page_chevron {
   height: 30px;
+}
+#noResults {
+  color: white;
+  margin-left: 50px;
+  margin-top: 100px;
 }
 .popup {
   color: white;
