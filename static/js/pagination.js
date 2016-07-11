@@ -1,3 +1,4 @@
+//function ot create the pagination links on layout
 function getPageCount(result){
 
 	var page_array=[];
@@ -25,6 +26,8 @@ function getPageCount(result){
 	$('#imagePagination').html(rendered_pagination);
 }
 
+//adjust page numbering to start at 1 instead of zero
 function plusone(n){
 	return parseInt(n)+1;
 }
+

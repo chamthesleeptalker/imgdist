@@ -49,8 +49,8 @@ function executeFilters(){
   $.get(main_url, data, function(result){
 
 
-
-        //console.log(this.url);
+        console.log("zero results");
+        console.log(result.features.length);
         //console.log(result.page_meta.page_count);
 
         //updates the footprints in the map view      
