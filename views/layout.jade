@@ -92,13 +92,13 @@ html
   // Mustache template for the Image Cart
   script(id="pagination-template" type="x-tmpl-mustache").
     <ul id="ticket_pagination" class="pagination pagination-sm">
-      <li><a class="page_chevron"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+      <li class="liPagination" onClick="paginatedExecuteFilters('{{prev_query}}')"><a class="page_chevron"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
       {{#pages}}
-        <li>
+        <li class="liPagination">
           <a value='{{.}}'>{{.}}</a>
         </li>
       {{/pages}}
-      <li><a class="page_chevron"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+      <li class="liPagination" onClick="paginatedExecuteFilters('{{next_query}}')"><a class="page_chevron"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
     </ul>
 
   // bower:JS

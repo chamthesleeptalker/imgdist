@@ -1,3 +1,4 @@
+var globalPagination;
 //function ot create the pagination links on layout
 function getPageCount(result){
 	
@@ -29,8 +30,6 @@ function getPageCount(result){
 		current_page: result.filter_meta.page //current page number string
 	};
 
-
-
 	//Call mustache templates
  	var pagination_template = $('#pagination-template').html();
     Mustache.parse(pagination_template);
@@ -40,11 +39,13 @@ function getPageCount(result){
 	$('#imagePagination').html(rendered_pagination);
 	
 	//Add active class to the current page
-	console.log(pagination.current_page);
 	activeClassCurrentPage(pagination.current_page);
 
+	//Show pagination on layout
 	$('#ticket_pagination').fadeIn("slow");
 
+
+	return globalPagination = pagination;
 
 }
 
@@ -56,13 +57,72 @@ function plusone(n){
 //add active class to current page
 function activeClassCurrentPage(current_page){
 	var aValues = $("#ticket_pagination li a");
-	console.log(aValues);
+
 	for(var i in aValues ){
 		if(aValues[i].text === current_page){
 			$("#ticket_pagination li")[i].className = "active";
+
 		}else{
 			$("#ticket_pagination li")[i].className = "";
 		}
 	}
 }
+
+//fetch a specific page into the image cards container
+function paginatedExecuteFilters(queryURL){
+	//Runs the loading spinner when query is called
+    $("#imageSpinner").fadeIn("slow",function(){
+      $("#cloud_image").addClass("cloudImageOpacity");
+      $("#imageSpinner").css("display","block");
+      $("#imageSpinner").css("z-index","1000");
+      $("#imageCards").fadeOut("fast");
+    });
+
+	//call the built query
+  	$.get(queryURL, function(result){
+      var resultCount = result.features.length;
+
+      if(resultCount === 0){
+        $("#ticket_pagination").fadeOut("slow");
+        $("#imageCards div").fadeOut("slow");
+  
+        setTimeout(function(){
+          $("#imagePagination").html("<h1 id='noResults' style='display:none;'>No image matched your query.<br>Please try again.</h1>");
+          $("#noResults").fadeIn("slow");
+
+          $("#imagePagination").append("<button id='changeMyFilters' type='button' class='btn btn-primary button_class' style='display:none;' onClick='openFilters()'>change filters</button>");
+          $("#changeMyFilters").fadeIn("slow");
+          
+        },500);
+
+      }else{
+        //updates the footprints in the map view      
+        updateMapMarkers(result);
+
+        //updates ticket results
+        updateCards(result);
+
+        //update added tickets in the image cart
+        updateOnImageCartCards(imageCartEntries);
+
+        //create or update Image Availability Histogram
+        updateData(result);
+
+        //Generate pagination
+        getPageCount(result,this.url);
+      }
+    })
+    .done(function(){
+      //Runs the loading spinner when query is done
+      $("#imageSpinner").fadeOut("slow",function(){
+        $("#imageSpinner").css("display","none");
+        $("#imageSpinner").css("z-index","-1");
+        $("#imageCards").fadeIn("slow");
+        $("#cloud_image").removeClass("cloudImageOpacity");
+      });
+    });
+}
+
+
+
 
