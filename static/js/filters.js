@@ -54,14 +54,6 @@ function executeFilters(){
     console.log(arguments.length);
   //call the built query
   $.get(main_url, data, function(result){
-<<<<<<< HEAD
-
-
-        console.log("zero results");
-        console.log(result.features.length);
-        //console.log(result.page_meta.page_count);
-
-=======
       var resultCount = result.features.length;
 
       if(resultCount === 0){
@@ -78,7 +70,6 @@ function executeFilters(){
         },500);
 
       }else{
->>>>>>> 6c5c6037017572d0e6cd63a69decb5944e9d0f08
         //updates the footprints in the map view      
         updateMapMarkers(result);
 
