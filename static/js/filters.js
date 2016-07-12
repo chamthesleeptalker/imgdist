@@ -51,7 +51,6 @@ function executeFilters(){
       data.end = daterange[1];
     }
 
-    console.log(arguments.length);
   //call the built query
   $.get(main_url, data, function(result){
       var resultCount = result.features.length;
