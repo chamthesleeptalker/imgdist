@@ -24,6 +24,8 @@ function getPageCount(result){
 
 	var rendered_pagination = Mustache.to_html(pagination_template,pagination);
 	$('#imagePagination').html(rendered_pagination);
+	$('#ticket_pagination').fadeIn("slow");
+
 }
 
 //adjust page numbering to start at 1 instead of zero
