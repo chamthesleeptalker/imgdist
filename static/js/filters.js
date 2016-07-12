@@ -6,6 +6,7 @@ function executeFilters(){
     var cloudRange = cloudSlider;
     var daterange = [];
 
+    //Removes "No results" prompt and "Change Filters" button on filter run 
     if($('#noResults')){
         $('#noResults').fadeOut("slow");
         $("#changeMyFilters").fadeOut("slow");
@@ -18,8 +19,6 @@ function executeFilters(){
       $("#imageSpinner").css("z-index","1000");
       $("#imageCards").fadeOut("fast");
     });
-
-    
 
     //Updates cloud range in view
     if(cloudSlider.data().from == undefined){
@@ -82,13 +81,9 @@ function executeFilters(){
         //create or update Image Availability Histogram
         updateData(result);
 
+        //Generate pagination
         getPageCount(result,this.url);
-
       }
-
-        console.log("zero results");
-        console.log(result.features.length);
-
     })
     .done(function(){
       //Runs the loading spinner when query is done
@@ -99,8 +94,6 @@ function executeFilters(){
         $("#cloud_image").removeClass("cloudImageOpacity");
       });
     });
-
-    
 }
 
 //update geojson footprints in the map
