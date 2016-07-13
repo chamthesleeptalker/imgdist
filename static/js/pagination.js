@@ -8,18 +8,30 @@ function getPageCount(result){
 	//Variable for number of available pages
 	var page_count = result.page_meta.page_count;
 
-	//Variable for initial page count
-	var initial_page_count;
+	//Container for all the page numbers
+	var page_array_full= _.map(_.times(page_count, String),plusone);
+
 
 	//Set number of li's to render
 	if(page_count>5){
-		initial_page_count = 5;
+		if(result.filter_meta.page === page_count.toString()){
+			page_array = page_array_full.slice(parseInt(result.filter_meta.page)-5,parseInt(result.filter_meta.page));
+		}else{
+			var pageDiff = page_count-parseInt(result.filter_meta.page);
+			if(pageDiff< 5){
+				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+pageDiff);		
+			}else{
+				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+4);		
+			}
+			
+		}
+		
 	}else{
-		initial_page_count = page_count;
+		page_array = page_array_full;
 	}
 
 	//Add 1 to the page array generated
-	var page_array = _.map(_.times(initial_page_count, String),plusone);
+	//var page_array = _.map(_.times(initial_page_count, String),plusone);
 
 	//Data object to feed the pagination template
 	var pagination = {
@@ -28,7 +40,7 @@ function getPageCount(result){
 		next_query:result.page_meta.next_page,
 		current_query:result.page_meta.current_page,
 		current_page: result.filter_meta.page, //current page number string
-		no_of_pages: result.page_meta.page_count
+		no_of_pages:page_count
 	};
 
 	//Call mustache templates
@@ -41,6 +53,9 @@ function getPageCount(result){
 	
 	//Add active class to the current page
 	activeClassCurrentPage(pagination.current_page);
+
+	//Add/remove 'disabled' class in prev/next chevrons
+	disablePrevNextChevrons(pagination.pages,page_count,pagination.current_page);
 
 	//Show pagination on layout
 	$('#ticket_pagination').fadeIn("slow");
@@ -69,11 +84,33 @@ function activeClassCurrentPage(current_page){
 	}
 }
 
+//Add/remove 'disabled' class in chevron prev/next buttons
+function disablePrevNextChevrons(page_array,no_of_pages,current_page){
+	var oneNotInArr = _.findIndex(page_array,function(o){return o === 1;});
+	var lastIndex = $("#ticket_pagination li").length -1;
+	if(page_array[0] === 1){
+		$("#ticket_pagination li")[0].className = "disabled";
+	}else if( oneNotInArr === -1){
+		$("#ticket_pagination li")[0].className = "";
+	}
+
+	if(current_page === no_of_pages.toString()){
+		$("#ticket_pagination li")[lastIndex].className = "disabled";	
+	}else{
+		$("#ticket_pagination li")[lastIndex].className = "";	
+	}
+}
+
+//slice  current query url and change it to the query url for a particular page
 function generateUrlPerPage(current_page,page_no){
 	var current_page_url = current_page;
-	var page_url = current_page.slice(0,-1) + page_no;
+	var offset = page_no.length;
+	console.log(offset);
+	var page_url = current_page.slice(0,-offset) + page_no;
 	return page_url;
 }
+
+
 
 //fetch a specific page into the image cards container
 function paginatedExecuteFilters(queryURL,event){
@@ -129,6 +166,8 @@ function paginatedExecuteFilters(queryURL,event){
       });
     });
 }
+
+
 
 
 

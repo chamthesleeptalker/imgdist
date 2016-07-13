@@ -688,6 +688,7 @@ body {
 #pageNoPrompt {
   float: right;
   top: 10px;
+  font-weight: 600;
 }
 .popup {
   color: white;
