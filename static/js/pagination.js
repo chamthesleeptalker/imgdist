@@ -27,7 +27,8 @@ function getPageCount(result){
 		prev_query:result.page_meta.previous_page,
 		next_query:result.page_meta.next_page,
 		current_query:result.page_meta.current_page,
-		current_page: result.filter_meta.page //current page number string
+		current_page: result.filter_meta.page, //current page number string
+		no_of_pages: result.page_meta.page_count
 	};
 
 	//Call mustache templates
@@ -68,8 +69,14 @@ function activeClassCurrentPage(current_page){
 	}
 }
 
+function generateUrlPerPage(current_page,page_no){
+	var current_page_url = current_page;
+	var page_url = current_page.slice(0,-1) + page_no;
+	return page_url;
+}
+
 //fetch a specific page into the image cards container
-function paginatedExecuteFilters(queryURL){
+function paginatedExecuteFilters(queryURL,event){
 	//Runs the loading spinner when query is called
     $("#imageSpinner").fadeIn("slow",function(){
       $("#cloud_image").addClass("cloudImageOpacity");
@@ -122,6 +129,10 @@ function paginatedExecuteFilters(queryURL){
       });
     });
 }
+
+
+
+
 
 
 

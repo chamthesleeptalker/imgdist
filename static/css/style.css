@@ -685,6 +685,10 @@ body {
 #ticket_pagination {
   display: none;
 }
+#pageNoPrompt {
+  float: right;
+  top: 10px;
+}
 .popup {
   color: white;
 }
