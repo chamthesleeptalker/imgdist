@@ -11,20 +11,23 @@ function getPageCount(result){
 	//Container for all the page numbers
 	var page_array_full= _.map(_.times(page_count, String),plusone);
 
+	var page_offset = 4;
+	var page_bullets = page_offset+1;
+
 
 	//Set number of li's to render
-	if(page_count>5){
-		if(result.filter_meta.page === page_count.toString()){
-			page_array = page_array_full.slice(parseInt(result.filter_meta.page)-5,parseInt(result.filter_meta.page));
-		}else{
-			var pageDiff = page_count-parseInt(result.filter_meta.page);
-			if(pageDiff< 5){
-				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+pageDiff);		
+	if(page_count>page_bullets){
+		//difference of the totall number of page and the current page number
+		var pageDiff = page_count-parseInt(result.filter_meta.page);
+		console.log("page_count: "+page_count);
+		console.log("current_page:"+result.filter_meta.page);
+		console.log("page_diff:"+ pageDiff.toString());
+			if(pageDiff< page_bullets){
+				console.log("page_diff:"+ pageDiff.toString());
+				page_array = page_array_full.slice(page_count-page_offset,page_count);		
 			}else{
-				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+4);		
+				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+page_offset);		
 			}
-			
-		}
 		
 	}else{
 		page_array = page_array_full;
@@ -86,27 +89,34 @@ function activeClassCurrentPage(current_page){
 
 //Add/remove 'disabled' class in chevron prev/next buttons
 function disablePrevNextChevrons(page_array,no_of_pages,current_page){
-	var oneNotInArr = _.findIndex(page_array,function(o){return o === 1;});
+	var firstInArr = _.findIndex(page_array,function(o){return o === 1;});
+	var lastInArr = _.findIndex(page_array,function(o){return o === no_of_pages;});
 	var lastIndex = $("#ticket_pagination li").length -1;
-	if(page_array[0] === 1){
-		$("#ticket_pagination li")[0].className = "disabled";
-	}else if( oneNotInArr === -1){
-		$("#ticket_pagination li")[0].className = "";
+	if( firstInArr != -1){
+		$("#ticket_pagination li")[0].className ="disabled";
+	}else{
+		$("#ticket_pagination li")[0].className ="";
 	}
 
-	if(current_page === no_of_pages.toString()){
-		$("#ticket_pagination li")[lastIndex].className = "disabled";	
+	if(lastInArr != -1){
+		$("#ticket_pagination li")[lastIndex].className ="disabled";
 	}else{
-		$("#ticket_pagination li")[lastIndex].className = "";	
+		$("#ticket_pagination li")[lastIndex].className =""; 		
 	}
 }
 
 //slice  current query url and change it to the query url for a particular page
 function generateUrlPerPage(current_page,page_no){
 	var current_page_url = current_page;
-	var offset = page_no.length;
-	console.log(offset);
-	var page_url = current_page.slice(0,-offset) + page_no;
+	var current_page_url_page = current_page.split('&');
+	var page_no_split = current_page_url_page[current_page_url_page.length-1];
+	var offset = page_no_split.length
+	// if(offset>6){
+	// 	var page_url = current_page.slice(0,-offset) +"="+ page_no;
+	// }else{
+		var page_url = current_page.slice(0,-offset) +"page="+page_no;	
+	//}
+	console.log("GENERATED URL: "+page_url)
 	return page_url;
 }
 
