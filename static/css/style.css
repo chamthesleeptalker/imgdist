@@ -488,7 +488,7 @@ body {
   position: relative;
   display: block;
   overflow-y: auto;
-  height: 95%;
+  height: 92%;
   width: 100%;
   padding-right: 15px;
   display: none;
@@ -684,6 +684,11 @@ body {
 }
 #ticket_pagination {
   display: none;
+}
+#pageNoPrompt {
+  float: right;
+  top: 10px;
+  font-weight: 600;
 }
 .popup {
   color: white;
