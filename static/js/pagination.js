@@ -19,11 +19,8 @@ function getPageCount(result){
 	if(page_count>page_bullets){
 		//difference of the totall number of page and the current page number
 		var pageDiff = page_count-parseInt(result.filter_meta.page);
-		console.log("page_count: "+page_count);
-		console.log("current_page:"+result.filter_meta.page);
-		console.log("page_diff:"+ pageDiff.toString());
+
 			if(pageDiff< page_bullets){
-				console.log("page_diff:"+ pageDiff.toString());
 				page_array = page_array_full.slice(page_count-page_offset,page_count);		
 			}else{
 				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+page_offset);		
@@ -32,9 +29,6 @@ function getPageCount(result){
 	}else{
 		page_array = page_array_full;
 	}
-
-	//Add 1 to the page array generated
-	//var page_array = _.map(_.times(initial_page_count, String),plusone);
 
 	//Data object to feed the pagination template
 	var pagination = {
@@ -111,12 +105,7 @@ function generateUrlPerPage(current_page,page_no){
 	var current_page_url_page = current_page.split('&');
 	var page_no_split = current_page_url_page[current_page_url_page.length-1];
 	var offset = page_no_split.length
-	// if(offset>6){
-	// 	var page_url = current_page.slice(0,-offset) +"="+ page_no;
-	// }else{
-		var page_url = current_page.slice(0,-offset) +"page="+page_no;	
-	//}
-	console.log("GENERATED URL: "+page_url)
+	var page_url = current_page.slice(0,-offset) +"page="+page_no;	
 	return page_url;
 }
 
