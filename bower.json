@@ -2,7 +2,8 @@
   "name": "diwata-image-gallery",
   "authors": [
     "Benjie Jiao <hi@benjie.me>",
-    "Ian Panganiban <ian.panganiban@gmail.com>"
+    "Ian Panganiban <ian.panganiban@gmail.com>",
+    "Cham Mamador <charmynemamador@gmail.com>"
   ],
   "description": "An Image Browser for Diwata-1 Images",
   "main": "",
@@ -28,7 +29,8 @@
     "d3": "^3.5.17",
     "ion.rangeSlider": "ionrangeslider#^2.1.4",
     "malihu-custom-scrollbar-plugin": "^3.1.4",
-    "SpinKit": "spinkit#^1.2.5"
+    "SpinKit": "spinkit#^1.2.5",
+    "leaflet-control-geocoder": "^1.5.1"
   },
   "devDependencies": {
     "please-wait": "^0.0.5"

@@ -12,21 +12,21 @@ function getPageCount(result){
 	var page_array_full= _.map(_.times(page_count, String),plusone);
 
 	//offset for the 0 based page array
-	var 0_offset = 4;
+	var zero_offset = 4;
 
 	//offset for the 1 based page array
-	var 1_offset = 0_offset+1;
+	var one_offset = zero_offset+1;
 
 
 	//Set number of li's to render
-	if(page_count>page_bullets){
+	if(page_count>one_offset){
 		//difference of the totall number of page and the current page number
 		var pageDiff = page_count-parseInt(result.filter_meta.page);
 			//defines page array if the diff between the current and total no of pages is less than offset based 1
-			if(pageDiff< 1_offset{
-				page_array = page_array_full.slice(page_count-0_offset,page_count);		
+			if(pageDiff< one_offset){
+				page_array = page_array_full.slice(page_count-zero_offset,page_count);		
 			}else{
-				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+0_offset);		
+				page_array = page_array_full.slice(parseInt(result.filter_meta.page)-1,parseInt(result.filter_meta.page)+zero_offset);		
 			}
 		
 	}else{

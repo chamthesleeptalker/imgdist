@@ -111,7 +111,15 @@ function init_map(){
         } 
     });
 
-    image_markers.addTo(map);   
+    image_markers.addTo(map);
+
+    //placename geocoder   
+    var geocoder = L.Control.Geocoder.Nominatim();
+    var control = L.Control.geocoder({
+        geocoder: geocoder
+    });
+    control.addTo(map);
+
 }
 
 
