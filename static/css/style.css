@@ -95,6 +95,22 @@ body {
   border-bottom-right-radius: 0px;
   border-bottom: none;
 }
+.leaflet-control-geocoder {
+  border-radius: 0px;
+  background: #122654;
+  min-width: 26px;
+  min-height: 26px;
+}
+.leaflet-control-geocoder-icon {
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-color: #122654;
+  background-image: url(images/geocoder.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .irs-grid {
   border-top: 2px solid rgba(244, 243, 242, 0.5);
 }
