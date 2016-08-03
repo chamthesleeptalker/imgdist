@@ -3,15 +3,57 @@
 	background: darken(@colorTwo,30);
 	min-width: 26px;
 	min-height: 26px;
+	color:white;
+	.Raleway;
 }
 
 .leaflet-control-geocoder-icon {
-    border-radius: 4px;
     width: 26px;
     height: 26px;
     border: none;
     background-color: darken(@colorTwo,30);
-    background-image: url(images/geocoder.png);
+    background-image: url(/images/geocoder.png);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.leaflet-control-geocoder-address-context {
+	color: white;
+}
+
+.leaflet-control-geocoder-alternatives li{
+	color:white;
+	z-index: 1000;
+	background-color: transparent;
+
+	&:hover {
+		background-color: fade(@colorFive,50);
+	}
+
+	a{
+		color:white;
+		background-color:transparent;
+		&:hover{
+			background-color:transparent;
+		}
+	}
+
+}
+
+.leaflet-control-geocoder-throbber .leaflet-control-geocoder-icon {
+	background-image: url(/images/throbber.gif);
+}
+
+.leaflet-control-geocoder-error {
+	margin-top: 8px;
+	margin-left: 8px;
+	display: block;
+	color: white;
+}
+
+.leaflet-control-geocoder-alternatives{
+	position:absolute;
+	z-index:100;
+	background-color: fade(darken(@colorTwo,30),90);
+	color: white;
 }

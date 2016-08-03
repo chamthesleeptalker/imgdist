@@ -78,6 +78,9 @@ body {
   width: 15px;
   border: transparent;
 }
+.leaflet-control-zoom {
+  z-index: 1;
+}
 .leaflet-control-zoom a {
   background-color: #122654;
   color: white;
@@ -100,16 +103,50 @@ body {
   background: #122654;
   min-width: 26px;
   min-height: 26px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
 }
 .leaflet-control-geocoder-icon {
-  border-radius: 4px;
   width: 26px;
   height: 26px;
   border: none;
   background-color: #122654;
-  background-image: url(images/geocoder.png);
+  background-image: url(/images/geocoder.png);
   background-repeat: no-repeat;
   background-position: center;
+}
+.leaflet-control-geocoder-address-context {
+  color: white;
+}
+.leaflet-control-geocoder-alternatives li {
+  color: white;
+  z-index: 1000;
+  background-color: transparent;
+}
+.leaflet-control-geocoder-alternatives li:hover {
+  background-color: rgba(244, 243, 242, 0.5);
+}
+.leaflet-control-geocoder-alternatives li a {
+  color: white;
+  background-color: transparent;
+}
+.leaflet-control-geocoder-alternatives li a:hover {
+  background-color: transparent;
+}
+.leaflet-control-geocoder-throbber .leaflet-control-geocoder-icon {
+  background-image: url(/images/throbber.gif);
+}
+.leaflet-control-geocoder-error {
+  margin-top: 8px;
+  margin-left: 8px;
+  display: block;
+  color: white;
+}
+.leaflet-control-geocoder-alternatives {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(18, 38, 84, 0.9);
+  color: white;
 }
 .irs-grid {
   border-top: 2px solid rgba(244, 243, 242, 0.5);
