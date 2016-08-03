@@ -5,7 +5,9 @@ var main_url = "http://api.images.phl-microsat.xyz/scene/multi/?format=json&date
 var cloudSlider = $('#cloud_slide');
 
 //global map object
-var map = L.map('map');
+var map = L.map('map',{
+    zoomControl:false
+});
 
 //global image provider array
 var imageTray = ['hpt','mfc','wfc','smi','landsat8'];
@@ -52,6 +54,18 @@ function init_map(){
     //set the map's initial view to a specified center and zoom level
     map.setView(new L.LatLng(11.5, 121.8), 5);
     map.addLayer(osm);
+
+    //placename geocoder   
+    var geocoder = L.Control.Geocoder.Nominatim();
+    var control = L.Control.geocoder({
+        geocoder: geocoder,
+        position:"topleft"
+    });
+    control.addTo(map);
+
+    //zoom control
+    var zoomControl = L.control.zoom({position:'topleft'});
+    zoomControl.addTo(map);
 
     // Screen dimensions
     var width, height;
@@ -111,7 +125,9 @@ function init_map(){
         } 
     });
 
-    image_markers.addTo(map);   
+    image_markers.addTo(map);
+
+
 }
 
 
